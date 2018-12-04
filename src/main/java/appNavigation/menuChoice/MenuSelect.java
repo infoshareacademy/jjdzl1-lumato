@@ -11,7 +11,7 @@ import java.util.Scanner;
 //Warunek jest definiownany w metodzie isValid, która pobiera getUserinput, regex, specialChar, porównuje je i zwraca true lub false
 
 
-public class MenuChoice {
+public class MenuSelect {
 
     public static String validateInput(String regex, String specialChar, String specialCharAction) {
 
