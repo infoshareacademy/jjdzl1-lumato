@@ -1,8 +1,4 @@
-//import appNavigation.login.InitialWindow;
-
-import appNavigation.menuChoice.MenuChoice;
-import appNavigation.menuChoice.MenuSelect;
-import appNavigation.menuChoice.ShowMenu;
+import main.java.appNavigation.login.InitialWindow;
 
 public class Main {
 
@@ -12,10 +8,11 @@ public class Main {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception{
-//        new InitialWindow().init();
-        ShowMenu.showMenu();
-        char c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
-        MenuChoice.menuChoice(c);
-
+        runApplication();
     }
+
+    public static void runApplication() throws Exception {
+        InitialWindow.init();
+    }
+
 }

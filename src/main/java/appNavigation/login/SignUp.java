@@ -1,4 +1,4 @@
-package appNavigationlogin;
+package main.java.appNavigation.login;
 
 import main.java.tools.CLS;
 import main.java.inout.UserInput;

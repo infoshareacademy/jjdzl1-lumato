@@ -9,7 +9,7 @@ import java.io.IOException;
 public class TextSaveSimple {
 
     //pobiera tekst "text" i zapisuje do pliku w ścieżce "path"
-    public void saveSimpleText(String text, String path) throws IOException {
+    public static void saveSimpleText(String text, String path) throws IOException {
         FileOutputStream out = new FileOutputStream(path);
         DataOutputStream save = new DataOutputStream(out);
         save.writeBytes(text);
