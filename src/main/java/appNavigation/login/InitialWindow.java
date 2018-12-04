@@ -1,5 +1,6 @@
-package appNavigationlogin;
+package main.java.appNavigation.login;
 
+import main.java.inout.SessionData;
 import main.java.tools.AppExit;
 import main.java.tools.CLS;
 import main.java.inout.UserInput;
@@ -26,9 +27,9 @@ public class InitialWindow {
     }
 
     private static void showOptions(){
-        System.out.println("1. Zaloguj się na istniejące konto");
-        System.out.println("2. Utwórz nowe konto");
-        System.out.println("3. Wyjdź z aplikacji");
+        System.out.println("1 - Zaloguj się na istniejące konto");
+        System.out.println("2 - Utwórz nowe konto");
+        System.out.println("3 - Wyjdź z aplikacji");
     }
 
     private static String chooseOption() throws IOException {

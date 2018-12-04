@@ -1,8 +1,12 @@
-package appNavigationlogin;
+package main.java.appNavigation.login;
 
+import main.java.inout.SessionData;
 import main.java.tools.AppExit;
 import main.java.tools.CLS;
 import main.java.inout.UserInput;
+import appNavigation.menuChoice.ShowMenu;
+import appNavigation.menuChoice.MenuChoice;
+import appNavigation.menuChoice.MenuSelect;
 
 import java.io.IOException;
 
@@ -12,41 +16,52 @@ import java.io.IOException;
  */
 public class SignIn {
 
-    private static UserData userData;
+    private final String userListPath = "resources/userList.txt";
+    private final String currentUserPath = "resources/currentUser.txt";
+    private boolean loginExists = false;
+    private boolean passwordMatches = false;
+    private String userLogin = "";
+    private String userPassword = "";
 
-    /**
-     * login panel initialization
-     * needs big refactor...
-     * @throws Exception
-     */
-    public void init() throws Exception{
-        showInformation();
-        String userName = askForUserName();
-        if(!isQuit(userName)){; //sprawdza, czy użytkownik wpisał exit lub prev
-            boolean isLoginGood = checkIfLoginExists(userName);
+    public void init() throws Exception {
+
+        while (loginExists == false || passwordMatches == false) {
+            showInformation();
+            //ask for login and check
+            userLogin = askForUserLogin();
+            checkQuitOptions(userLogin);
+            loginExists = checkIfLoginExists(userLogin, userListPath);
+            //ask for password and check
             String userPassword = askForUserPassword();
-            if (!isQuit(userPassword)) { //sprawdza, czy użytkownik wpisał exit lub prev
-                //tu będzie walidacja hasła
-                this.userData = new UserData(userName, userPassword);
-                executeLogin(isLoginGood, userName);
+            checkQuitOptions(userPassword);
+            passwordMatches = checkIfPasswordMatches(userLogin, userPassword, userListPath);
+            if (loginExists == false || passwordMatches == false) {
+                CLS.clearScreen();
+                System.out.println("Niepoprawny login lub hasło!");
+                loginExists = false;
+                passwordMatches = false;
             }
         }
+        SessionData.saveSessionData(userLogin);
+        CLS.clearScreen();
+
+        //uruchomienie menu głównego
+        ShowMenu.showMenu();
+        char c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
+        MenuChoice.menuChoice(c);
     }
 
-    /**
-     * show information what to do here (either try to log in, or quit or go back to starting window)
-     */
     private static void showInformation(){
-        System.out.println("Wprowadź poprawny login i haslo by wejść do aplikacji");
-        System.out.println("(w obecnej wersji poprawne loginy to \"adam\" oraz \"ewa\")");
-        System.out.println("(w obecnej wersji poprawne hasło to \"\")");
-        System.out.println("Żeby wrócić do poprzedniego widoku wpisz \"prev\"");
-        System.out.println("Żeby opuścić program wpisz \"exit\"");
-        System.out.println();
+        System.out.println("Jesteś w panelu logowania.");
+        System.out.println("W obecnej wersji działające dane to:");
+        System.out.println("Login: adam, hasło: abcd");
+        System.out.println("Login: ewa, hasło: mak");
+        System.out.println("Wpisz 'q' aby opuścić program");
+        System.out.println("Wpisz 'p' aby wrócić do ekranu startowego");
     }
 
-    private static String askForUserName() throws IOException {
-        System.out.print("PODAJ NAZWE UŻYTKOWNIKA: ");
+    private static String askForUserLogin() throws IOException {
+        System.out.print("PODAJ LOGIN: ");
         return UserInput.getUserStringInput();
     }
 
@@ -55,57 +70,32 @@ public class SignIn {
         return UserInput.getUserStringInput();
     }
 
-    //wersja biedna, póki co jedynym użytkownikiem mającym dostęp do aplikacji będą adam oraz ewa
-    private static boolean checkIfLoginExists(String userName) throws Exception {
-        if ("adam".equals(userName) || "ewa".equals(userName)) {
+    //metoda jeszcze nieskońcozna, wersja prowizoryczna
+    private static boolean checkIfLoginExists(String userLogin, String userListPath){
+        if ("adam".equals(userLogin) || "ewa".equals(userLogin)){
             return true;
         } else {
             return false;
         }
     }
 
-    private static void executeLogin(boolean isLoginGood, String userName) throws Exception{
-
-        if ("exit".equals(userName)){
-            CLS.clearScreen();
-            AppExit.exitApplication();
-        }
-        if ("prev".equals(userName)) {
-            CLS.clearScreen();
-            new SignIn().init();
-        }
-
-        if (isLoginGood){
-                CLS.clearScreen();
-                // TUTAJ URUCHOMIENIE MAIN MENU
-                Test testMainMenu = new Test(userData);
-                testMainMenu.test();
+    //metoda nieskończona, wersja prowizoryczna
+    private static boolean checkIfPasswordMatches(String userLogin, String userPassword, String userListPath){
+        if ("adam".equals(userLogin) && "abcd".equals(userPassword) || "ewa".equals(userLogin) && "mak".equals(userPassword)){
+            return true;
         } else {
-            CLS.clearScreen();
-            System.out.println("Zły login!");
-            new SignIn().init();
+            return false;
         }
     }
 
-    /**
-     * This method checks if user wants to quit (one wants to quit by typing "prev" or "exit"
-     * @param userInput login/password typed by user
-     * @return
-     * @throws Exception
-     */
-    private static boolean isQuit(String userInput) throws Exception {
-        boolean isQuit = false;
-        if ("exit".equals(userInput)){
+    private static void checkQuitOptions(String text) throws Exception {
+        if ("q".equals(text)) {
             CLS.clearScreen();
             AppExit.exitApplication();
-            isQuit = true;
-        }
-        if ("prev".equals(userInput)){
+        } else if ("p".equals(text)){
             CLS.clearScreen();
-            new InitialWindow().init();
-            isQuit = true;
+            SessionData.eraseSessionData();
+            InitialWindow.init();
         }
-        return isQuit;
     }
-
 }

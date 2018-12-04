@@ -1,8 +1,5 @@
-//import appNavigation.login.InitialWindow;
-
-import appNavigation.menuChoice.MenuChoice;
-import appNavigation.menuChoice.MenuSelect;
-import appNavigation.menuChoice.ShowMenu;
+import main.java.appNavigation.login.InitialWindow;
+import main.java.inout.SessionData;
 
 public class Main {
 
@@ -12,10 +9,17 @@ public class Main {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception{
-//        new InitialWindow().init();
-        ShowMenu.showMenu();
-        char c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
-        MenuChoice.menuChoice(c);
-
+        runApplication();
     }
+
+    public static void runApplication() throws Exception {
+        //wyczyszczenie danych sesyjnych w razie jakby jeszcze istniały po poprzednim użytkowaniu
+        //np. po siłowym wyłączeniu programu plik z daną o zalogowanym użytkowniku może być zachowany
+        //a tego nie chcemy
+        SessionData.eraseSessionData();
+
+        //program inicjaluzjemy poprzez startowy ekran z wyborem login/create new account/exit application
+        InitialWindow.init();
+    }
+
 }
