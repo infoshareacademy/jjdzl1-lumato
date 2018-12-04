@@ -1,4 +1,6 @@
-import main.java.appNavigation.login.InitialWindow;
+//import appNavigation.login.InitialWindow;
+
+import tools.MenuChoice;
 
 public class Main {
 
@@ -8,6 +10,7 @@ public class Main {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception{
-        new InitialWindow().init();
+//        new InitialWindow().init();
+        MenuChoice.ValidateInput(("1-9"),"q", "quit");
     }
 }

@@ -1,4 +1,4 @@
-package main.java.appNavigation.login;
+package appNavigationlogin;
 
 //TEST, do usunięcia potem
 
