@@ -1,6 +1,8 @@
 //import appNavigation.login.InitialWindow;
 
-import tools.MenuChoice;
+import appNavigation.menuChoice.MenuChoice;
+import appNavigation.menuChoice.MenuSelect;
+import appNavigation.menuChoice.ShowMenu;
 
 public class Main {
 
@@ -11,6 +13,9 @@ public class Main {
      */
     public static void main(String[] args) throws Exception{
 //        new InitialWindow().init();
-        MenuChoice.ValidateInput(("1-9"),"q", "quit");
+        ShowMenu.showMenu();
+        char c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
+        MenuChoice.menuChoice(c);
+
     }
 }
