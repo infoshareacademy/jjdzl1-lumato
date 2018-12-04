@@ -1,5 +1,6 @@
 package main.java.appNavigation.login;
 
+import main.java.inout.SessionData;
 import main.java.tools.AppExit;
 import main.java.tools.CLS;
 import main.java.inout.UserInput;
