@@ -10,7 +10,7 @@ public class SignUp {
         System.out.println("naciśnij enter by wrócić do ekranu startowego");
         String userInput = UserInput.getUserStringInput();
         CLS.clearScreen();
-        new InitialWindow().init();
+        new main.java.appNavigation.login.InitialWindow().init();
     }
 
 }
