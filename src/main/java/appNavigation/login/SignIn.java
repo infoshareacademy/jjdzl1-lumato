@@ -17,8 +17,6 @@ import java.io.IOException;
  */
 public class SignIn {
 
-    private final String userListPath = FilePaths.getUserListPath();
-    private final String currentUserPath = FilePaths.getCurrentUserPath();
     private boolean loginExists = false;
     private boolean passwordMatches = false;
     private String userLogin = "";
@@ -30,10 +28,10 @@ public class SignIn {
             showInformation();
             userLogin = askForUserLogin(); //ask for user login
             checkQuitOptions(userLogin); //check if user decided to quit
-            loginExists = validateLogin(userLogin);
             String userPassword = askForUserPassword(); //ask for user password
             checkQuitOptions(userPassword); //check if user decided to quit
-            passwordMatches = checkIfPasswordMatches(userLogin, userPassword, userListPath);
+            loginExists = validateLogin(userLogin);
+            passwordMatches = validatePassword(userLogin, userPassword);
             if (loginExists == false || passwordMatches == false) {
                 CLS.clearScreen();
                 System.out.println("Niepoprawny login lub hasło!");
@@ -66,21 +64,17 @@ public class SignIn {
 
     //metoda jeszcze nieskońcozna, wersja prowizoryczna
     private static boolean validateLogin(String userLogin){
-//        if ("adam".equals(userLogin) || "ewa".equals(userLogin)){
-//            return true;
-//        } else {
-//            return false;
-//        }
         return UserDataValidation.checkIfUserExists(userLogin);
     }
 
     //metoda nieskończona, wersja prowizoryczna
-    private static boolean checkIfPasswordMatches(String userLogin, String userPassword, String userListPath){
-        if ("adam".equals(userLogin) && "abcd".equals(userPassword) || "ewa".equals(userLogin) && "mak".equals(userPassword)){
-            return true;
-        } else {
-            return false;
-        }
+    private static boolean validatePassword(String userLogin, String userPassword){
+//        if ("adam".equals(userLogin) && "abcd".equals(userPassword) || "ewa".equals(userLogin) && "mak".equals(userPassword)){
+//            return true;
+//        } else {
+//            return false;
+//        }
+        return UserDataValidation.checkIfPasswordMatches(userLogin, userPassword);
     }
 
     private static void checkQuitOptions(String text) throws Exception {

@@ -11,17 +11,15 @@ public class UserDataValidation {
 
     private static String userListPath = FilePaths.getUserListPath();
 
-    public static boolean checkIfUserExists(String userName){
+    public static boolean checkIfUserExists(String userLogin){
         String line = "";
-        boolean userExists = false;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(userListPath));
             String userInCurrentLine;
             while ((line = reader.readLine()) != null){
                 userInCurrentLine = line.substring(0, line.indexOf(';'));
-                if (userInCurrentLine.equals(userName)){
-                    userExists = true;
-                    break;
+                if (userInCurrentLine.equals(userLogin)){
+                    return true;
                 };
             }
         } catch (FileNotFoundException e) {
@@ -29,7 +27,30 @@ public class UserDataValidation {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return userExists;
+        return false;
+    }
+
+    public static boolean checkIfPasswordMatches(String userLogin, String userPassword){
+        String line = "";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(userListPath));
+            String userInCurrentLine;
+            String goodPassword;
+            while ((line = reader.readLine()) != null){
+                userInCurrentLine = line.substring(0, line.indexOf(';'));
+                if (userInCurrentLine.equals(userLogin)){
+                    goodPassword = line.substring(line.indexOf(';')+1);
+                    if (goodPassword.equals(userPassword)) {
+                        return true;
+                    }
+                };
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
