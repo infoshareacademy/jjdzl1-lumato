@@ -3,7 +3,7 @@ import java.io.*;
 
 //Podczas pisania pojawił sie błąd Try-with-resources are not supported at language level '5'. Trzeba zmienić project settings z 5 na 7.
 //Klasa umozliwająca odczyt i zapis text do/z plików.
-//Trzeba będzi jeszcze sformatować sposób zapisu do plików danych wpisanych przez użytkownika
+//Trzeba będzie jeszcze sformatować sposób zapisu do plików danych wpisanych przez użytkownika
 public class WriteReadFile {
 
     public static StringBuilder readFromFile() throws IOException {
@@ -55,5 +55,12 @@ public class WriteReadFile {
             e.printStackTrace();
         }
         return line;
+    }
+
+    //metoda do szybkiego nadpisania pliku
+    public static void saveSimpleText(String text, String path) throws IOException {
+        FileOutputStream out = new FileOutputStream(path);
+        DataOutputStream save = new DataOutputStream(out);
+        save.writeBytes(text);
     }
 }
