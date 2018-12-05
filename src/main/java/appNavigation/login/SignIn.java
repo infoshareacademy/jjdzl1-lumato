@@ -1,5 +1,6 @@
 package main.java.appNavigation.login;
 
+import main.java.inout.FilePaths;
 import main.java.inout.SessionData;
 import main.java.tools.AppExit;
 import main.java.tools.CLS;
@@ -16,8 +17,6 @@ import java.io.IOException;
  */
 public class SignIn {
 
-    private final String userListPath = "resources/userList.txt";
-    private final String currentUserPath = "resources/currentUser.txt";
     private boolean loginExists = false;
     private boolean passwordMatches = false;
     private String userLogin = "";
@@ -27,14 +26,12 @@ public class SignIn {
 
         while (loginExists == false || passwordMatches == false) {
             showInformation();
-            //ask for login and check
-            userLogin = askForUserLogin();
-            checkQuitOptions(userLogin);
-            loginExists = checkIfLoginExists(userLogin, userListPath);
-            //ask for password and check
-            String userPassword = askForUserPassword();
-            checkQuitOptions(userPassword);
-            passwordMatches = checkIfPasswordMatches(userLogin, userPassword, userListPath);
+            userLogin = askForUserLogin(); //ask for user login
+            checkQuitOptions(userLogin); //check if user decided to quit
+            String userPassword = askForUserPassword(); //ask for user password
+            checkQuitOptions(userPassword); //check if user decided to quit
+            loginExists = validateLogin(userLogin);
+            passwordMatches = validatePassword(userLogin, userPassword);
             if (loginExists == false || passwordMatches == false) {
                 CLS.clearScreen();
                 System.out.println("Niepoprawny login lub hasło!");
@@ -42,13 +39,8 @@ public class SignIn {
                 passwordMatches = false;
             }
         }
-        SessionData.saveSessionData(userLogin);
-        CLS.clearScreen();
 
-        //uruchomienie menu głównego
-        ShowMenu.showMenu();
-        char c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
-        MenuChoice.menuChoice(c);
+        executeSuccessfulLogin(userLogin);
     }
 
     private static void showInformation(){
@@ -71,21 +63,18 @@ public class SignIn {
     }
 
     //metoda jeszcze nieskońcozna, wersja prowizoryczna
-    private static boolean checkIfLoginExists(String userLogin, String userListPath){
-        if ("adam".equals(userLogin) || "ewa".equals(userLogin)){
-            return true;
-        } else {
-            return false;
-        }
+    private static boolean validateLogin(String userLogin){
+        return UserDataValidation.checkIfUserExists(userLogin);
     }
 
     //metoda nieskończona, wersja prowizoryczna
-    private static boolean checkIfPasswordMatches(String userLogin, String userPassword, String userListPath){
-        if ("adam".equals(userLogin) && "abcd".equals(userPassword) || "ewa".equals(userLogin) && "mak".equals(userPassword)){
-            return true;
-        } else {
-            return false;
-        }
+    private static boolean validatePassword(String userLogin, String userPassword){
+//        if ("adam".equals(userLogin) && "abcd".equals(userPassword) || "ewa".equals(userLogin) && "mak".equals(userPassword)){
+//            return true;
+//        } else {
+//            return false;
+//        }
+        return UserDataValidation.checkIfPasswordMatches(userLogin, userPassword);
     }
 
     private static void checkQuitOptions(String text) throws Exception {
@@ -97,5 +86,15 @@ public class SignIn {
             SessionData.eraseSessionData();
             InitialWindow.init();
         }
+    }
+
+    public void executeSuccessfulLogin(String userLogin) throws IOException {
+        SessionData.saveSessionData(userLogin);
+        CLS.clearScreen();
+
+        //uruchomienie menu głównego
+        ShowMenu.showMenu();
+        char c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
+        MenuChoice.menuChoice(c);
     }
 }
