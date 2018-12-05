@@ -38,7 +38,7 @@ public class WriteReadFile {
         }
     }
 
-    //method which reads n-th line of the file
+    //metoda zwracająca n-tą linię pliku
     public static String readNthLine(String path, int n){
         String line = "";
         try {
