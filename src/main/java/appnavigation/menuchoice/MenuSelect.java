@@ -1,4 +1,4 @@
-package appNavigation.menuChoice;
+package appnavigation.menuchoice;
 
 import java.io.IOException;
 import java.util.Scanner;
