@@ -1,13 +1,12 @@
 package main.java.appNavigation.login;
 
-import main.java.inout.FilePaths;
 import main.java.inout.SessionData;
 import main.java.tools.AppExit;
 import main.java.tools.CLS;
 import main.java.inout.UserInput;
-import appNavigation.menuChoice.ShowMenu;
-import appNavigation.menuChoice.MenuChoice;
-import appNavigation.menuChoice.MenuSelect;
+import appnavigation.menuchoice.ShowMenu;
+import appnavigation.menuchoice.MenuChoice;
+import appnavigation.menuchoice.MenuSelect;
 
 import java.io.IOException;
 

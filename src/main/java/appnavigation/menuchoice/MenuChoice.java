@@ -1,4 +1,4 @@
-package appNavigation.menuChoice;
+package appnavigation.menuchoice;
 
 public class MenuChoice {
     public static void menuChoice(char selector){

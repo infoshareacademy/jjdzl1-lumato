@@ -6,11 +6,12 @@ import java.io.*;
 //Trzeba będzie jeszcze sformatować sposób zapisu do plików danych wpisanych przez użytkownika
 public class WriteReadFile {
 
-    public static StringBuilder readFromFile() throws IOException {
+    //Metoda czyta plik z path podanego jako argument oraz zwraca StringBuilder sb
+    public static StringBuilder readFromFile(String filePath) throws IOException {
         StringBuilder sb = new StringBuilder();
         String line;
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader("E:\\Robocze\\09. JAVA\\09.02 Java Projects\\09.02.01 Szkolenie\\Projekt-kalkulatorpaliw\\src\\main\\test.txt"));
+            BufferedReader fileReader = new BufferedReader(new FileReader(filePath));
             while ((line = fileReader.readLine()) != null) {
                 sb.append(line)
                         .append(";")
@@ -23,16 +24,17 @@ public class WriteReadFile {
         return sb;
     }
 
-    public static void writeToFile(String string) throws IOException {
+    //Metoda dopisuje do pliku, jako argumenty należy podać scieżke do pliku i co chcemy zapisać (czyli UserInput od Łukasza)
+    public static void writeToFile(String path, String whatToWrite) throws IOException {
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader("E:\\Robocze\\09. JAVA\\09.02 Java Projects\\09.02.01 Szkolenie\\Projekt-kalkulatorpaliw\\src\\main\\test.txt"));
+            BufferedReader fileReader = new BufferedReader(new FileReader(path));
         } catch (FileNotFoundException e) {
             e.getMessage();
         }
-        try (FileWriter fw = new FileWriter("E:\\Robocze\\09. JAVA\\09.02 Java Projects\\09.02.01 Szkolenie\\Projekt-kalkulatorpaliw\\src\\main\\test.txt", true);
+        try (FileWriter fw = new FileWriter(path, true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
-            out.print(string + "\n");
+            out.print(whatToWrite + "\n");
         } catch (IOException e) {
             e.getMessage();
         }

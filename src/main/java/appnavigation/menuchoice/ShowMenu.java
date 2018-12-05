@@ -1,4 +1,4 @@
-package appNavigation.menuChoice;
+package appnavigation.menuchoice;
 
 public class ShowMenu {
     public static void showMenu() {
