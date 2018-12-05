@@ -1,4 +1,4 @@
-package inout;
+package main.java.inout;
 import java.io.*;
 
 //Podczas pisania pojawił sie błąd Try-with-resources are not supported at language level '5'. Trzeba zmienić project settings z 5 na 7.
@@ -36,5 +36,24 @@ public class WriteReadFile {
         } catch (IOException e) {
             e.getMessage();
         }
+    }
+
+    //method which reads n-th line of the file
+    public static String readNthLine(String path, int n){
+        String line = "";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            int currentLine = 1;
+            while (currentLine<n) {
+                reader.readLine();
+                currentLine++;
+            }
+            line = reader.readLine();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return line;
     }
 }
