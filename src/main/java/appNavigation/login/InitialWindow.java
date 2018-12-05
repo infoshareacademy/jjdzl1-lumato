@@ -41,13 +41,13 @@ public class InitialWindow {
         switch(userChoice){
             case "1": {
                 CLS.clearScreen();
-                SignIn signIn = new SignIn();
+                main.java.appNavigation.login.SignIn signIn = new main.java.appNavigation.login.SignIn();
                 signIn.init();
                 break;
             }
             case "2": {
                 CLS.clearScreen();
-                new SignUp().init();
+                new main.java.appNavigation.login.SignUp().init();
                 break;
             }
             case "3": {
