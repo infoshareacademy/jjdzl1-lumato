@@ -1,9 +1,9 @@
-package inout;
+package main.java.inout;
 import java.io.*;
 
 //Podczas pisania pojawił sie błąd Try-with-resources are not supported at language level '5'. Trzeba zmienić project settings z 5 na 7.
 //Klasa umozliwająca odczyt i zapis text do/z plików.
-//Trzeba będzi jeszcze sformatować sposób zapisu do plików danych wpisanych przez użytkownika
+//Trzeba będzie jeszcze sformatować sposób zapisu do plików danych wpisanych przez użytkownika
 public class WriteReadFile {
 
     public static StringBuilder readFromFile() throws IOException {
@@ -36,5 +36,31 @@ public class WriteReadFile {
         } catch (IOException e) {
             e.getMessage();
         }
+    }
+
+    //metoda zwracająca n-tą linię pliku
+    public static String readNthLine(String path, int n){
+        String line = "";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            int currentLine = 1;
+            while (currentLine<n) {
+                reader.readLine();
+                currentLine++;
+            }
+            line = reader.readLine();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return line;
+    }
+
+    //metoda do szybkiego nadpisania pliku
+    public static void saveSimpleText(String text, String path) throws IOException {
+        FileOutputStream out = new FileOutputStream(path);
+        DataOutputStream save = new DataOutputStream(out);
+        save.writeBytes(text);
     }
 }
