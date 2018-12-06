@@ -1,5 +1,6 @@
 package appnavigation.login;
 
+import main.java.appnavigation.Shortcuts;
 import tools.CLS;
 import inout.UserInput;
 import tools.AppExit;
@@ -9,7 +10,7 @@ import java.io.IOException;
 
 public class SignUp {
 
-    public void init() throws Exception {
+    public static void init() throws Exception {
         boolean passwordIsOk = false;
         boolean userExists = true;
         boolean loginIsOk = false;
@@ -45,7 +46,7 @@ public class SignUp {
             AppExit.exitApplication();
         } else if ("p".equals(text)){
             CLS.clearScreen();
-            InitialWindow.init();
+            Shortcuts.runStartWindow();
         }
     }
 
@@ -75,8 +76,7 @@ public class SignUp {
         //TU DODANIE UŻYTKOWNIKA DO LISTY UŻYTKOWNIKÓW
         CLS.clearScreen();
         System.out.println("Rejestracja przebiegła pomyślnie! Możesz teraz się zalogować na nowo utworzony profil.");
-        SignIn signIn = new SignIn();
-        signIn.init();
+        Shortcuts.runLoginWindow();
     }
 
 }

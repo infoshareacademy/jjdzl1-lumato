@@ -1,5 +1,6 @@
 package appnavigation.login;
 
+import main.java.appnavigation.Shortcuts;
 import tools.AppExit;
 import tools.CLS;
 import inout.UserInput;
@@ -35,13 +36,12 @@ public class InitialWindow {
         switch(userChoice){
             case "1": {
                 CLS.clearScreen();
-                SignIn signIn = new SignIn();
-                signIn.init();
+                Shortcuts.runLoginWindow();
                 break;
             }
             case "2": {
                 CLS.clearScreen();
-                new SignUp().init();
+                Shortcuts.runCreateNewProfileWindow();
                 break;
             }
             case "q": {
@@ -52,7 +52,7 @@ public class InitialWindow {
                 CLS.clearScreen();
                 System.out.println("Niepoprawne dane!");
                 try {
-                    InitialWindow.init();
+                    Shortcuts.runStartWindow();
                 }catch(IOException e){
                 }
                 break;

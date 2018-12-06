@@ -1,6 +1,7 @@
 package appnavigation.login;
 
 import inout.SessionData;
+import main.java.appnavigation.Shortcuts;
 import tools.AppExit;
 import tools.CLS;
 import inout.UserInput;
@@ -39,7 +40,6 @@ public class SignIn {
                 passwordMatches = false;
             }
         }
-
         executeSuccessfulLogin(userLogin);
     }
 
@@ -81,17 +81,13 @@ public class SignIn {
         } else if ("p".equals(text)){
             CLS.clearScreen();
             SessionData.eraseSessionData();
-            InitialWindow.init();
+            Shortcuts.runStartWindow();
         }
     }
 
     public void executeSuccessfulLogin(String userLogin) throws IOException {
         SessionData.saveSessionData(userLogin);
         CLS.clearScreen();
-
-        //uruchomienie menu głównego
-        ShowMenu.showMenu();
-        char c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
-        MenuChoice.menuChoice(c);
+        Shortcuts.runMainMenu();
     }
 }
