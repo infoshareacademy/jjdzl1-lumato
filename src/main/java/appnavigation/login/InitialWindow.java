@@ -23,7 +23,7 @@ public class InitialWindow {
     private static void showOptions(){
         System.out.println("1 - Zaloguj się na istniejące konto");
         System.out.println("2 - Utwórz nowe konto");
-        System.out.println("3 - Wyjdź z aplikacji");
+        System.out.println("q - Wyjdź z aplikacji");
     }
 
     private static String chooseOption() throws IOException {
@@ -44,7 +44,7 @@ public class InitialWindow {
                 new SignUp().init();
                 break;
             }
-            case "3": {
+            case "q": {
                 AppExit.exitApplication();
                 break;
             }
