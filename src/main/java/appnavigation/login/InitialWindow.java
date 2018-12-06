@@ -5,15 +5,10 @@ import tools.CLS;
 import inout.UserInput;
 import java.io.IOException;
 
-/**
- * First (initial) application window
- */
+
 public class InitialWindow {
 
-    /**
-     * This method initializes whole Application
-     * @throws Exception
-     */
+    //metoda inicjalizujaca pierwsze okno programu (okno z wyborem rejestracji/logowania)
     public static void init() throws Exception {
         showHeader();
         showOptions();

@@ -60,14 +60,19 @@ public class WriteReadFile {
         }
     }
 
-    //metoda do szybkiego nadpisania pliku // Łukasz, nie ma obsługi wyjątków
+    //metoda do szybkiego nadpisania pliku
     public static void saveSimpleText(String text, String path) throws IOException {
-        FileOutputStream out = new FileOutputStream(path);
-        DataOutputStream save = new DataOutputStream(out);
-        save.writeBytes(text);
+        try {
+            FileOutputStream out = new FileOutputStream(path);
+            DataOutputStream save = new DataOutputStream(out);
+            save.writeBytes(text);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    //    //Metoda czyta plik i zwraca StringBuilder sb.
+    //Metoda czyta plik i zwraca StringBuilder sb.
     public static StringBuilder readFromFile() throws IOException {
         StringBuilder sb = new StringBuilder();
         String line;
