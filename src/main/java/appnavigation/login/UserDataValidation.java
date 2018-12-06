@@ -77,14 +77,14 @@ public class UserDataValidation {
 
 
     public static void wrongPasswordMessage(){
-        System.out.println("Niepoprawne hasło!");
-        System.out.println("Hasło musi składać się z minimum 5 znaków.");
+        System.out.print("Niepoprawne hasło! ");
+        System.out.print("Hasło musi składać się z minimum 5 znaków. ");
         System.out.println("Hasło nie może zawierać znaku \";\"");
     }
 
     public static void wrongLoginMessage(){
-        System.out.println("Niepoprawny login!");
-        System.out.println("Nazwa użytkownika musi składać się minimum z 4 znaków.");
+        System.out.print("Niepoprawny login! ");
+        System.out.print("Nazwa użytkownika musi składać się minimum z 4 znaków. ");
         System.out.println("Nazwa użytkownika nie może zawierać znaku \";\".");
     }
 

@@ -2,21 +2,19 @@ package appnavigation.login;
 
 import tools.CLS;
 import inout.UserInput;
-import appnavigation.login.UserDataValidation;
-import appnavigation.login.InitialWindow;
 import tools.AppExit;
-import appnavigation.login.SignIn;
+
 
 import java.io.IOException;
 
 public class SignUp {
 
     public void init() throws Exception {
-        showSignInInfo();
         boolean passwordIsOk = false;
         boolean userExists = true;
         boolean loginIsOk = false;
-        while (userExists == true || passwordIsOk == false || loginIsOk == false) {
+        while (userExists || !passwordIsOk || !loginIsOk) {
+            showSignInInfo();
             String attemptedLogin = askForLogin();
             checkQuit(attemptedLogin);
             String attemptedPassword = askForPassword();
@@ -24,9 +22,10 @@ public class SignUp {
             userExists = UserDataValidation.checkIfUserExists(attemptedLogin);
             passwordIsOk = UserDataValidation.checkIfPasswordIsOk(attemptedPassword);
             loginIsOk = UserDataValidation.checkIfLoginIsOk(attemptedLogin);
-            if (userExists == true || passwordIsOk == false) {
+            if (userExists || !passwordIsOk || !loginIsOk) {
                 CLS.clearScreen();
                 printWrongDataMessage(userExists, loginIsOk, passwordIsOk);
+                System.out.println("");
                 userExists = true;
                 passwordIsOk = false;
             }
@@ -35,9 +34,9 @@ public class SignUp {
     }
 
     private static void showSignInInfo(){
-        System.out.println("Znajdujesz się w panelu rejestracji");
-        System.out.println("Wpisz \"p\" a potem enter by wrócić do ekranu startowego");
-        System.out.println("Wpisz \"q\" a potem enter by opuścić program");
+        System.out.println("TWORZENIE NOWEGO PROFILU UŻYTKOWNIKA");
+        System.out.println("Wpisz 'p' a następnie 'enter' by wrócić do ekranu startowego");
+        System.out.println("Wpisz 'q' a następnie 'enter' by opuścić program");
     }
 
     private static void checkQuit(String text) throws Exception {

@@ -34,6 +34,7 @@ public class SignIn {
             if (loginExists == false || passwordMatches == false) {
                 CLS.clearScreen();
                 System.out.println("Niepoprawny login lub hasło!");
+                System.out.println();
                 loginExists = false;
                 passwordMatches = false;
             }
@@ -43,12 +44,9 @@ public class SignIn {
     }
 
     private static void showInformation(){
-        System.out.println("Jesteś w panelu logowania.");
-        System.out.println("W obecnej wersji działające dane to:");
-        System.out.println("Login: adam, hasło: abcd");
-        System.out.println("Login: ewa, hasło: mak");
-        System.out.println("Wpisz 'q' aby opuścić program");
-        System.out.println("Wpisz 'p' aby wrócić do ekranu startowego");
+        System.out.println("LOGOWANIE");
+        System.out.println("Wpisz 'q' i naciśnij 'enter' aby opuścić program");
+        System.out.println("Wpisz 'p' i naciśnij 'enter' aby wrócić do ekranu startowego");
     }
 
     private static String askForUserLogin() throws IOException {
