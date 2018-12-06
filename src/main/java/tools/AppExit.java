@@ -1,6 +1,6 @@
-package main.java.tools;
+package tools;
 
-import main.java.inout.SessionData;
+import inout.SessionData;
 
 import java.io.IOException;
 

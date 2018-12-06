@@ -1,52 +1,17 @@
-package main.java.inout;
-import java.io.*;
+package inout;
 
-//Podczas pisania pojawił sie błąd Try-with-resources are not supported at language level '5'. Trzeba zmienić project settings z 5 na 7.
-//Klasa umozliwająca odczyt i zapis text do/z plików.
-//Trzeba będzie jeszcze sformatować sposób zapisu do plików danych wpisanych przez użytkownika
+import java.io.*;
+import java.util.Scanner;
+
 public class WriteReadFile {
 
-    //Metoda czyta plik z path podanego jako argument oraz zwraca StringBuilder sb
-    public static StringBuilder readFromFile(String filePath) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        String line;
-        try {
-            BufferedReader fileReader = new BufferedReader(new FileReader(filePath));
-            while ((line = fileReader.readLine()) != null) {
-                sb.append(line)
-                        .append(";")
-                        .append("\n");
-            }
-            line = fileReader.readLine();
-        } catch (FileNotFoundException e) {
-            e.getMessage();
-        }
-        return sb;
-    }
-
-    //Metoda dopisuje do pliku, jako argumenty należy podać scieżke do pliku i co chcemy zapisać (czyli UserInput od Łukasza)
-    public static void writeToFile(String path, String whatToWrite) throws IOException {
-        try {
-            BufferedReader fileReader = new BufferedReader(new FileReader(path));
-        } catch (FileNotFoundException e) {
-            e.getMessage();
-        }
-        try (FileWriter fw = new FileWriter(path, true);
-             BufferedWriter bw = new BufferedWriter(fw);
-             PrintWriter out = new PrintWriter(bw)) {
-            out.print(whatToWrite + "\n");
-        } catch (IOException e) {
-            e.getMessage();
-        }
-    }
-
-    //metoda zwracająca n-tą linię pliku
-    public static String readNthLine(String path, int n){
+    //Metoda zwracająca n-tą linię pliku.
+    public static String readNthLine(String path, int n) {
         String line = "";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             int currentLine = 1;
-            while (currentLine<n) {
+            while (currentLine < n) {
                 reader.readLine();
                 currentLine++;
             }
@@ -59,10 +24,62 @@ public class WriteReadFile {
         return line;
     }
 
-    //metoda do szybkiego nadpisania pliku
+    //Zapis danych do txt lub csv (; jako separator kolumn w CSV)
+    public static void writeText(String whatToWrite, boolean toAppned) {
+        try {
+            FileWriter pw = new FileWriter(FilePaths.getTxtDataLocation(), toAppned); // zmienić ściezkę do pliku, obecnie plik txt
+            StringBuilder sb = new StringBuilder();
+            sb.append("\n");
+            sb.append(whatToWrite);
+            pw.write(sb.toString());
+            pw.close();
+        } catch (IOException e) {
+            e.getMessage();
+        }
+    }
+
+    //Metoda czytające dane z poszczególnej kolumny, można użyć do obliczania danych średnich dodaj
+    public static void readCsv(int columnToPrint) {
+        File file = new File(FilePaths.getCsvDataLocation());
+        try {
+            Scanner inputStream = new Scanner(file);
+            inputStream.nextLine(); //Ignoruje pierwszą linię np hagłówek)
+//            double sum = 0;
+//            double numberOfrecords = 0;
+            while (inputStream.hasNextLine()) {
+                String data = inputStream.nextLine();
+                String[] array = data.split(";"); //Tworzy tablice stringów i dzieli linie w miejscu ';'
+//                double value = Double.parseDouble(array[columnToPrint]);
+//                sum += value;
+//                numberOfrecords++;
+                System.out.println(array[columnToPrint]);
+            }
+//            double averageValue = sum / numberOfrecords;
+        } catch (FileNotFoundException e) {
+            e.getMessage();
+        }
+    }
+
+    //metoda do szybkiego nadpisania pliku // Łukasz, nie ma obsługi wyjątków
     public static void saveSimpleText(String text, String path) throws IOException {
         FileOutputStream out = new FileOutputStream(path);
         DataOutputStream save = new DataOutputStream(out);
         save.writeBytes(text);
+    }
+
+    //    //Metoda czyta plik i zwraca StringBuilder sb.
+    public static StringBuilder readFromFile() throws IOException {
+        StringBuilder sb = new StringBuilder();
+        String line;
+        try {
+            BufferedReader fileReader = new BufferedReader(new FileReader(FilePaths.getCsvDataLocation()));
+            while ((line = fileReader.readLine()) != null) {
+                sb.append(line);
+            }
+            line = fileReader.readLine();
+        } catch (FileNotFoundException e) {
+            e.getMessage();
+        }
+        return sb;
     }
 }

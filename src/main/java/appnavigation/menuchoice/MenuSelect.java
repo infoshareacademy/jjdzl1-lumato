@@ -1,5 +1,7 @@
 package appnavigation.menuchoice;
 
+import inout.UserInput;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -23,7 +25,7 @@ public class MenuSelect {
         do {
             System.out.printf("Wybierz opcję lub wpisz %s aby %s: ", specialChar, specialCharAction);
             try {
-                getUserStringInput = main.java.inout.UserInput.getUserStringInput();
+                getUserStringInput = UserInput.getUserStringInput();
             } catch (IOException e) {
                 System.out.println("Wystąpił niespodziewany wyjątek!" + e.getMessage());
             }

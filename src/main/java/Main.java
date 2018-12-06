@@ -1,6 +1,6 @@
-
-import main.java.appNavigation.login.InitialWindow;
-import main.java.inout.SessionData;
+import inout.FilePaths;
+import inout.UserInput;
+import inout.WriteReadFile;
 
 public class Main {
 
@@ -19,9 +19,11 @@ public class Main {
 //        SessionData.eraseSessionData();
         //program inicjaluzjemy poprzez startowy ekran z wyborem login/create new account/exit application
 //        InitialWindow.init();
-//        main.java.inout.WriteReadFile.writeToFile(main.java.inout.FilePaths.getInputDataLocation(),main.java.inout.UserInput.getUserStringInput());
-//        System.out.println(main.java.inout.WriteReadFile.readFromFile(main.java.inout.FilePaths.getInputDataLocation()));
-        System.out.println(main.java.inout.WriteReadFile.readNthLine(main.java.inout.FilePaths.getInputDataLocation(),1));
+//        WriteReadFile.writeToFile(FilePaths.getTxtDataLocation(),UserInput.getUserStringInput(),true);
+//        System.out.println(WriteReadFile.readFromFile(FilePaths.getTxtDataLocation()));
+//        System.out.println(WriteReadFile.readNthLine(FilePaths.getTxtDataLocation(),1));
+//        WriteReadFile.writeCsv(UserInput.getUserStringInput());
+//        WriteReadFile.writeText(UserInput.getUserStringInput(),true);
     }
 
 }
