@@ -14,11 +14,13 @@ public class SignUp {
         boolean passwordIsOk = false;
         boolean userExists = true;
         boolean loginIsOk = false;
+        String attemptedLogin = "";
+        String attemptedPassword = "";
         while (userExists || !passwordIsOk || !loginIsOk) {
             showSignInInfo();
-            String attemptedLogin = askForLogin();
+            attemptedLogin = askForLogin();
             checkQuit(attemptedLogin);
-            String attemptedPassword = askForPassword();
+            attemptedPassword = askForPassword();
             checkQuit(attemptedPassword);
             userExists = UserDataValidation.checkIfUserExists(attemptedLogin);
             passwordIsOk = UserDataValidation.checkIfPasswordIsOk(attemptedPassword);
@@ -31,7 +33,8 @@ public class SignUp {
                 passwordIsOk = false;
             }
         }
-        createNewProfileAndReturn();
+        if (!userExists && passwordIsOk && loginIsOk)
+        createNewProfileAndReturn(attemptedLogin, attemptedPassword);
     }
 
     private static void showSignInInfo(){
@@ -46,7 +49,7 @@ public class SignUp {
             AppExit.exitApplication();
         } else if ("p".equals(text)){
             CLS.clearScreen();
-            Shortcuts.runStartWindow();
+            Shortcuts.runInitialWindow();
         }
     }
 
@@ -72,8 +75,11 @@ public class SignUp {
         }
     }
 
-    private static void createNewProfileAndReturn() throws Exception {
-        //TU DODANIE UŻYTKOWNIKA DO LISTY UŻYTKOWNIKÓW
+    private static void createNewProfileAndReturn(String login, String password) throws Exception {
+        //dopisanie użytkownika do listy użytkowników
+        String userDataToAppend = login + ";" + password;
+        inout.WriteReadFile.writeText(userDataToAppend, true, inout.FilePaths.getUserListPath());
+        //przejście do panelu logowania
         CLS.clearScreen();
         System.out.println("Rejestracja przebiegła pomyślnie! Możesz teraz się zalogować na nowo utworzony profil.");
         Shortcuts.runLoginWindow();

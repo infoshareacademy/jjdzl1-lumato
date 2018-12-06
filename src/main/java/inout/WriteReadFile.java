@@ -25,9 +25,9 @@ public class WriteReadFile {
     }
 
     //Zapis danych do txt lub csv (; jako separator kolumn w CSV)
-    public static void writeText(String whatToWrite, boolean toAppned) {
+    public static void writeText(String whatToWrite, boolean toAppned, String path) {
         try {
-            FileWriter pw = new FileWriter(FilePaths.getTxtDataLocation(), toAppned); // zmienić ściezkę do pliku, obecnie plik txt
+            FileWriter pw = new FileWriter(path, toAppned); // zmienić ściezkę do pliku, obecnie plik txt
             StringBuilder sb = new StringBuilder();
             sb.append("\n");
             sb.append(whatToWrite);

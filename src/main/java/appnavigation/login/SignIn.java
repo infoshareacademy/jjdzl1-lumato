@@ -5,9 +5,6 @@ import main.java.appnavigation.Shortcuts;
 import tools.AppExit;
 import tools.CLS;
 import inout.UserInput;
-import appnavigation.menuchoice.ShowMenu;
-import appnavigation.menuchoice.MenuChoice;
-import appnavigation.menuchoice.MenuSelect;
 
 import java.io.IOException;
 
@@ -79,7 +76,7 @@ public class SignIn {
         } else if ("p".equals(text)){
             CLS.clearScreen();
             SessionData.eraseSessionData();
-            Shortcuts.runStartWindow();
+            Shortcuts.runInitialWindow();
             return true; //means that user decided to go back to start menu
         }
         return false; //means that user didn't decide to quit

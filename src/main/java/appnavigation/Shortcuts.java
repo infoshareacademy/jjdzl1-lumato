@@ -13,7 +13,7 @@ import appnavigation.menuchoice.*;
 public class Shortcuts {
 
     //runs starting window with login/create-new-profile/quit choice
-    public static void runStartWindow() throws Exception {
+    public static void runInitialWindow() throws Exception {
         InitialWindow.init();
     }
 
@@ -23,7 +23,7 @@ public class Shortcuts {
     }
 
     //runs create-new-profile window
-    public static void runCreateNewProfileWindow() throws Exception {
+    public static void runSignInWindow() throws Exception {
         SignUp.init();
     }
 

@@ -23,7 +23,7 @@ public class InitialWindow {
 
     private static void showOptions(){
         System.out.println("1 - Zaloguj się na istniejące konto");
-        System.out.println("2 - Utwórz nowe konto");
+        System.out.println("2 - Utwórz nowy profil");
         System.out.println("q - Wyjdź z aplikacji");
     }
 
@@ -41,7 +41,7 @@ public class InitialWindow {
             }
             case "2": {
                 CLS.clearScreen();
-                Shortcuts.runCreateNewProfileWindow();
+                Shortcuts.runSignInWindow();
                 break;
             }
             case "q": {
@@ -52,7 +52,7 @@ public class InitialWindow {
                 CLS.clearScreen();
                 System.out.println("Niepoprawne dane!");
                 try {
-                    Shortcuts.runStartWindow();
+                    Shortcuts.runInitialWindow();
                 }catch(IOException e){
                 }
                 break;
