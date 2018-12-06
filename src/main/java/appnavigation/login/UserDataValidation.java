@@ -56,10 +56,22 @@ public class UserDataValidation {
     }
 
     public static boolean checkIfPasswordIsOk(String attemptedPassword){
+        if (attemptedPassword.length() < 5) {
+            return false;
+        }
+        if (attemptedPassword.contains(";")){
+            return false;
+        }
         return true;
     }
 
     public static boolean checkIfLoginIsOk(String attemptedLogin){
+        if (attemptedLogin.length() < 4) {
+            return false;
+        }
+        if (attemptedLogin.contains(";")){
+            return false;
+        }
         return true;
     }
 
@@ -67,12 +79,13 @@ public class UserDataValidation {
     public static void wrongPasswordMessage(){
         System.out.println("Niepoprawne hasło!");
         System.out.println("Hasło musi składać się z minimum 5 znaków.");
-        System.out.println("Hasło nie może też zawierać znaku \";\"");
+        System.out.println("Hasło nie może zawierać znaku \";\"");
     }
 
     public static void wrongLoginMessage(){
         System.out.println("Niepoprawny login!");
-        System.out.println("Nazwa użytkownika nie może zawierać znaku \";\"!");
+        System.out.println("Nazwa użytkownika musi składać się minimum z 4 znaków.");
+        System.out.println("Nazwa użytkownika nie może zawierać znaku \";\".");
     }
 
     public static void userExistsMessage() {

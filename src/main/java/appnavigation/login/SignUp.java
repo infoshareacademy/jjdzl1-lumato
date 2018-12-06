@@ -4,6 +4,8 @@ import tools.CLS;
 import inout.UserInput;
 import appnavigation.login.UserDataValidation;
 import appnavigation.login.InitialWindow;
+import tools.AppExit;
+import appnavigation.login.SignIn;
 
 import java.io.IOException;
 
@@ -41,21 +43,20 @@ public class SignUp {
     private static void checkQuit(String text) throws Exception {
         if ("q".equals(text)) {
             CLS.clearScreen();
-            tools.AppExit.exitApplication();
+            AppExit.exitApplication();
         } else if ("p".equals(text)){
             CLS.clearScreen();
-            inout.SessionData.eraseSessionData();
             InitialWindow.init();
         }
     }
 
     private static String askForLogin() throws IOException {
-        System.out.print("Podaj nazwę użytkownika: ");
+        System.out.print("\nPODAJ NAZWĘ UŻYTKOWNIKA: ");
         return UserInput.getUserStringInput();
     }
 
     private static String askForPassword() throws IOException {
-        System.out.print("Podaj hasło: ");
+        System.out.print("PODAJ HASLO: ");
         return UserInput.getUserStringInput();
     }
 
@@ -72,9 +73,11 @@ public class SignUp {
     }
 
     private static void createNewProfileAndReturn() throws Exception {
+        //TU DODANIE UŻYTKOWNIKA DO LISTY UŻYTKOWNIKÓW
         CLS.clearScreen();
         System.out.println("Rejestracja przebiegła pomyślnie! Możesz teraz się zalogować na nowo utworzony profil.");
-        InitialWindow.init();
+        SignIn signIn = new SignIn();
+        signIn.init();
     }
 
 }
