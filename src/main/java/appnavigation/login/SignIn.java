@@ -1,54 +1,48 @@
 package appnavigation.login;
 
 import inout.SessionData;
+import main.java.appnavigation.Shortcuts;
 import tools.AppExit;
 import tools.CLS;
 import inout.UserInput;
-import appnavigation.menuchoice.ShowMenu;
-import appnavigation.menuchoice.MenuChoice;
-import appnavigation.menuchoice.MenuSelect;
 
 import java.io.IOException;
 
-
-/**
- * Login Panel
- */
+//panel logowania
 public class SignIn {
 
-    private boolean loginExists = false;
-    private boolean passwordMatches = false;
-    private String userLogin = "";
-    private String userPassword = "";
-
-    public void init() throws Exception {
-
+    public static void init() throws Exception {
+        boolean loginExists = false;
+        boolean passwordMatches = false;
+        String userLogin = "";
+        String userPassword = "";
+        boolean didUserQuit = false;
         while (loginExists == false || passwordMatches == false) {
             showInformation();
             userLogin = askForUserLogin(); //ask for user login
-            checkQuitOptions(userLogin); //check if user decided to quit
-            String userPassword = askForUserPassword(); //ask for user password
-            checkQuitOptions(userPassword); //check if user decided to quit
+            if (checkQuitOptions(userLogin)) break;
+            userPassword = askForUserPassword(); //ask for user password
+            if (checkQuitOptions(userPassword) ) break;
             loginExists = validateLogin(userLogin);
             passwordMatches = validatePassword(userLogin, userPassword);
             if (loginExists == false || passwordMatches == false) {
                 CLS.clearScreen();
                 System.out.println("Niepoprawny login lub hasło!");
+                System.out.println();
                 loginExists = false;
                 passwordMatches = false;
             }
+            if (loginExists && passwordMatches) {
+                executeSuccessfulLogin(userLogin);
+            }
         }
 
-        executeSuccessfulLogin(userLogin);
     }
 
     private static void showInformation(){
-        System.out.println("Jesteś w panelu logowania.");
-        System.out.println("W obecnej wersji działające dane to:");
-        System.out.println("Login: adam, hasło: abcd");
-        System.out.println("Login: ewa, hasło: mak");
-        System.out.println("Wpisz 'q' aby opuścić program");
-        System.out.println("Wpisz 'p' aby wrócić do ekranu startowego");
+        System.out.println("LOGOWANIE");
+        System.out.println("Wpisz 'q' i naciśnij 'enter' aby opuścić program");
+        System.out.println("Wpisz 'p' i naciśnij 'enter' aby wrócić do ekranu startowego");
     }
 
     private static String askForUserLogin() throws IOException {
@@ -61,39 +55,31 @@ public class SignIn {
         return UserInput.getUserStringInput();
     }
 
-    //metoda jeszcze nieskońcozna, wersja prowizoryczna
     private static boolean validateLogin(String userLogin){
         return UserDataValidation.checkIfUserExists(userLogin);
     }
 
-    //metoda nieskończona, wersja prowizoryczna
     private static boolean validatePassword(String userLogin, String userPassword){
-//        if ("adam".equals(userLogin) && "abcd".equals(userPassword) || "ewa".equals(userLogin) && "mak".equals(userPassword)){
-//            return true;
-//        } else {
-//            return false;
-//        }
         return UserDataValidation.checkIfPasswordMatches(userLogin, userPassword);
     }
 
-    private static void checkQuitOptions(String text) throws Exception {
+    private static boolean checkQuitOptions(String text) throws Exception {
         if ("q".equals(text)) {
             CLS.clearScreen();
             AppExit.exitApplication();
+            return true; //means that user decided to quit
         } else if ("p".equals(text)){
             CLS.clearScreen();
             SessionData.eraseSessionData();
-            InitialWindow.init();
+            Shortcuts.runInitialWindow();
+            return true; //means that user decided to go back to start menu
         }
+        return false; //means that user didn't decide to quit
     }
 
-    public void executeSuccessfulLogin(String userLogin) throws IOException {
+    public static void executeSuccessfulLogin(String userLogin) throws IOException {
         SessionData.saveSessionData(userLogin);
         CLS.clearScreen();
-
-        //uruchomienie menu głównego
-        ShowMenu.showMenu();
-        char c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
-        MenuChoice.menuChoice(c);
+        Shortcuts.runMainMenu();
     }
 }

@@ -11,6 +11,7 @@ public class UserDataValidation {
 
     private static String userListPath = FilePaths.getUserListPath();
 
+    //SignIn login validation
     public static boolean checkIfUserExists(String userLogin){
         String line = "";
         try {
@@ -30,6 +31,7 @@ public class UserDataValidation {
         return false;
     }
 
+    //SignIn password validation
     public static boolean checkIfPasswordMatches(String userLogin, String userPassword){
         String line = "";
         try {
@@ -53,4 +55,40 @@ public class UserDataValidation {
         return false;
     }
 
+    public static boolean checkIfPasswordIsOk(String attemptedPassword){
+        if (attemptedPassword.length() < 5) {
+            return false;
+        }
+        if (attemptedPassword.contains(";")){
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean checkIfLoginIsOk(String attemptedLogin){
+        if (attemptedLogin.length() < 4) {
+            return false;
+        }
+        if (attemptedLogin.contains(";")){
+            return false;
+        }
+        return true;
+    }
+
+
+    public static void wrongPasswordMessage(){
+        System.out.print("Niepoprawne hasło! ");
+        System.out.print("Hasło musi składać się z minimum 5 znaków. ");
+        System.out.println("Hasło nie może zawierać znaku \";\"");
+    }
+
+    public static void wrongLoginMessage(){
+        System.out.print("Niepoprawny login! ");
+        System.out.print("Nazwa użytkownika musi składać się minimum z 4 znaków. ");
+        System.out.println("Nazwa użytkownika nie może zawierać znaku \";\".");
+    }
+
+    public static void userExistsMessage() {
+        System.out.println("Użytkownik o takim nicku już istnieje!");
+    }
 }

@@ -1,19 +1,15 @@
 package appnavigation.login;
 
+import main.java.appnavigation.Shortcuts;
 import tools.AppExit;
 import tools.CLS;
 import inout.UserInput;
 import java.io.IOException;
 
-/**
- * First (initial) application window
- */
+
 public class InitialWindow {
 
-    /**
-     * This method initializes whole Application
-     * @throws Exception
-     */
+    //metoda inicjalizujaca pierwsze okno programu (okno z wyborem rejestracji/logowania)
     public static void init() throws Exception {
         showHeader();
         showOptions();
@@ -27,8 +23,8 @@ public class InitialWindow {
 
     private static void showOptions(){
         System.out.println("1 - Zaloguj się na istniejące konto");
-        System.out.println("2 - Utwórz nowe konto");
-        System.out.println("3 - Wyjdź z aplikacji");
+        System.out.println("2 - Utwórz nowy profil");
+        System.out.println("q - Wyjdź z aplikacji");
     }
 
     private static String chooseOption() throws IOException {
@@ -40,26 +36,22 @@ public class InitialWindow {
         switch(userChoice){
             case "1": {
                 CLS.clearScreen();
-                SignIn signIn = new SignIn();
-                signIn.init();
+                Shortcuts.runLoginWindow();
                 break;
             }
             case "2": {
                 CLS.clearScreen();
-                new SignUp().init();
+                Shortcuts.runSignInWindow();
                 break;
             }
-            case "3": {
+            case "q": {
                 AppExit.exitApplication();
                 break;
             }
             default:
                 CLS.clearScreen();
                 System.out.println("Niepoprawne dane!");
-                try {
-                    InitialWindow.init();
-                }catch(IOException e){
-                }
+                Shortcuts.runInitialWindow();
                 break;
         }
     }

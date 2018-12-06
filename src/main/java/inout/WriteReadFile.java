@@ -25,9 +25,9 @@ public class WriteReadFile {
     }
 
     //Zapis danych do txt lub csv (; jako separator kolumn w CSV)
-    public static void writeText(String whatToWrite, boolean toAppned) {
+    public static void writeText(String whatToWrite, boolean toAppned, String path) {
         try {
-            FileWriter pw = new FileWriter(FilePaths.getTxtDataLocation(), toAppned); // zmienić ściezkę do pliku, obecnie plik txt
+            FileWriter pw = new FileWriter(path, toAppned); // zmienić ściezkę do pliku, obecnie plik txt
             StringBuilder sb = new StringBuilder();
             sb.append("\n");
             sb.append(whatToWrite);
@@ -60,14 +60,19 @@ public class WriteReadFile {
         }
     }
 
-    //metoda do szybkiego nadpisania pliku // Łukasz, nie ma obsługi wyjątków
+    //metoda do szybkiego nadpisania pliku
     public static void saveSimpleText(String text, String path) throws IOException {
-        FileOutputStream out = new FileOutputStream(path);
-        DataOutputStream save = new DataOutputStream(out);
-        save.writeBytes(text);
+        try {
+            FileOutputStream out = new FileOutputStream(path);
+            DataOutputStream save = new DataOutputStream(out);
+            save.writeBytes(text);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    //    //Metoda czyta plik i zwraca StringBuilder sb.
+    //Metoda czyta plik i zwraca StringBuilder sb.
     public static StringBuilder readFromFile() throws IOException {
         StringBuilder sb = new StringBuilder();
         String line;
