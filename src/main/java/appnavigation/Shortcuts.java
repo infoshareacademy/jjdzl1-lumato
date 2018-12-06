@@ -9,7 +9,7 @@ package main.java.appnavigation;
 import appnavigation.login.*;
 import appnavigation.menuchoice.*;
 
-
+//window initializations gathered in one class
 public class Shortcuts {
 
     //runs starting window with login/create-new-profile/quit choice
@@ -19,7 +19,7 @@ public class Shortcuts {
 
     //runs login window
     public static void runLoginWindow() throws Exception {
-        new SignIn().init();
+        SignIn.init();
     }
 
     //runs create-new-profile window
