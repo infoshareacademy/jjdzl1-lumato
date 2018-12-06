@@ -20,15 +20,9 @@ public class SignIn {
         while (loginExists == false || passwordMatches == false) {
             showInformation();
             userLogin = askForUserLogin(); //ask for user login
-            if (checkQuitOptions(userLogin)){
-                didUserQuit = true;
-                break;
-            };
+            if (checkQuitOptions(userLogin)) break;
             userPassword = askForUserPassword(); //ask for user password
-            if (checkQuitOptions(userPassword) ){
-                didUserQuit = true;
-                break;
-            }
+            if (checkQuitOptions(userPassword) ) break;
             loginExists = validateLogin(userLogin);
             passwordMatches = validatePassword(userLogin, userPassword);
             if (loginExists == false || passwordMatches == false) {
@@ -38,10 +32,11 @@ public class SignIn {
                 loginExists = false;
                 passwordMatches = false;
             }
+            if (loginExists && passwordMatches) {
+                executeSuccessfulLogin(userLogin);
+            }
         }
-        if (!didUserQuit) {
-            executeSuccessfulLogin(userLogin);
-        }
+
     }
 
     private static void showInformation(){

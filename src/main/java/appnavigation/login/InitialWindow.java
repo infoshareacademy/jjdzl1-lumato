@@ -51,10 +51,7 @@ public class InitialWindow {
             default:
                 CLS.clearScreen();
                 System.out.println("Niepoprawne dane!");
-                try {
-                    Shortcuts.runInitialWindow();
-                }catch(IOException e){
-                }
+                Shortcuts.runInitialWindow();
                 break;
         }
     }
