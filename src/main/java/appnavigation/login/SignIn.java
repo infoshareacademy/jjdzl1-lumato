@@ -1,9 +1,9 @@
-package main.java.appNavigation.login;
+package appnavigation.login;
 
-import main.java.inout.SessionData;
-import main.java.tools.AppExit;
-import main.java.tools.CLS;
-import main.java.inout.UserInput;
+import inout.SessionData;
+import tools.AppExit;
+import tools.CLS;
+import inout.UserInput;
 import appnavigation.menuchoice.ShowMenu;
 import appnavigation.menuchoice.MenuChoice;
 import appnavigation.menuchoice.MenuSelect;

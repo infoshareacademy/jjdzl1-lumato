@@ -1,7 +1,7 @@
-package main.java.appNavigation.login;
+package appnavigation.login;
 
-import main.java.tools.CLS;
-import main.java.inout.UserInput;
+import tools.CLS;
+import inout.UserInput;
 
 public class SignUp {
 

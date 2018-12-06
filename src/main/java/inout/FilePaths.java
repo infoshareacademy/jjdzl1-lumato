@@ -1,16 +1,19 @@
-package main.java.inout;
+package inout;
 
 public class FilePaths {
 
     private static String currentUserPath = "resources/currentUser.txt";
     private static String userListPath = "resources/userList.txt";
+    private static String txtDataLocation = "src/main/test.txt";
+    private static String csvDataLocation = "src/main/test.csv";
 
-    public static String getInputDataLocation() {
-        return inputDataLocation;
+    public static String getCsvDataLocation() {
+        return csvDataLocation;
     }
-
-    private static String inputDataLocation = "E:\\\\Robocze\\\\09. JAVA\\\\09.02 Java Projects\\\\09.02.01 Szkolenie\\\\Projekt-kalkulatorpaliw\\\\src\\\\main\\\\test.txt";
-
+    
+    public static String getTxtDataLocation() {
+        return txtDataLocation;
+    }
 
     public static String getCurrentUserPath() {
         return currentUserPath;

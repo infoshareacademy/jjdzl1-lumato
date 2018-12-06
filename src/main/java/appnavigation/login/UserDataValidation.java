@@ -1,6 +1,6 @@
-package main.java.appNavigation.login;
+package appnavigation.login;
 
-import main.java.inout.FilePaths;
+import inout.FilePaths;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

@@ -1,9 +1,8 @@
-package main.java.appNavigation.login;
+package appnavigation.login;
 
-import main.java.inout.SessionData;
-import main.java.tools.AppExit;
-import main.java.tools.CLS;
-import main.java.inout.UserInput;
+import tools.AppExit;
+import tools.CLS;
+import inout.UserInput;
 import java.io.IOException;
 
 /**
@@ -41,13 +40,13 @@ public class InitialWindow {
         switch(userChoice){
             case "1": {
                 CLS.clearScreen();
-                main.java.appNavigation.login.SignIn signIn = new main.java.appNavigation.login.SignIn();
+                SignIn signIn = new SignIn();
                 signIn.init();
                 break;
             }
             case "2": {
                 CLS.clearScreen();
-                new main.java.appNavigation.login.SignUp().init();
+                new SignUp().init();
                 break;
             }
             case "3": {
