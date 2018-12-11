@@ -24,9 +24,9 @@ public class SignUp {
         String attemptedPassword = "";
         while (userExists || !passwordIsOk || !loginIsOk) {
             showSignInInfo(); //wyrzucenie informacji o panelu
-            attemptedLogin = askForLogin(); //prośba o podanie loginu
+            attemptedLogin = UserInput.obtainUserLogin();
             if(UserDataValidation.checkQuit(attemptedLogin)) break; //sprawdzenie czy użytkownik postanowił uciec z funkcji
-            attemptedPassword = askForPassword(); //prośba o podanie hasła
+            attemptedPassword = UserInput.obtainUserPassword();
             if(UserDataValidation.checkQuit(attemptedPassword)) break; //sprawdzenie czy użytkownik postanowił uciec z funkcji
             userExists = UserDataValidation.checkIfUserExists(attemptedLogin); //sprawdzenie czy nazwa użytkownika jest już zajęta
             passwordIsOk = UserDataValidation.checkIfPasswordIsOk(attemptedPassword); //sprawdzenie czy hasło spełnia wymagania
@@ -49,18 +49,6 @@ public class SignUp {
         System.out.println("TWORZENIE NOWEGO PROFILU UŻYTKOWNIKA");
         System.out.println("Wpisz 'p' a następnie 'enter' by wrócić do ekranu startowego");
         System.out.println("Wpisz 'q' a następnie 'enter' by opuścić program");
-    }
-
-
-
-    private static String askForLogin() throws IOException {
-        System.out.print("\nPODAJ NAZWĘ UŻYTKOWNIKA: ");
-        return UserInput.getUserStringInput();
-    }
-
-    private static String askForPassword() throws IOException {
-        System.out.print("PODAJ HASLO: ");
-        return UserInput.getUserStringInput();
     }
 
     private static void printWrongDataMessage(boolean userExists,boolean loginIsOk,boolean passwordIsOk){

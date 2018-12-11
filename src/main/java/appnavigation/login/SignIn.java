@@ -2,7 +2,6 @@ package appnavigation.login;
 
 import main.java.inout.SessionData;
 import main.java.appnavigation.Shortcuts;
-import tools.AppExit;
 import tools.CLS;
 import main.java.inout.UserInput;
 
@@ -13,32 +12,30 @@ import java.security.NoSuchAlgorithmException;
 //panel logowania
 public class SignIn {
 
+    private static boolean loginExists;
+    private static boolean passwordMatches;
+    private static String userLogin;
+    private static String userPassword;
+
+    public SignIn() {
+        this.loginExists = false;
+        this.passwordMatches = false;
+        this.userLogin = null;
+        this.userPassword = null;
+    }
+
     public static void init() throws Exception {
-        boolean loginExists = false;
-        boolean passwordMatches = false;
-        String userLogin = "";
-        String userPassword = "";
-        boolean didUserQuit = false;
         while (loginExists == false || passwordMatches == false) {
             showInformation();
-            userLogin = askForUserLogin(); //ask for user login
-            if (UserDataValidation.checkQuit(userLogin)) break;
-            userPassword = askForUserPassword(); //ask for user password
-            if (UserDataValidation.checkQuit(userPassword) ) break;
-            loginExists = validateLogin(userLogin);
-            passwordMatches = validatePassword(userLogin, userPassword);
-            if (loginExists == false || passwordMatches == false) {
-                CLS.clearScreen();
-                System.out.println("Niepoprawny login lub hasło!");
-                System.out.println();
-                loginExists = false;
-                passwordMatches = false;
-            }
+            if (!obtainUserData()) break;
+            validateLogin(userLogin);
+            validatePassword(userLogin, userPassword);
             if (loginExists && passwordMatches) {
                 executeSuccessfulLogin(userLogin);
+            } else {
+                executeNonSuccessfulLogin();
             }
         }
-
     }
 
     private static void showInformation(){
@@ -47,22 +44,45 @@ public class SignIn {
         System.out.println("Wpisz 'p' i naciśnij 'enter' aby wrócić do ekranu startowego");
     }
 
-    private static String askForUserLogin() throws IOException {
-        System.out.print("PODAJ LOGIN: ");
-        return UserInput.getUserStringInput();
+    private static boolean obtainUserData() throws Exception {
+        userLogin = UserInput.obtainUserLogin();
+        if (UserDataValidation.checkQuit(userLogin)){
+            UserDataValidation.quitSignInSignUp(userLogin);
+            userLogin = null;
+            return false; //uzytkownik postanowil wyjsc
+        }
+        userPassword = UserInput.obtainUserPassword();
+        if (UserDataValidation.checkQuit(userPassword)){
+            UserDataValidation.quitSignInSignUp(userPassword);
+            userLogin = null;
+            userPassword = null;
+            return false; //uzytkownik postanowil wyjsc
+        }
+        return true; //udalo sie zalogowac
     }
 
-    private static String askForUserPassword() throws IOException {
-        System.out.print("PODAJ HASŁO: ");
-        return UserInput.getUserStringInput();
+    private static void validateLogin(String userLogin){
+        if (UserDataValidation.checkIfUserExists(userLogin)) {
+            loginExists = true;
+        } else {
+            loginExists = false;
+        }
     }
 
-    private static boolean validateLogin(String userLogin){
-        return UserDataValidation.checkIfUserExists(userLogin);
+    private static void validatePassword(String userLogin, String userPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        if (UserDataValidation.checkIfPasswordMatches(userLogin, userPassword)) {
+            passwordMatches = true;
+        } else {
+            passwordMatches = false;
+        }
     }
 
-    private static boolean validatePassword(String userLogin, String userPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        return UserDataValidation.checkIfPasswordMatches(userLogin, userPassword);
+    public static void executeNonSuccessfulLogin(){
+        CLS.clearScreen();
+        System.out.println("Niepoprawny login lub hasło!");
+        System.out.println();
+        loginExists = false;
+        passwordMatches = false;
     }
 
     public static void executeSuccessfulLogin(String userLogin) throws IOException {

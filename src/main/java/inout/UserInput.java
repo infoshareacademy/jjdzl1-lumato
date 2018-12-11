@@ -31,4 +31,30 @@ public class UserInput {
         return input;
     }
 
+    public static String obtainUserLogin() throws IOException {
+        System.out.print("PODAJ LOGIN: ");
+        String input = "";
+        try {
+            userInput = new BufferedReader(new InputStreamReader(System.in));
+            input = userInput.readLine();
+        } catch (IOException e){
+            System.out.println("LIPA");
+        }
+        return input;
+    }
+
+    //w tej chwili dwie metody są takie same,
+    // jednak w przyszłości możemy chcieć zamaskować hasło stąd oddzielna metoda
+    public static String obtainUserPassword() throws IOException {
+        System.out.print("PODAJ HASLO: ");
+        String input = "";
+        try {
+            userInput = new BufferedReader(new InputStreamReader(System.in));
+            input = userInput.readLine();
+        } catch (IOException e){
+            System.out.println("LIPA");
+        }
+        return input;
+    }
+
 }
