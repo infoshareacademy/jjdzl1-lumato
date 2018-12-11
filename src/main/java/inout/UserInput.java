@@ -1,8 +1,10 @@
-package inout;
+package main.java.inout;
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 /**
  * this class gets user input
@@ -10,7 +12,7 @@ import java.io.InputStreamReader;
 
 public class UserInput {
 
-    private static BufferedReader userInput2 = new BufferedReader(new InputStreamReader(System.in));
+    private static BufferedReader userInput;
 
     /**
      * This methods gets String input from console (user-string-input)
@@ -20,8 +22,8 @@ public class UserInput {
     public static String getUserStringInput() throws IOException {
         String input = "";
         try {
-            userInput2 = new BufferedReader(new InputStreamReader(System.in));
-            input = userInput2.readLine();
+            userInput = new BufferedReader(new InputStreamReader(System.in));
+            input = userInput.readLine();
 
         } catch (IOException e){
             System.out.println("LIPA");

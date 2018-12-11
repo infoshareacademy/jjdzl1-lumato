@@ -1,11 +1,13 @@
 package appnavigation.login;
 
-import inout.FilePaths;
+import main.java.inout.FilePaths;
+import tools.AppExit;
+import tools.CLS;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 public class UserDataValidation {
 
@@ -32,7 +34,9 @@ public class UserDataValidation {
     }
 
     //SignIn password validation
-    public static boolean checkIfPasswordMatches(String userLogin, String userPassword){
+    public static boolean checkIfPasswordMatches(String userLogin, String userPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        userPassword = encodeMD5(userPassword);
+
         String line = "";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(userListPath));
@@ -90,5 +94,28 @@ public class UserDataValidation {
 
     public static void userExistsMessage() {
         System.out.println("Użytkownik o takim nicku już istnieje!");
+    }
+
+    //proste szyfrowanie hasła
+    public static String encodeMD5(String text) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        byte[] bytesOfMessage = text.getBytes("UTF-8");
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] thedigest = md.digest(bytesOfMessage);
+        text = Arrays.toString(thedigest);
+        text = text.replaceAll("[, \\]\\[]", "");
+        return text; //returns encoded text
+    }
+
+    public static boolean checkQuit(String text) throws Exception {
+        if ("q".equals(text)) {
+            CLS.clearScreen();
+            AppExit.exitApplication();
+            return true;
+        } else if ("p".equals(text)){
+            CLS.clearScreen();
+            main.java.appnavigation.Shortcuts.runInitialWindow();
+            return true;
+        }
+        return false;
     }
 }

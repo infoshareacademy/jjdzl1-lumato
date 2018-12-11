@@ -1,4 +1,4 @@
-package inout;
+package main.java.inout;
 
 public class FilePaths {
 

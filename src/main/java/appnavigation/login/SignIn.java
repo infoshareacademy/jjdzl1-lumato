@@ -1,12 +1,14 @@
 package appnavigation.login;
 
-import inout.SessionData;
+import main.java.inout.SessionData;
 import main.java.appnavigation.Shortcuts;
 import tools.AppExit;
 import tools.CLS;
-import inout.UserInput;
+import main.java.inout.UserInput;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 //panel logowania
 public class SignIn {
@@ -20,9 +22,9 @@ public class SignIn {
         while (loginExists == false || passwordMatches == false) {
             showInformation();
             userLogin = askForUserLogin(); //ask for user login
-            if (checkQuitOptions(userLogin)) break;
+            if (UserDataValidation.checkQuit(userLogin)) break;
             userPassword = askForUserPassword(); //ask for user password
-            if (checkQuitOptions(userPassword) ) break;
+            if (UserDataValidation.checkQuit(userPassword) ) break;
             loginExists = validateLogin(userLogin);
             passwordMatches = validatePassword(userLogin, userPassword);
             if (loginExists == false || passwordMatches == false) {
@@ -59,22 +61,8 @@ public class SignIn {
         return UserDataValidation.checkIfUserExists(userLogin);
     }
 
-    private static boolean validatePassword(String userLogin, String userPassword){
+    private static boolean validatePassword(String userLogin, String userPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         return UserDataValidation.checkIfPasswordMatches(userLogin, userPassword);
-    }
-
-    private static boolean checkQuitOptions(String text) throws Exception {
-        if ("q".equals(text)) {
-            CLS.clearScreen();
-            AppExit.exitApplication();
-            return true; //means that user decided to quit
-        } else if ("p".equals(text)){
-            CLS.clearScreen();
-            SessionData.eraseSessionData();
-            Shortcuts.runInitialWindow();
-            return true; //means that user decided to go back to start menu
-        }
-        return false; //means that user didn't decide to quit
     }
 
     public static void executeSuccessfulLogin(String userLogin) throws IOException {

@@ -1,9 +1,3 @@
-adam;abcd
-ewa;mak
-lukasz;javatosyf
-kondor;lubiepadline
-makarena;hejhej
-kubakuba;kubek
-administrator;rzondze
-adam1;abcd1
-sakana;wosukidesu
+USER;PASS
+adam;-8586-76-39436411358-5290-8-103-123-44-73-122
+adamko;-6661-93-35-9137111-11261-16-7820-107-65-61
