@@ -1,11 +1,9 @@
 package appnavigation.login;
 
-import inout.FilePaths;
+import main.java.inout.FilePaths;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.security.NoSuchAlgorithmException;
 
 public class UserDataValidation {
 
@@ -32,7 +30,8 @@ public class UserDataValidation {
     }
 
     //SignIn password validation
-    public static boolean checkIfPasswordMatches(String userLogin, String userPassword){
+    public static boolean checkIfPasswordMatches(String userLogin, String userPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        userPassword = Encoding.encodeMD5(userPassword);
         String line = "";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(userListPath));
@@ -73,22 +72,5 @@ public class UserDataValidation {
             return false;
         }
         return true;
-    }
-
-
-    public static void wrongPasswordMessage(){
-        System.out.print("Niepoprawne hasło! ");
-        System.out.print("Hasło musi składać się z minimum 5 znaków. ");
-        System.out.println("Hasło nie może zawierać znaku \";\"");
-    }
-
-    public static void wrongLoginMessage(){
-        System.out.print("Niepoprawny login! ");
-        System.out.print("Nazwa użytkownika musi składać się minimum z 4 znaków. ");
-        System.out.println("Nazwa użytkownika nie może zawierać znaku \";\".");
-    }
-
-    public static void userExistsMessage() {
-        System.out.println("Użytkownik o takim nicku już istnieje!");
     }
 }

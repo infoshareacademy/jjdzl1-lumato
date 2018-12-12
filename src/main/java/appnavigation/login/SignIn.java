@@ -1,42 +1,41 @@
 package appnavigation.login;
 
-import inout.SessionData;
+import main.java.inout.SessionData;
 import main.java.appnavigation.Shortcuts;
-import tools.AppExit;
 import tools.CLS;
-import inout.UserInput;
+import main.java.inout.UserInput;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 //panel logowania
 public class SignIn {
 
+    private static boolean loginExists;
+    private static boolean passwordMatches;
+    private static String userLogin;
+    private static String userPassword;
+
+    public SignIn() {
+        this.loginExists = false;
+        this.passwordMatches = false;
+        this.userLogin = null;
+        this.userPassword = null;
+    }
+
     public static void init() throws Exception {
-        boolean loginExists = false;
-        boolean passwordMatches = false;
-        String userLogin = "";
-        String userPassword = "";
-        boolean didUserQuit = false;
         while (loginExists == false || passwordMatches == false) {
             showInformation();
-            userLogin = askForUserLogin(); //ask for user login
-            if (checkQuitOptions(userLogin)) break;
-            userPassword = askForUserPassword(); //ask for user password
-            if (checkQuitOptions(userPassword) ) break;
-            loginExists = validateLogin(userLogin);
-            passwordMatches = validatePassword(userLogin, userPassword);
-            if (loginExists == false || passwordMatches == false) {
-                CLS.clearScreen();
-                System.out.println("Niepoprawny login lub hasło!");
-                System.out.println();
-                loginExists = false;
-                passwordMatches = false;
-            }
+            if (!obtainUserData()) break;
+            validateLogin(userLogin);
+            validatePassword(userLogin, userPassword);
             if (loginExists && passwordMatches) {
                 executeSuccessfulLogin(userLogin);
+            } else {
+                executeNonSuccessfulLogin();
             }
         }
-
     }
 
     private static void showInformation(){
@@ -45,36 +44,45 @@ public class SignIn {
         System.out.println("Wpisz 'p' i naciśnij 'enter' aby wrócić do ekranu startowego");
     }
 
-    private static String askForUserLogin() throws IOException {
-        System.out.print("PODAJ LOGIN: ");
-        return UserInput.getUserStringInput();
-    }
-
-    private static String askForUserPassword() throws IOException {
-        System.out.print("PODAJ HASŁO: ");
-        return UserInput.getUserStringInput();
-    }
-
-    private static boolean validateLogin(String userLogin){
-        return UserDataValidation.checkIfUserExists(userLogin);
-    }
-
-    private static boolean validatePassword(String userLogin, String userPassword){
-        return UserDataValidation.checkIfPasswordMatches(userLogin, userPassword);
-    }
-
-    private static boolean checkQuitOptions(String text) throws Exception {
-        if ("q".equals(text)) {
-            CLS.clearScreen();
-            AppExit.exitApplication();
-            return true; //means that user decided to quit
-        } else if ("p".equals(text)){
-            CLS.clearScreen();
-            SessionData.eraseSessionData();
-            Shortcuts.runInitialWindow();
-            return true; //means that user decided to go back to start menu
+    private static boolean obtainUserData() throws Exception {
+        userLogin = UserInput.obtainUserLogin();
+        if (CheckQuit.userWantsToQuit(userLogin)){
+            CheckQuit.executeQuit(userLogin);
+            userLogin = null;
+            return false; //uzytkownik postanowil wyjsc
         }
-        return false; //means that user didn't decide to quit
+        userPassword = UserInput.obtainUserPassword();
+        if (CheckQuit.userWantsToQuit(userPassword)){
+            CheckQuit.executeQuit(userPassword);
+            userLogin = null;
+            userPassword = null;
+            return false; //uzytkownik postanowil wyjsc
+        }
+        return true; //udalo sie zalogowac
+    }
+
+    private static void validateLogin(String userLogin){
+        if (UserDataValidation.checkIfUserExists(userLogin)) {
+            loginExists = true;
+        } else {
+            loginExists = false;
+        }
+    }
+
+    private static void validatePassword(String userLogin, String userPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        if (UserDataValidation.checkIfPasswordMatches(userLogin, userPassword)) {
+            passwordMatches = true;
+        } else {
+            passwordMatches = false;
+        }
+    }
+
+    public static void executeNonSuccessfulLogin(){
+        CLS.clearScreen();
+        System.out.println("Niepoprawny login lub hasło!");
+        System.out.println();
+        loginExists = false;
+        passwordMatches = false;
     }
 
     public static void executeSuccessfulLogin(String userLogin) throws IOException {

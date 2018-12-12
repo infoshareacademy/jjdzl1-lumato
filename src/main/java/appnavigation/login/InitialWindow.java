@@ -3,7 +3,7 @@ package appnavigation.login;
 import main.java.appnavigation.Shortcuts;
 import tools.AppExit;
 import tools.CLS;
-import inout.UserInput;
+import main.java.inout.UserInput;
 import java.io.IOException;
 
 

@@ -1,4 +1,4 @@
-import inout.SessionData;
+import main.java.inout.SessionData;
 import main.java.appnavigation.Shortcuts;
 
 
@@ -18,11 +18,6 @@ public class Main {
         SessionData.eraseSessionData();
         //inicjalizacja okna startowego
         Shortcuts.runInitialWindow();
-//        WriteReadFile.writeToFile(FilePaths.getTxtDataLocation(),UserInput.getUserStringInput(),true);
-//        System.out.println(WriteReadFile.readFromFile(FilePaths.getTxtDataLocation()));
-//        System.out.println(WriteReadFile.readNthLine(FilePaths.getTxtDataLocation(),1));
-//        WriteReadFile.writeCsv(UserInput.getUserStringInput());
-//        WriteReadFile.writeText(UserInput.getUserStringInput(),true);
     }
 
 }

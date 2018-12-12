@@ -1,6 +1,6 @@
 package appnavigation.menuchoice;
 
-import inout.UserInput;
+import main.java.inout.UserInput;
 
 import java.io.IOException;
 import java.util.Scanner;
