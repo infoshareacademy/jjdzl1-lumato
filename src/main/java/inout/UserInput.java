@@ -14,11 +14,7 @@ public class UserInput {
 
     private static BufferedReader userInput;
 
-    /**
-     * This methods gets String input from console (user-string-input)
-     * @return String value
-     * @throws IOException
-     */
+    //pobieranie Stringa od użytkownika
     public static String getUserStringInput() throws IOException {
         String input = "";
         try {
@@ -31,6 +27,7 @@ public class UserInput {
         return input;
     }
 
+    //pobieranie loginu od użytkownika
     public static String obtainUserLogin() throws IOException {
         System.out.print("PODAJ LOGIN: ");
         String input = "";
@@ -38,12 +35,13 @@ public class UserInput {
             userInput = new BufferedReader(new InputStreamReader(System.in));
             input = userInput.readLine();
         } catch (IOException e){
-            System.out.println("LIPA");
+            e.printStackTrace();
         }
         return input;
     }
 
-    //w tej chwili dwie metody są takie same,
+    //pobieranie hasła od użytkownika
+    //w tej chwili dwie metody (pobieranie hasła i loginu) są takie same,
     // jednak w przyszłości możemy chcieć zamaskować hasło stąd oddzielna metoda
     public static String obtainUserPassword() throws IOException {
         System.out.print("PODAJ HASLO: ");
@@ -52,7 +50,7 @@ public class UserInput {
             userInput = new BufferedReader(new InputStreamReader(System.in));
             input = userInput.readLine();
         } catch (IOException e){
-            System.out.println("LIPA");
+            e.printStackTrace();
         }
         return input;
     }

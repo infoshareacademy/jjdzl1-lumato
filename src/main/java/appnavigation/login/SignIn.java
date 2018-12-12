@@ -46,14 +46,14 @@ public class SignIn {
 
     private static boolean obtainUserData() throws Exception {
         userLogin = UserInput.obtainUserLogin();
-        if (UserDataValidation.checkQuit(userLogin)){
-            UserDataValidation.quitSignInSignUp(userLogin);
+        if (CheckQuit.userWantsToQuit(userLogin)){
+            CheckQuit.executeQuit(userLogin);
             userLogin = null;
             return false; //uzytkownik postanowil wyjsc
         }
         userPassword = UserInput.obtainUserPassword();
-        if (UserDataValidation.checkQuit(userPassword)){
-            UserDataValidation.quitSignInSignUp(userPassword);
+        if (CheckQuit.userWantsToQuit(userPassword)){
+            CheckQuit.executeQuit(userPassword);
             userLogin = null;
             userPassword = null;
             return false; //uzytkownik postanowil wyjsc

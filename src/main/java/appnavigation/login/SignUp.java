@@ -5,14 +5,6 @@ import main.java.inout.FilePaths;
 import main.java.inout.WriteReadFile;
 import tools.CLS;
 import main.java.inout.UserInput;
-import tools.AppExit;
-
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 
 public class SignUp {
 
@@ -51,19 +43,19 @@ public class SignUp {
 
     private static void printWrongDataMessage(boolean userExists, boolean loginIsOk, boolean passwordIsOk) {
         if (userExists) {
-            UserDataValidation.userExistsMessage();
+            PrintMessage.userExistsMessage();
         }
         if (!loginIsOk) {
-            UserDataValidation.wrongLoginMessage();
+            PrintMessage.wrongLoginMessage();
         }
         if (!passwordIsOk) {
-            UserDataValidation.wrongPasswordMessage();
+            PrintMessage.wrongPasswordMessage();
         }
     }
 
     private static void executeSuccessfullSignUp(String login, String password) throws Exception {
         //dopisanie użytkownika do listy użytkowników
-        String userDataToAppend = login + ";" + UserDataValidation.encodeMD5(password);
+        String userDataToAppend = login + ";" + Encoding.encodeMD5(password);
 
         WriteReadFile.writeText(userDataToAppend, true, FilePaths.getUserListPath());
         //przejście do panelu logowania
@@ -74,14 +66,14 @@ public class SignUp {
 
     private static boolean obtainUserData() throws Exception {
         attemptedLogin = UserInput.obtainUserLogin();
-        if (UserDataValidation.checkQuit(attemptedLogin)) {
-            UserDataValidation.quitSignInSignUp(attemptedLogin);
+        if (CheckQuit.userWantsToQuit(attemptedLogin)) {
+            CheckQuit.executeQuit(attemptedLogin);
             attemptedLogin = null;
             return false; //uzytkownik postanowil wyjsc
         }
         attemptedPassword = UserInput.obtainUserPassword();
-        if (UserDataValidation.checkQuit(attemptedPassword)) {
-            UserDataValidation.quitSignInSignUp(attemptedPassword);
+        if (CheckQuit.userWantsToQuit(attemptedPassword)) {
+            CheckQuit.executeQuit(attemptedPassword);
             attemptedLogin = null;
             attemptedPassword = null;
             return false; //uzytkownik postanowil wyjsc
