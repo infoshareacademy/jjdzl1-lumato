@@ -79,7 +79,6 @@ public class UserDataValidation {
         return true;
     }
 
-
     public static void wrongPasswordMessage(){
         System.out.print("Niepoprawne hasło! ");
         System.out.print("Hasło musi składać się z minimum 5 znaków. ");
