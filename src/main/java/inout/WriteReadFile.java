@@ -1,6 +1,6 @@
-package inout;
+/*package inout;
 import java.io.*;
-
+/*
 //Podczas pisania pojawił sie błąd Try-with-resources are not supported at language level '5'. Trzeba zmienić project settings z 5 na 7.
 //Klasa umozliwająca odczyt i zapis text do/z plików.
 //Trzeba będzi jeszcze sformatować sposób zapisu do plików danych wpisanych przez użytkownika
@@ -10,7 +10,7 @@ public class WriteReadFile {
         StringBuilder sb = new StringBuilder();
         String line;
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader("E:\\Robocze\\09. JAVA\\09.02 Java Projects\\09.02.01 Szkolenie\\Projekt-kalkulatorpaliw\\src\\main\\test.txt"));
+            BufferedReader fileReader = new BufferedReader(new FileReader("DataFuel.xlsx"));
             while ((line = fileReader.readLine()) != null) {
                 sb.append(line)
                         .append(";")
@@ -25,11 +25,11 @@ public class WriteReadFile {
 
     public static void writeToFile(String string) throws IOException {
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader("E:\\Robocze\\09. JAVA\\09.02 Java Projects\\09.02.01 Szkolenie\\Projekt-kalkulatorpaliw\\src\\main\\test.txt"));
+            BufferedReader fileReader = new BufferedReader(new FileReader("FuelData.xlsx"));
         } catch (FileNotFoundException e) {
             e.getMessage();
         }
-        try (FileWriter fw = new FileWriter("E:\\Robocze\\09. JAVA\\09.02 Java Projects\\09.02.01 Szkolenie\\Projekt-kalkulatorpaliw\\src\\main\\test.txt", true);
+        try (FileWriter fw = new FileWriter("FuelData.xlsx", true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
             out.print(string + "\n");
@@ -38,3 +38,4 @@ public class WriteReadFile {
         }
     }
 }
+*/
