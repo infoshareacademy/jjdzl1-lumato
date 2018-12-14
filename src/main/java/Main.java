@@ -1,3 +1,4 @@
+import appfunctions.carsmanagement.UserCarsPanel;
 import main.java.inout.SessionData;
 import main.java.appnavigation.Shortcuts;
 
@@ -10,7 +11,8 @@ public class Main {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception{
-        runApplication();
+        //runApplication();
+        UserCarsPanel.init();
     }
 
     public static void runApplication() throws Exception {
