@@ -11,8 +11,8 @@ public class Main {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception{
-        //runApplication();
-        UserCarsPanel.init(); // tymczasowo do testów
+        runApplication();
+
     }
 
     public static void runApplication() throws Exception {
@@ -21,5 +21,4 @@ public class Main {
         //inicjalizacja okna startowego
         Shortcuts.runInitialWindow();
     }
-
 }

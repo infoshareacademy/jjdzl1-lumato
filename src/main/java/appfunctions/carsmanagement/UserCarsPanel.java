@@ -42,7 +42,7 @@ public class UserCarsPanel {
             }
             case "2": {
                 CLS.clearScreen();
-                System.out.println("Dodawanie auta");
+                AddCar.init();
                 break;
             }
             case "3": {

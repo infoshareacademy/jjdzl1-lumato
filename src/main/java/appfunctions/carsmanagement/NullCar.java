@@ -1,9 +1,8 @@
 package appfunctions.carsmanagement;
 
-public class Car extends AbstractCar {
-
+public class NullCar extends AbstractCar {
     @Override
     boolean isNull() {
-        return false;
+        return true;
     }
 }

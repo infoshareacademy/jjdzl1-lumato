@@ -6,8 +6,11 @@ package main.java.appnavigation;
 //import appnavigation.menuchoice.ShowMenu;
 //import appnavigation.menuchoice.MenuSelect;
 //import appnavigation.menuchoice.MenuChoice;
+import appfunctions.carsmanagement.UserCarsPanel;
 import appnavigation.login.*;
 import appnavigation.menuchoice.*;
+
+import java.io.IOException;
 
 //window initializations gathered in one class
 public class Shortcuts {
@@ -32,6 +35,10 @@ public class Shortcuts {
         ShowMenu.showMenu();
         char c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
         MenuChoice.menuChoice(c);
+    }
+
+    public static void runCarManagementPanel() throws IOException {
+        UserCarsPanel.init();
     }
 
 }

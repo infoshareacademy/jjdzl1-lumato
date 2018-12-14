@@ -31,9 +31,8 @@ public class SessionData {
     }
 
     public static Car getCurrentUserCar(){
-        FilePaths paths = new FilePaths();
         Car car = new Car();
-        String line = WriteReadFile.readNthLine(paths.getCurrentUserCarListPath(), 1);
+        String line = WriteReadFile.readNthLine(new FilePaths().getCurrentUserCarListPath(), 1);
         String[] lineAsArray = line.split(";");
         car.setId(lineAsArray[0]);
         car.setBrand(lineAsArray[1]);

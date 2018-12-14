@@ -1,2 +1,8 @@
 1;Peugeot;206
 2;Toyota;Corolla
+3;fiat;126p
+4;renault;clio
+5;Peugeot;406
+6;Peugeot;607
+7;aa;bb
+8;Bryczka;szkwarna
