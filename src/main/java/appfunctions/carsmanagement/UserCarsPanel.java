@@ -37,7 +37,7 @@ public class UserCarsPanel {
         switch(choice){
             case "1": {
                 CLS.clearScreen();
-                System.out.println("Wybór samochodu");
+                ChooseCar.init();
                 break;
             }
             case "2": {

@@ -12,7 +12,7 @@ public class Main {
      */
     public static void main(String[] args) throws Exception{
         //runApplication();
-        UserCarsPanel.init();
+        UserCarsPanel.init(); // tymczasowo do testów
     }
 
     public static void runApplication() throws Exception {

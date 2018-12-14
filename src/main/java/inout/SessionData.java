@@ -1,5 +1,9 @@
 package main.java.inout;
 
+import appfunctions.carsmanagement.Car;
+import main.java.inout.WriteReadFile;
+import main.java.inout.FilePaths;
+
 import java.io.IOException;
 
 //klasa pomocnicza, wspierająca klasę SignIn
@@ -20,9 +24,20 @@ public class SessionData {
     }
 
     //metoda pobiera nazwę zalogowanego użytkownika
-    public static String getCurrenUserName(){
-        String userName = "";
-        userName = WriteReadFile.readNthLine(FilePaths.getCurrentUserPath(), 1);
+    public static String getCurrentUserName(){
+        String line = WriteReadFile.readNthLine(FilePaths.getCurrentUserPath(), 1);
+        String userName = line.split(";")[0];
         return userName;
+    }
+
+    public static Car getCurrentUserCar(){
+        FilePaths paths = new FilePaths();
+        Car car = new Car();
+        String line = WriteReadFile.readNthLine(paths.getCurrentUserCarListPath(), 1);
+        String[] lineAsArray = line.split(";");
+        car.setId(lineAsArray[0]);
+        car.setBrand(lineAsArray[1]);
+        car.setModel(lineAsArray[2]);
+        return car;
     }
 }
