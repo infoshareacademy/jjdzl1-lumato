@@ -47,11 +47,7 @@ public class ChooseCar {
 
     private static void setData(){
         userName = SessionData.getCurrentUserName();
-        carListPath = "resources/profiles/"
-                + userName
-                + "/"
-                + userName
-                + "_cars.txt";
+        carListPath = FilePaths.getCurrentUserCarListPath();
     }
 
     public static boolean goodChoice(String choice, int amountOfCars){

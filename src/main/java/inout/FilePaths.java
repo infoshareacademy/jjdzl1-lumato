@@ -3,22 +3,23 @@ package main.java.inout;
 public class FilePaths {
 
     private static String user;
-    private static String currentUserPath = "resources/currentUser.txt";
-    private static String userListPath = "resources/userList.txt";
+    private static String currentUserPath = "src/main/resources/currentUser.txt";
+    private static String userListPath = "src/main/resources/userList.txt";
     private static String txtDataLocation = "src/main/test.txt";
     private static String csvDataLocation = "src/main/test.csv";
+    private static String profilesPath = "src/main/resources/profiles/";
 
     //żeby uzyskać tą ścieżkę, należy utworzyć obiekt klasy FilePaths
     private static String currentUserCarListPath;
 
     public FilePaths(){
         user = main.java.inout.SessionData.getCurrentUserName();
-        currentUserCarListPath = "resources/profiles/" + user + "/" + user + "_cars.txt";
+        currentUserCarListPath = "src/main/resources/profiles/" + user + "/" + user + "_cars.txt";
     }
 
     public FilePaths(String userName){
         user = userName;
-        currentUserCarListPath = "resources/profiles/" + user + "/" + user + "_cars.txt";
+        currentUserCarListPath = "src/main/resources/profiles/" + user + "/" + user + "_cars.txt";
     }
 
     public static String getCsvDataLocation() {
@@ -39,5 +40,9 @@ public class FilePaths {
 
     public static String getCurrentUserCarListPath(){
         return currentUserCarListPath;
+    }
+
+    public static String getProfilesPath() {
+        return profilesPath;
     }
 }

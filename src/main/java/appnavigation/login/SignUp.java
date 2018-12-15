@@ -60,7 +60,7 @@ public class SignUp {
         String userDataToAppend = login + ";" + Encoding.encodeMD5(password);
 
         //utworzenie folderu użytkownika w folderze profiles
-        String userProfilesPath = "resources/profiles/" + attemptedLogin;
+        String userProfilesPath = FilePaths.getProfilesPath() + attemptedLogin;
         new File(userProfilesPath).mkdirs();
 
         //utworzenie pliku z samochodami w folderze użytkownika
