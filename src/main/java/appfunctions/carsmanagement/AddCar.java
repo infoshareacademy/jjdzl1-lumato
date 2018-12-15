@@ -12,12 +12,11 @@ import tools.CLS;
 
 public class AddCar {
 
-    //TUTAJ ZROBIE DODAWANIE SAMOCHODU
-
     public static void init() throws IOException {
         showInformation();
         AbstractCar newCar = new Car();
         if (getNewCarData(newCar).isNull()){
+            //nothing happens
         } else {
             boolean isUserSure = askIfUserReallyWantsToAddNewCar(newCar);
             if (isUserSure) {
@@ -32,8 +31,7 @@ public class AddCar {
     }
 
     public static void showInformation(){
-        System.out.println("Znajdujesz się w panelu dodawania samochodu.");
-        System.out.println("Podaj dane, by dodać nowy samochód");
+        System.out.println("Znajdujesz się w panelu dodawania samochodu.Podaj dane, by dodać nowy samochód");
         System.out.println("Wpisz 'p' i naciśnij enter by wrócić do poprzedniego menu.");
         System.out.println("Wpisz 'q' i naciśnij enter by wrócić do menu głównego");
     }
@@ -54,7 +52,7 @@ public class AddCar {
         return newCar;
     }
 
-    public static int countCars(){
+    private static int countCars(){
         String carsAmount = "0";
         String line = "";
         try {
@@ -73,9 +71,7 @@ public class AddCar {
     public static boolean askIfUserReallyWantsToAddNewCar(AbstractCar newCar) throws IOException {
         String yesOrNo = "";
         while (!"tak".equals(yesOrNo)&&!"nie".equals(yesOrNo)) {
-            System.out.println("Czy na pewno chcesz dodać pojazd? ");
-            System.out.println("Marka: " + newCar.getBrand());
-            System.out.println("Model: " + newCar.getModel());
+            System.out.print("Czy na pewno chcesz dodać pojazd: " + newCar.getBrand() + newCar.getModel() + "? ");
             System.out.print("Wpisz \"tak\" lub \"nie\":");
             yesOrNo = UserInput.getUserStringInput();
             if ("tak".equals(yesOrNo)) return true;

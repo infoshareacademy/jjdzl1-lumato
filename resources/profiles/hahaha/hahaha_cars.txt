@@ -1,0 +1,5 @@
+ID;BRAND;MODEL
+1;samochod;pokazowy
+2;opel;dopel
+3;Opel;Agila
+4;Opel;Corsa

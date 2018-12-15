@@ -6,6 +6,8 @@ import main.java.inout.WriteReadFile;
 import tools.CLS;
 import main.java.inout.UserInput;
 
+import java.io.File;
+
 public class SignUp {
 
     private static boolean passwordIsOk;
@@ -56,6 +58,14 @@ public class SignUp {
     private static void executeSuccessfullSignUp(String login, String password) throws Exception {
         //dopisanie użytkownika do listy użytkowników
         String userDataToAppend = login + ";" + Encoding.encodeMD5(password);
+
+        //utworzenie folderu użytkownika w folderze profiles
+        String userProfilesPath = "resources/profiles/" + attemptedLogin;
+        new File(userProfilesPath).mkdirs();
+
+        //utworzenie pliku z samochodami w folderze użytkownika
+        String carListPath = new FilePaths(attemptedLogin).getCurrentUserCarListPath();
+        WriteReadFile.saveSimpleText("ID;MARKA;MODEL\n1;samochod;pokazowy", carListPath);
 
         WriteReadFile.writeText(userDataToAppend, true, FilePaths.getUserListPath());
         //przejście do panelu logowania

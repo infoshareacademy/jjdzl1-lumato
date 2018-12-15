@@ -16,6 +16,11 @@ public class FilePaths {
         currentUserCarListPath = "resources/profiles/" + user + "/" + user + "_cars.txt";
     }
 
+    public FilePaths(String userName){
+        user = userName;
+        currentUserCarListPath = "resources/profiles/" + user + "/" + user + "_cars.txt";
+    }
+
     public static String getCsvDataLocation() {
         return csvDataLocation;
     }

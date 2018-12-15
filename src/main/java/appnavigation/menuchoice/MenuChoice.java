@@ -1,10 +1,17 @@
 package appnavigation.menuchoice;
 
+import appfunctions.carsmanagement.UserCarsPanel;
+import tools.CLS;
+
+import java.io.IOException;
+
 public class MenuChoice {
-    public static void menuChoice(char selector){
+    public static void menuChoice(char selector) throws IOException {
         switch (selector) {
             case '1':
-                System.out.println("Opcja pierwsza.");
+                System.out.println("Moje pojazdy");
+                CLS.clearScreen();
+                UserCarsPanel.init();
                 break;
             case '2':
                 System.out.println("Opcja druga.");

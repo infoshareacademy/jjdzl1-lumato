@@ -31,7 +31,7 @@ public class Shortcuts {
     }
 
     //runs Main Menu
-    public static void runMainMenu(){
+    public static void runMainMenu() throws IOException {
         ShowMenu.showMenu();
         char c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
         MenuChoice.menuChoice(c);

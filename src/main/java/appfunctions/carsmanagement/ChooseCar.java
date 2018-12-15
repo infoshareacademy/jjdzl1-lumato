@@ -25,6 +25,7 @@ public class ChooseCar {
     public static void init() throws IOException {
         showInformation();
         setData();
+        carExists = false;
         while (!carExists) {
             int amountOfCars = showProfileCars();
             String choice = askForChoice();
@@ -38,7 +39,10 @@ public class ChooseCar {
     }
 
     private static void showInformation() {
-        System.out.println("Oto lista Twoich samochodów: ");
+        System.out.print("Twój obecny samochód to: ");
+        AbstractCar currentCar = SessionData.getCurrentUserCar();
+        System.out.println(currentCar.getId() + ". "
+                + currentCar.getBrand() + " " + currentCar.getModel());
     }
 
     private static void setData(){
@@ -64,35 +68,38 @@ public class ChooseCar {
             case "p": {
                 CLS.clearScreen();
                 UserCarsPanel.init();
+                break;
             }
             case "q": {
                 CLS.clearScreen();
                 AppExit.exitApplication();
+                break;
             }
             default: {
                 CLS.clearScreen();
                 saveCarChoice(Integer.parseInt(choice));
                 UserCarsPanel.init();
+                break;
             }
         }
     }
 
-    public static void saveCarChoice(int n) throws IOException {
-        String line = WriteReadFile.readNthLine(carListPath, n);
-        String newSessionData = userName + ";" + line.split(";")[0];
-        WriteReadFile.saveSimpleText(newSessionData, FilePaths.getCurrentUserPath());
+    public static void saveCarChoice(int userChoice) throws IOException {
+        SessionData.setCurrentCar(userChoice);
+
     }
 
     //show user cars and return how many of them he has
     private static int showProfileCars() {
-        String carsAmount = "0";
+        String carsAmount = "-1";
         String[] lineAsArray = null;
         String line = "";
+        System.out.println("Twoje auta:");
         try {
             BufferedReader reader = new BufferedReader(new FileReader(carListPath));
             while ((line = reader.readLine()) != null) {
                 lineAsArray = line.split(";");
-                System.out.println(lineAsArray[0]+". "+lineAsArray[1]+" " + lineAsArray[2]);
+                System.out.printf("%-4s. %-12s %-12s\n",lineAsArray[0],lineAsArray[1],lineAsArray[2]);
                 carsAmount = lineAsArray[0];
             }
         } catch (FileNotFoundException e) {
@@ -107,8 +114,8 @@ public class ChooseCar {
 
     private static String askForChoice() throws IOException {
         System.out.println("Wpisz ID pojazdu i naciśnij enter by wybrać auto.");
-        System.out.println("Wpisz 'p' i naciśnij enter by cofnąć się do poprzedniego menu");
-        System.out.println("Wpis 'q' i naciśnij enter by wyjść z aplikacji");
+        System.out.println("Wpisz 'p' i naciśnij enter by cofnąć się do poprzedniego menu.");
+        System.out.println("Wpis 'q' i naciśnij enter by wyjść z aplikacji.");
         return UserInput.getUserStringInput();
     }
 
