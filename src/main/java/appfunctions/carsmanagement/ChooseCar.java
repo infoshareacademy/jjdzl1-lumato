@@ -90,7 +90,7 @@ public class ChooseCar {
         String carsAmount = "-1";
         String[] lineAsArray = null;
         String line = "";
-        System.out.println("Twoje auta:");
+        System.out.println("\nTwoje auta:");
         try {
             BufferedReader reader = new BufferedReader(new FileReader(carListPath));
             while ((line = reader.readLine()) != null) {
@@ -106,12 +106,9 @@ public class ChooseCar {
         return Integer.parseInt(carsAmount);
     }
 
-
-
     private static String askForChoice() throws IOException {
-        System.out.println("Wpisz ID pojazdu i naciśnij enter by wybrać auto.");
-        System.out.println("Wpisz 'p' i naciśnij enter by cofnąć się do poprzedniego menu.");
-        System.out.println("Wpis 'q' i naciśnij enter by wyjść z aplikacji.");
+        System.out.println("\nWpisz ID pojazdu i naciśnij enter by wybrać auto.");
+        System.out.println("(lub 'p' - poprzednie menu/'q' - wyjście z aplikacji)");
         return UserInput.getUserStringInput();
     }
 

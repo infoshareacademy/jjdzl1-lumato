@@ -31,9 +31,8 @@ public class AddCar {
     }
 
     public static void showInformation(){
-        System.out.println("Znajdujesz się w panelu dodawania samochodu.Podaj dane, by dodać nowy samochód");
-        System.out.println("Wpisz 'p' i naciśnij enter by wrócić do poprzedniego menu.");
-        System.out.println("Wpisz 'q' i naciśnij enter by wrócić do menu głównego");
+        System.out.println("Znajdujesz się w panelu dodawania samochodu. Podaj dane, by dodać nowy samochód");
+        System.out.println("(lub 'p' - poprzednie menu/'q' - wyjście z aplikacji)");
     }
 
     public static AbstractCar getNewCarData(AbstractCar newCar) throws IOException {
@@ -47,32 +46,16 @@ public class AddCar {
         if(checkQuit(newCar.getModel())){
             return new NullCar();
         }
-        int cars = countCars();
+        int cars = UserCarTools.countCars();
         newCar.setId(String.valueOf(cars+1));
         return newCar;
-    }
-
-    private static int countCars(){
-        String carsAmount = "0";
-        String line = "";
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(new FilePaths().getCurrentUserCarListPath()));
-            while ((line = reader.readLine()) != null) {
-                carsAmount = line.split(";")[0];
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return Integer.parseInt(carsAmount);
     }
 
     public static boolean askIfUserReallyWantsToAddNewCar(AbstractCar newCar) throws IOException {
         String yesOrNo = "";
         while (!"tak".equals(yesOrNo)&&!"nie".equals(yesOrNo)) {
             System.out.print("Czy na pewno chcesz dodać pojazd: " + newCar.getBrand() + newCar.getModel() + "? ");
-            System.out.print("Wpisz \"tak\" lub \"nie\":");
+            System.out.print("Wpisz \"tak\" lub \"nie\": ");
             yesOrNo = UserInput.getUserStringInput();
             if ("tak".equals(yesOrNo)) return true;
             if ("nie".equals(yesOrNo)) return false;

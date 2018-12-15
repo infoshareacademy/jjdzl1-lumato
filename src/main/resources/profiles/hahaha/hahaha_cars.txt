@@ -5,3 +5,5 @@ ID;BRAND;MODEL
 4;Opel;Corsa
 5;honda;siwik
 6;chonda;siwik
+7;honda;siwik
+8;lolo;kolo
