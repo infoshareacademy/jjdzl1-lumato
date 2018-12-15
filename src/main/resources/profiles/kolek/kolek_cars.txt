@@ -1,3 +1,0 @@
-ID;MARKA;MODEL
-1;samochod;pokazowy
-2;koko;spoko

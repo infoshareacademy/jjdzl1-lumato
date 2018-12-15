@@ -1,3 +1,0 @@
-ID;BRAND;MODEL
-1;samochod;pokazowy
-2;land;rover

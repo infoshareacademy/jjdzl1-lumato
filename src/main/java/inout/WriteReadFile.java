@@ -9,6 +9,7 @@ public class WriteReadFile {
     //Metoda zwracająca n-tą linię pliku.
     public static String readNthLine(String path, int n) {
         String line = "";
+        if (n<=0) return "";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             int currentLine = 1;
@@ -30,7 +31,10 @@ public class WriteReadFile {
         try {
             FileWriter pw = new FileWriter(path, toAppned); // zmienić ściezkę do pliku, obecnie plik txt
             StringBuilder sb = new StringBuilder();
-            sb.append("\n");
+            //jeśli plik istnieje lub jest pusty to nie dodajemy nowej linii
+            if (!isFileEmptyOrNonExisting(path)) {
+                sb.append("\n");
+            }
             sb.append(whatToWrite);
             pw.write(sb.toString());
             pw.close();
@@ -87,5 +91,13 @@ public class WriteReadFile {
             e.getMessage();
         }
         return sb;
+    }
+
+
+    public static boolean isFileEmptyOrNonExisting(String path){
+        File file = new File(path);
+        if (!file.exists()) return true;
+        if (file.length()==0) return true;
+        return false;
     }
 }
