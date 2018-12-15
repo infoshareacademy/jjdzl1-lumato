@@ -100,7 +100,6 @@ public class WriteReadFile {
         File file = new File(path);
         if (!file.exists()) return true;
         if (file.length()==0) return true;
-        file.delete();
         return false;
     }
 }

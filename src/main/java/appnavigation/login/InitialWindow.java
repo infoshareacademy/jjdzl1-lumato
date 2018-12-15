@@ -5,16 +5,32 @@ import tools.AppExit;
 import tools.CLS;
 import main.java.inout.UserInput;
 import java.io.IOException;
+import main.java.inout.FilePaths;
+import main.java.inout.WriteReadFile;
 
 
 public class InitialWindow {
 
     //metoda inicjalizujaca pierwsze okno programu (okno z wyborem rejestracji/logowania)
     public static void init() throws Exception {
+        createFilesIfTheyDoNotExist();
         showHeader();
         showOptions();
         String userChoice = chooseOption();
         new InitialWindow().executeUserChoice(userChoice);
+    }
+
+    private static void createFilesIfTheyDoNotExist() throws IOException {
+        //if SessionDataFile does not exist - create it
+        String path = FilePaths.getCurrentUserPath();
+        if (WriteReadFile.isFileEmptyOrNonExisting(path)){
+            WriteReadFile.saveSimpleText("",path);
+        }
+        //if UserList (user-data-base kinda) does not exist - create it
+        path = FilePaths.getUserListPath();
+        if (WriteReadFile.isFileEmptyOrNonExisting(path)){
+            WriteReadFile.saveSimpleText("",path);
+        }
     }
 
     private static void showHeader(){

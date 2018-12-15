@@ -1,5 +1,6 @@
 package appnavigation.login;
 
+import appfunctions.carsmanagement.AddFirstCar;
 import main.java.inout.SessionData;
 import main.java.appnavigation.Shortcuts;
 import tools.CLS;
@@ -8,6 +9,8 @@ import main.java.inout.UserInput;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import main.java.inout.WriteReadFile;
+import main.java.inout.FilePaths;
 
 //panel logowania
 public class SignIn {
@@ -87,7 +90,13 @@ public class SignIn {
 
     public static void executeSuccessfulLogin(String userLogin) throws IOException {
         SessionData.saveSessionData(userLogin);
-        CLS.clearScreen();
-        Shortcuts.runMainMenu();
+        String path = new FilePaths(userLogin).getCurrentUserCarListPath();
+        if (WriteReadFile.isFileEmptyOrNonExisting(path)) {
+            CLS.clearScreen();
+            AddFirstCar.init(); //dodawanie pierwszego auta, przy pierwszym logowaniu na konto
+        } else {
+            CLS.clearScreen();
+            Shortcuts.runMainMenu();
+        }
     }
 }

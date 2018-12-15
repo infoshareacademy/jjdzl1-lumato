@@ -63,10 +63,6 @@ public class SignUp {
         String userProfilesPath = FilePaths.getProfilesPath() + attemptedLogin;
         new File(userProfilesPath).mkdirs();
 
-        //utworzenie pliku z samochodami w folderze użytkownika
-        String carListPath = new FilePaths(attemptedLogin).getCurrentUserCarListPath();
-        WriteReadFile.saveSimpleText("ID;MARKA;MODEL\n1;samochod;pokazowy", carListPath);
-
         WriteReadFile.writeText(userDataToAppend, true, FilePaths.getUserListPath());
         //przejście do panelu logowania
         CLS.clearScreen();

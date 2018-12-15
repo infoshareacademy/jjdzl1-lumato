@@ -20,7 +20,7 @@ public class AddCar {
         } else {
             boolean isUserSure = askIfUserReallyWantsToAddNewCar(newCar);
             if (isUserSure) {
-                addNewCar(newCar);
+                UserCarTools.addNewCar(newCar);
                 CLS.clearScreen();
                 UserCarsPanel.init();
             } else {
@@ -54,7 +54,7 @@ public class AddCar {
     public static boolean askIfUserReallyWantsToAddNewCar(AbstractCar newCar) throws IOException {
         String yesOrNo = "";
         while (!"tak".equals(yesOrNo)&&!"nie".equals(yesOrNo)) {
-            System.out.print("Czy na pewno chcesz dodać pojazd: " + newCar.getBrand() + newCar.getModel() + "? ");
+            System.out.print("Czy na pewno chcesz dodać pojazd: " + newCar.getBrand() + " " + newCar.getModel() + "? ");
             System.out.print("Wpisz \"tak\" lub \"nie\": ");
             yesOrNo = UserInput.getUserStringInput();
             if ("tak".equals(yesOrNo)) return true;
@@ -62,13 +62,6 @@ public class AddCar {
             System.out.println("Niepoprawne dane!");
         }
         return false;
-    }
-
-    public static void addNewCar(AbstractCar newCar){
-        String textToAppend = newCar.getId() + ";" + newCar.getBrand() + ";" + newCar.getModel();
-        main.java.inout.WriteReadFile.writeText(textToAppend,
-                true,
-                new FilePaths().getCurrentUserCarListPath());
     }
 
     public static boolean checkQuit(String text) throws IOException {

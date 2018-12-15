@@ -87,10 +87,11 @@ public class ChooseCar {
 
     //show user cars and return how many of them he has
     private static int showProfileCars() {
-        String carsAmount = "-1";
+        String carsAmount = "0";
         String[] lineAsArray = null;
         String line = "";
         System.out.println("\nTwoje auta:");
+        System.out.printf("%-4s. %-12s %-12s\n","ID","Marka","Model");
         try {
             BufferedReader reader = new BufferedReader(new FileReader(carListPath));
             while ((line = reader.readLine()) != null) {

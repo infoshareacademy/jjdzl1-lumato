@@ -34,7 +34,7 @@ public class SessionData {
     public static Car getCurrentUserCar(){
         Car car = new Car();
         String carId = WriteReadFile.readNthLine(FilePaths.getCurrentUserPath(), 1).split(";")[1];
-        int carIdInt = Integer.valueOf(carId)+1;
+        int carIdInt = Integer.valueOf(carId);
         String line = WriteReadFile.readNthLine(new FilePaths().getCurrentUserCarListPath(), carIdInt);
         String[] lineAsArray = line.split(";");
         car.setId(lineAsArray[0]);
@@ -44,7 +44,7 @@ public class SessionData {
     }
 
     public static void setCurrentCar(int n) throws IOException {
-        String line = WriteReadFile.readNthLine(FilePaths.getCurrentUserCarListPath(), n+1);
+        String line = WriteReadFile.readNthLine(FilePaths.getCurrentUserCarListPath(), n);
         String newSessionData = getCurrentUserName() + ";" + line.split(";")[0];
         WriteReadFile.saveSimpleText(newSessionData, FilePaths.getCurrentUserPath());
     }

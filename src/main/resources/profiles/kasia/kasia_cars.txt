@@ -1,3 +1,2 @@
-ID;MARKA;MODEL
-1;samochod;pokazowy
-2;Chonda;Siwik
+1;Lokomotywa;Nadświetlna
+2;Kulig;DziadkaMroza

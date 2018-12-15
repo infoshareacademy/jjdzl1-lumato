@@ -16,6 +16,7 @@ public class Main {
     }
 
     public static void runApplication() throws Exception {
+
         //wyczyszczenie danych sesyjnych w razie jakby jeszcze istniały po poprzednim użytkowaniu
         SessionData.eraseSessionData();
         //inicjalizacja okna startowego

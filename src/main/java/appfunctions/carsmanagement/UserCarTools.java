@@ -28,4 +28,11 @@ public class UserCarTools {
         }
         return Integer.parseInt(carsAmount);
     }
+
+    public static void addNewCar(AbstractCar newCar){
+        String textToAppend = newCar.getId() + ";" + newCar.getBrand() + ";" + newCar.getModel();
+        main.java.inout.WriteReadFile.writeText(textToAppend,
+                true,
+                new FilePaths().getCurrentUserCarListPath());
+    }
 }
