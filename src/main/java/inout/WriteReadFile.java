@@ -71,6 +71,8 @@ public class WriteReadFile {
             FileOutputStream out = new FileOutputStream(path);
             DataOutputStream save = new DataOutputStream(out);
             save.writeBytes(text);
+            save.close();
+            out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,6 +100,7 @@ public class WriteReadFile {
         File file = new File(path);
         if (!file.exists()) return true;
         if (file.length()==0) return true;
+        file.delete();
         return false;
     }
 }
