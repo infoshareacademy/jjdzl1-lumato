@@ -1,7 +1,7 @@
 package com.lumato;
 
-import main.java.inout.SessionData;
-import main.java.appnavigation.Shortcuts;
+import com.lumato.inout.SessionData;
+import com.lumato.appfunctions.appnavigation.Shortcuts;
 
 
 public class Main {

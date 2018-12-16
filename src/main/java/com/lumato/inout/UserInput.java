@@ -1,4 +1,4 @@
-package main.java.inout;
+package com.lumato.inout;
 
 import java.io.BufferedReader;
 import java.io.Console;

@@ -1,4 +1,4 @@
-package main.java.inout;
+package com.lumato.inout;
 
 public class FilePaths {
 
@@ -13,7 +13,7 @@ public class FilePaths {
     private static String currentUserCarListPath;
 
     public FilePaths(){
-        user = main.java.inout.SessionData.getCurrentUserName();
+        user = SessionData.getCurrentUserName();
         currentUserCarListPath = "src/main/resources/profiles/" + user + "/" + user + "_cars.txt";
     }
 

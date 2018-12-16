@@ -1,6 +1,7 @@
 package com.lumato.appfunctions.carsmanagement;
 
-import main.java.inout.FilePaths;
+import com.lumato.inout.FilePaths;
+import com.lumato.inout.WriteReadFile;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -30,7 +31,7 @@ public class UserCarTools {
 
     public static void addNewCar(AbstractCar newCar){
         String textToAppend = newCar.getId() + ";" + newCar.getBrand() + ";" + newCar.getModel();
-        main.java.inout.WriteReadFile.writeText(textToAppend,
+        WriteReadFile.writeText(textToAppend,
                 true,
                 new FilePaths().getCurrentUserCarListPath());
     }

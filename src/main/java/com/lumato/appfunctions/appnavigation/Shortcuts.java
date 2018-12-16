@@ -1,11 +1,5 @@
-package main.java.appnavigation;
+package com.lumato.appfunctions.appnavigation;
 
-//import com.lumato.appfunctions.appnavigation.login.InitialWindow;
-//import com.lumato.appfunctions.appnavigation.login.SignIn;
-//import com.lumato.appfunctions.appnavigation.login.SignUp;
-//import com.lumato.appfunctions.appnavigation.menuchoice.ShowMenu;
-//import com.lumato.appfunctions.appnavigation.menuchoice.MenuSelect;
-//import com.lumato.appfunctions.appnavigation.menuchoice.MenuChoice;
 import com.lumato.appfunctions.carsmanagement.UserCarsPanel;
 import com.lumato.appfunctions.appnavigation.login.*;
 import com.lumato.appfunctions.appnavigation.menuchoice.*;

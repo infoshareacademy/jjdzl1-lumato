@@ -1,9 +1,9 @@
 package com.lumato.appfunctions.carsmanagement;
 
 import java.io.IOException;
-import main.java.inout.UserInput;
+import com.lumato.inout.UserInput;
 import com.lumato.tools.CLS;
-import main.java.appnavigation.Shortcuts;
+import com.lumato.appfunctions.appnavigation.Shortcuts;
 
 //dodawanie pierwszego auta (przy pierwszym logowaniu na konto nie mamy auta,
 //ta metoda zmusza nas do utworzenia pierwszego auta zanim wyświetli sięnam menu główne

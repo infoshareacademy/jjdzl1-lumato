@@ -1,9 +1,9 @@
 package com.lumato.appfunctions.carsmanagement;
 
-import main.java.inout.UserInput;
+import com.lumato.inout.UserInput;
 import com.lumato.tools.AppExit;
 import com.lumato.tools.CLS;
-import main.java.appnavigation.Shortcuts;
+import com.lumato.appfunctions.appnavigation.Shortcuts;
 
 import java.io.IOException;
 

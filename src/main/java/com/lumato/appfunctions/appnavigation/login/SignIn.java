@@ -1,16 +1,16 @@
 package com.lumato.appfunctions.appnavigation.login;
 
 import com.lumato.appfunctions.carsmanagement.AddFirstCar;
-import main.java.inout.SessionData;
-import main.java.appnavigation.Shortcuts;
+import com.lumato.inout.SessionData;
+import com.lumato.appfunctions.appnavigation.Shortcuts;
 import com.lumato.tools.CLS;
-import main.java.inout.UserInput;
+import com.lumato.inout.UserInput;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import main.java.inout.WriteReadFile;
-import main.java.inout.FilePaths;
+import com.lumato.inout.WriteReadFile;
+import com.lumato.inout.FilePaths;
 
 //panel logowania
 public class SignIn {

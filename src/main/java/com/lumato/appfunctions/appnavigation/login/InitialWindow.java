@@ -1,12 +1,12 @@
 package com.lumato.appfunctions.appnavigation.login;
 
-import main.java.appnavigation.Shortcuts;
+import com.lumato.appfunctions.appnavigation.Shortcuts;
 import com.lumato.tools.AppExit;
 import com.lumato.tools.CLS;
-import main.java.inout.UserInput;
+import com.lumato.inout.UserInput;
 import java.io.IOException;
-import main.java.inout.FilePaths;
-import main.java.inout.WriteReadFile;
+import com.lumato.inout.FilePaths;
+import com.lumato.inout.WriteReadFile;
 
 
 public class InitialWindow {

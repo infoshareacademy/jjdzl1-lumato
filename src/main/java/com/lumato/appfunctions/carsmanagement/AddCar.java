@@ -1,6 +1,6 @@
 package com.lumato.appfunctions.carsmanagement;
 
-import main.java.inout.UserInput;
+import com.lumato.inout.UserInput;
 
 import java.io.IOException;
 
