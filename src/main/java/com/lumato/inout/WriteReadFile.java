@@ -1,8 +1,7 @@
-package main.java.inout;
+package com.lumato.inout;
 
 import java.io.*;
 import java.util.Scanner;
-import main.java.inout.FilePaths;
 
 public class WriteReadFile {
 

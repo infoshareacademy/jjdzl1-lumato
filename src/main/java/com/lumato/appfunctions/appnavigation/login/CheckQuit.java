@@ -1,5 +1,6 @@
 package com.lumato.appfunctions.appnavigation.login;
 
+import com.lumato.appfunctions.appnavigation.Shortcuts;
 import com.lumato.tools.AppExit;
 import com.lumato.tools.CLS;
 
@@ -20,7 +21,7 @@ public class CheckQuit {
 
         } else if ("p".equals(text)){
             CLS.clearScreen();
-            main.java.appnavigation.Shortcuts.runInitialWindow();
+            Shortcuts.runInitialWindow();
         }
     }
 

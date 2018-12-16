@@ -1,6 +1,6 @@
 package com.lumato.tools;
 
-import main.java.inout.SessionData;
+import com.lumato.inout.SessionData;
 
 import java.io.IOException;
 

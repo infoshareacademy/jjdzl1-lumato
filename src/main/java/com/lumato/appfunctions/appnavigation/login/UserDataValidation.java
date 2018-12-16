@@ -1,6 +1,6 @@
 package com.lumato.appfunctions.appnavigation.login;
 
-import main.java.inout.FilePaths;
+import com.lumato.inout.FilePaths;
 
 import java.io.*;
 import java.security.NoSuchAlgorithmException;

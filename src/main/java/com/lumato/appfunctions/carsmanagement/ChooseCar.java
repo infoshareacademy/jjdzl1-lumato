@@ -1,15 +1,15 @@
 package com.lumato.appfunctions.carsmanagement;
 
-import main.java.inout.SessionData;
+import com.lumato.inout.SessionData;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import main.java.inout.UserInput;
+import com.lumato.inout.UserInput;
 import com.lumato.tools.AppExit;
 import com.lumato.tools.CLS;
-import main.java.inout.FilePaths;
+import com.lumato.inout.FilePaths;
 
 public class ChooseCar {
 
