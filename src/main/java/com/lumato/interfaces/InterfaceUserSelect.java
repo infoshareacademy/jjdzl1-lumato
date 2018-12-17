@@ -3,12 +3,12 @@ package com.lumato.interfaces;
 import java.io.IOException;
 
 public interface InterfaceUserSelect {
-    void PrintHeader();
+    void printHeader();
 
-    void PrintOptions();
+    void printOptions();
 
-    String ValidateUserInput();
+    String validateUserInput();
 
-    void SelectedOptions(String choice);
+    void selectedOptions(String choice);
 
 }

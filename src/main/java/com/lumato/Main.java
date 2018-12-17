@@ -2,8 +2,6 @@ package com.lumato;
 
 import com.lumato.appfunctions.appnavigation.Shortcuts;
 import com.lumato.inout.SessionData;
-import com.lumato.interfaces.DataInputImpl;
-import com.lumato.interfaces.MainOptionsImpl;
 import com.lumato.interfaces.RunMenuChoices;
 
 
@@ -17,8 +15,8 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
         runApplication();
-        RunMenuChoices.MainOptions();
-        RunMenuChoices.DataInputOptions();
+        RunMenuChoices.mainOptions();
+        RunMenuChoices.dateMenuOptions();
 
 
     }

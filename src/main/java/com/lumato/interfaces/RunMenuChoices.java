@@ -1,24 +1,24 @@
 package com.lumato.interfaces;
 
 public class RunMenuChoices {
-    public static void MainOptions(){
+    public static void mainOptions(){
         ImplMainOptions mainMenuOptions = new ImplMainOptions();
-        mainMenuOptions.PrintHeader();
-        mainMenuOptions.PrintOptions();
-        mainMenuOptions.SelectedOptions(mainMenuOptions.ValidateUserInput());
+        mainMenuOptions.printHeader();
+        mainMenuOptions.printOptions();
+        mainMenuOptions.selectedOptions(mainMenuOptions.validateUserInput());
     }
 
-    public static void DateMenuOptions(){
+    public static void dateMenuOptions(){
         ImplDateMenu dateMenuOptions = new ImplDateMenu();
-        dateMenuOptions.PrintHeader();
-        dateMenuOptions.PrintOptions();
-        dateMenuOptions.SelectedOptions(dateMenuOptions.ValidateUserInput());
+        dateMenuOptions.printHeader();
+        dateMenuOptions.printOptions();
+        dateMenuOptions.selectedOptions(dateMenuOptions.validateUserInput());
     }
 
-    public static void DataManualInput(){
+    public static void dataManualInput(){
         ImplManualDataInput dateInput = new ImplManualDataInput();
-        dateInput.PrintHeader();
-        dateInput.SelectedOptions(dateInput.ValidateUserInput());
+        dateInput.printHeader();
+        dateInput.selectedOptions(dateInput.validateUserInput());
 
     }
 }

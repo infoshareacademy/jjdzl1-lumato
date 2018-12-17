@@ -5,13 +5,13 @@ import com.lumato.tools.CLS;
 
 public class ImplMainOptions implements InterfaceUserSelect {
     @Override
-    public void PrintHeader() {
+    public void printHeader() {
         System.out.println("\nNowe !!TESTOWE!! Menu z interfejsa!\nWilkomen in our wanderabu menu!");
 
     }
 
     @Override
-    public void PrintOptions() {
+    public void printOptions() {
         System.out.println("Dostepne opcje:"
                 + "\n1: Sikaj pod mur."
                 + "\n2: Sikaj pod latarnia."
@@ -20,7 +20,7 @@ public class ImplMainOptions implements InterfaceUserSelect {
     }
 
     @Override
-    public String ValidateUserInput() {
+    public String validateUserInput() {
         String specialChar = "q";
         String actionWord = "zakończyć";
         if(specialChar.length() != 0) System.out.printf("Wybierz opcję lub wpisz %s aby %s: ", specialChar, actionWord);
@@ -30,7 +30,7 @@ public class ImplMainOptions implements InterfaceUserSelect {
     }
 
     @Override
-    public void SelectedOptions(String choice) {
+    public void selectedOptions(String choice) {
 
             switch (choice) {
                 case "1":
