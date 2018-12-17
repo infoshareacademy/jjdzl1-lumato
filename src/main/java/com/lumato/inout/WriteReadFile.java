@@ -9,10 +9,10 @@ public class WriteReadFile {
     //Zapis danych do txt lub csv (; jako separator kolumn w CSV)
     public static void writeText(String whatToWrite, boolean toAppned, String fileName) {
         try {
-            FileWriter pw = new FileWriter(FilePaths.userDir()+fileName, toAppned); // zmienić ściezkę do pliku, obecnie plik txt
+            FileWriter pw = new FileWriter(FilePaths.userDir() + fileName, toAppned); // zmienić ściezkę do pliku, obecnie plik txt
             StringBuilder sb = new StringBuilder();
             //jeśli plik istnieje lub jest pusty to nie dodajemy nowej linii
-            if (!isFileEmptyOrNonExisting(FilePaths.userDir()+fileName)) {
+            if (!isFileEmptyOrNonExisting(FilePaths.userDir() + fileName)) {
                 sb.append("\n");
             }
             sb.append(whatToWrite);
@@ -60,8 +60,8 @@ public class WriteReadFile {
     }
 
     //Metoda czytające dane z poszczególnej kolumny
-    public static void readCSV(int columnToPrint) {
-        File file = new File(FilePaths.getCsvDataLocation());
+    public static void readCSV(int columnToPrint, String fileName) {
+        File file = new File(FilePaths.userDir() + fileName);
         try {
             Scanner inputStream = new Scanner(file);
             inputStream.nextLine(); //Ignoruje pierwszą linię np hagłówek)
@@ -73,14 +73,15 @@ public class WriteReadFile {
             }
         } catch (FileNotFoundException e) {
             e.getMessage();
+            System.out.println("Plik nie istnieje!");
         }
     }
 
     //Metoda czytajaca kolumny z podanego zakresu.
-    public static void readCSVinRange(int columnToPrint, int beginning, int end) {
+    public static void readCSVinRange(String fileName, int columnToPrint, int beginning, int end) {
         StringBuilder sb = new StringBuilder();
         int lineCounter = 0;
-        File file = new File(FilePaths.getCsvDataLocation());
+        File file = new File(FilePaths.userDir() + fileName);
         try {
             Scanner inputStream = new Scanner(file);
             for (int i = 0; i < beginning - 1; i++) {
@@ -96,6 +97,7 @@ public class WriteReadFile {
             }
         } catch (FileNotFoundException e) {
             e.getMessage();
+            System.out.println("Plik nie istnieje!");
         }
     }
 
