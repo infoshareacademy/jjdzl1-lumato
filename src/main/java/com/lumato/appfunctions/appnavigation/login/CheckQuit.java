@@ -4,9 +4,12 @@ import com.lumato.appfunctions.appnavigation.Shortcuts;
 import com.lumato.tools.AppExit;
 import com.lumato.tools.CLS;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+
 public class CheckQuit {
 
-    public static boolean userWantsToQuit(String text) throws Exception {
+    public static boolean userWantsToQuit(String text) {
         if ("q".equals(text) || "p".equals(text)) {
             return true;
         } else {
@@ -14,7 +17,7 @@ public class CheckQuit {
         }
     }
 
-    public static void executeQuit(String text) throws Exception {
+    public static void executeQuit(String text) throws IOException, NoSuchAlgorithmException {
         if ("q".equals(text)) {
             CLS.clearScreen();
             AppExit.exitApplication();

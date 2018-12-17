@@ -28,7 +28,7 @@ public class SignIn {
         this.userPassword = null;
     }
 
-    public static void init() throws Exception {
+    public static void init() throws IOException, NoSuchAlgorithmException {
         while (loginExists == false || passwordMatches == false) {
             showInformation();
             if (!obtainUserData()) break;
@@ -48,7 +48,7 @@ public class SignIn {
         System.out.println("Wpisz 'p' i naciśnij 'enter' aby wrócić do ekranu startowego");
     }
 
-    private static boolean obtainUserData() throws Exception {
+    private static boolean obtainUserData() throws IOException, NoSuchAlgorithmException {
         userLogin = UserInput.obtainUserLogin();
         if (CheckQuit.userWantsToQuit(userLogin)){
             CheckQuit.executeQuit(userLogin);

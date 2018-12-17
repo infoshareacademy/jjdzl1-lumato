@@ -1,5 +1,7 @@
 package com.lumato.appfunctions.carsmanagement;
 
+import static com.lumato.inout.WriteReadFile.writeText;
+
 import com.lumato.inout.FilePaths;
 import com.lumato.inout.SessionData;
 import com.lumato.inout.WriteReadFile;

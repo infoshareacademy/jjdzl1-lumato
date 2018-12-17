@@ -5,22 +5,23 @@ import com.lumato.appfunctions.appnavigation.login.*;
 import com.lumato.appfunctions.appnavigation.menuchoice.*;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 //window initializations gathered in one class
 public class Shortcuts {
 
     //runs starting window with login/create-new-profile/quit choice
-    public static void runInitialWindow() throws Exception {
+    public static void runInitialWindow() throws IOException, NoSuchAlgorithmException {
         InitialWindow.init();
     }
 
     //runs login window
-    public static void runLoginWindow() throws Exception {
+    public static void runLoginWindow() throws IOException, NoSuchAlgorithmException {
         SignIn.init();
     }
 
     //runs create-new-profile window
-    public static void runSignInWindow() throws Exception {
+    public static void runSignInWindow() throws IOException, NoSuchAlgorithmException {
         SignUp.init();
     }
 
