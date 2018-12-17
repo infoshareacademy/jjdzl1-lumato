@@ -1,6 +1,7 @@
 package com.lumato.appfunctions.appnavigation.login;
 
 import com.lumato.appfunctions.carsmanagement.AddFirstCar;
+import com.lumato.appfunctions.carsmanagement.ChooseCarAtLogin;
 import com.lumato.inout.SessionData;
 import com.lumato.appfunctions.appnavigation.Shortcuts;
 import com.lumato.tools.CLS;
@@ -96,7 +97,7 @@ public class SignIn {
             AddFirstCar.init(); //dodawanie pierwszego auta, przy pierwszym logowaniu na konto
         } else {
             CLS.clearScreen();
-            Shortcuts.runMainMenu();
+            ChooseCarAtLogin.init();
         }
     }
 }
