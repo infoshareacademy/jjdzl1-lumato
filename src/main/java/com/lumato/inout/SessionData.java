@@ -24,9 +24,7 @@ public class SessionData {
 
     //metoda pobiera nazwę zalogowanego użytkownika
     public static String getCurrentUserName(){
-        String line = WriteReadFile.readNthLine(FilePaths.getCurrentUserPath(), 1);
-        String userName = line.split(";")[0];
-        return userName;
+        return WriteReadFile.readNthLine(FilePaths.getCurrentUserPath(), 1).split(";")[0];
     }
 
     public static Car getCurrentUserCar(){
