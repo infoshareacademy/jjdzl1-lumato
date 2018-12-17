@@ -2,7 +2,7 @@ package com.lumato.interfaces;
 
 import com.lumato.appfunctions.appnavigation.menuchoice.MenuSelect;
 
-public class DataInputImpl implements UserSelect {
+public class ImplDateMenu implements InterfaceUserSelect {
     @Override
     public void PrintHeader() {
         System.out.println("\nWprowadz kurde date dzbanie!" );
@@ -15,20 +15,25 @@ public class DataInputImpl implements UserSelect {
     }
 
     @Override
-    public char ValidateUserInput() {
-        char choice = MenuSelect.validateInput(("[1-2]"), "q", "quit");
+    public String ValidateUserInput() {
+        String specialChar = "p";
+        String actionWord = "powrócić do menu głównego.";
+        String choice = MenuSelect.validateInput(("[1-2]"), specialChar, actionWord);
+        if(specialChar.length() != 0) System.out.printf("Wybierz opcję lub wpisz %s aby %s: ", specialChar, actionWord);
+        else System.out.println("Wybierz jedną z dostępnych opcji.");
 
         return choice;
     }
 
     @Override
-    public void SelectedOptions(char choice) {
+    public void SelectedOptions(String choice) {
         switch (choice) {
-            case '1':
-                System.out.println("Data wprowadzona automatycznie kurewaa");
+            case "1":
+                System.out.println("Data wprowadzona automatycznie");
                 break;
-            case '2':
-                System.out.println("No to pisz te date.");
+            case "2":
+                System.out.println("\n\nNo to pisz te date.");
+                RunMenuChoices.DataManualInput();
                 break;
         }
     }

@@ -17,20 +17,19 @@ import java.util.Scanner;
 
 public class MenuSelect {
 
-    public static char validateInput(String regex, String specialChar, String specialCharAction) {
+    public static String validateInput(String regex, String specialChar, String specialCharAction) {
 
         Scanner in = new Scanner(System.in);
         String getUserStringInput = "";
 
         do {
-            System.out.printf("Wybierz opcję lub wpisz %s aby %s: ", specialChar, specialCharAction);
             try {
                 getUserStringInput = UserInput.getUserStringInput();
             } catch (IOException e) {
                 System.out.println("Wystąpił niespodziewany wyjątek!" + e.getMessage());
             }
         } while (!isValid(getUserStringInput, regex, specialChar));
-        return getUserStringInput.charAt(0);
+        return getUserStringInput;
     }
 
     static boolean isValid(String getUserStringInput, String regex, String specialChar){
