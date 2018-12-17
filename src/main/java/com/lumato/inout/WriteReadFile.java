@@ -1,19 +1,18 @@
 package com.lumato.inout;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class WriteReadFile {
 
 
     //Zapis danych do txt lub csv (; jako separator kolumn w CSV)
-    public static void writeText(String whatToWrite, boolean toAppned, String path) {
+    public static void writeText(String whatToWrite, boolean toAppned, String fileName) {
         try {
-            FileWriter pw = new FileWriter(path, toAppned); // zmienić ściezkę do pliku, obecnie plik txt
+            FileWriter pw = new FileWriter(FilePaths.userDir()+fileName, toAppned); // zmienić ściezkę do pliku, obecnie plik txt
             StringBuilder sb = new StringBuilder();
             //jeśli plik istnieje lub jest pusty to nie dodajemy nowej linii
-            if (!isFileEmptyOrNonExisting(path)) {
+            if (!isFileEmptyOrNonExisting(FilePaths.userDir()+fileName)) {
                 sb.append("\n");
             }
             sb.append(whatToWrite);

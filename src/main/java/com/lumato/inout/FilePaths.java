@@ -6,7 +6,7 @@ public class FilePaths {
     private static String currentUserPath = "src/main/resources/currentUser.txt";
     private static String userListPath = "src/main/resources/userList.txt";
     private static String txtDataLocation = "src/main/test.txt";
-    private static String csvDataLocation = "src/main/test.csv";
+    private static String csvDataLocation = "src/main/resources/profiles/" + user + "/";
     private static String profilesPath = "src/main/resources/profiles/";
 
     //żeby uzyskać tą ścieżkę, należy utworzyć obiekt klasy FilePaths
@@ -25,7 +25,9 @@ public class FilePaths {
     public static String getCsvDataLocation() {
         return csvDataLocation;
     }
-    
+
+
+
     public static String getTxtDataLocation() {
         return txtDataLocation;
     }
