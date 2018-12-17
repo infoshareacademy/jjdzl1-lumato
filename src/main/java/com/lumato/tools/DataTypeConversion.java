@@ -6,8 +6,8 @@ public class DataTypeConversion {
     public static Double[] stringBuilderToDouble(StringBuilder sb) {
         String[] stringArray = sb.toString().split(";");
         Double[] output = new Double[stringArray.length];
-        for (double item : output) {
-            output[item] = Double.parseDouble(stringArray[item]);
+        for (int i = 0; i < stringArray.length - 1; i++) {
+            output[i] = Double.parseDouble(stringArray[i]);
         }
         return output;
     }
