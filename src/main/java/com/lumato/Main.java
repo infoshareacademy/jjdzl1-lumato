@@ -1,18 +1,23 @@
 package com.lumato;
 
-import com.lumato.inout.SessionData;
 import com.lumato.appfunctions.appnavigation.Shortcuts;
+import com.lumato.inout.SessionData;
+import com.lumato.interfaces.RunMenuChoices;
 
 
 public class Main {
 
     /**
      * main method to run the application
+     *
      * @param args
      * @throws Exception
      */
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         runApplication();
+        RunMenuChoices.mainOptions();
+        RunMenuChoices.dateMenuOptions();
+
 
     }
 

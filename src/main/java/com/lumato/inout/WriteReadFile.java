@@ -9,10 +9,10 @@ public class WriteReadFile {
     //Zapis danych do txt lub csv (; jako separator kolumn w CSV)
     public static void writeText(String whatToWrite, boolean toAppned, String fileName) {
         try {
-            FileWriter pw = new FileWriter(FilePaths.userDir() + fileName, toAppned); // zmienić ściezkę do pliku, obecnie plik txt
+            FileWriter pw = new FileWriter(FilePaths.getUserDir() + fileName, toAppned); // zmienić ściezkę do pliku, obecnie plik txt
             StringBuilder sb = new StringBuilder();
             //jeśli plik istnieje lub jest pusty to nie dodajemy nowej linii
-            if (!isFileEmptyOrNonExisting(FilePaths.userDir() + fileName)) {
+            if (!isFileEmptyOrNonExisting(FilePaths.getUserDir() + fileName)) {
                 sb.append("\n");
             }
             sb.append(whatToWrite);
@@ -28,7 +28,7 @@ public class WriteReadFile {
         StringBuilder sb = new StringBuilder();
         String line;
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader(FilePaths.getCsvDataLocation()));
+            BufferedReader fileReader = new BufferedReader(new FileReader(FilePaths.getUserDir()));
             while ((line = fileReader.readLine()) != null) {
                 sb.append(line);
             }
@@ -61,7 +61,7 @@ public class WriteReadFile {
 
     //Metoda czytające dane z poszczególnej kolumny
     public static void readCSV(int columnToPrint, String fileName) {
-        File file = new File(FilePaths.userDir() + fileName);
+        File file = new File(FilePaths.getUserDir() + fileName);
         try {
             Scanner inputStream = new Scanner(file);
             inputStream.nextLine(); //Ignoruje pierwszą linię np hagłówek)
@@ -81,7 +81,7 @@ public class WriteReadFile {
     public static void readCSVinRange(String fileName, int columnToPrint, int beginning, int end) {
         StringBuilder sb = new StringBuilder();
         int lineCounter = 0;
-        File file = new File(FilePaths.userDir() + fileName);
+        File file = new File(FilePaths.getUserDir() + fileName);
         try {
             Scanner inputStream = new Scanner(file);
             for (int i = 0; i < beginning - 1; i++) {
