@@ -14,9 +14,8 @@ public class Main {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        runApplication();
+//        runApplication();
         RunMenuChoices.mainOptions();
-        RunMenuChoices.dateMenuOptions();
 
 
     }

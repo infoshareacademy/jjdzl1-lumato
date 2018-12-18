@@ -17,11 +17,10 @@ public class ImplDateMenu implements InterfaceUserSelect {
 
     @Override
     public String validateUserInput() {
-        String specialChar = "p";
-        String actionWord = "powrócić do menu głównego.";
+        String specialChar = "";
+        String actionWord = "";
         String choice = MenuSelect.validateInput(("[1-2]"), specialChar, actionWord);
-        if(specialChar.length() != 0) System.out.printf("Wybierz opcję lub wpisz %s aby %s: ", specialChar, actionWord);
-        else System.out.println("Wybierz jedną z dostępnych opcji.");
+
 
         return choice;
     }

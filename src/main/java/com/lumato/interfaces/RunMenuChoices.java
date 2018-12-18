@@ -1,7 +1,9 @@
 package com.lumato.interfaces;
 
+import java.io.IOException;
+
 public class RunMenuChoices {
-    public static void mainOptions(){
+    public static void mainOptions() throws IOException {
         ImplMainOptions mainMenuOptions = new ImplMainOptions();
         mainMenuOptions.printHeader();
         mainMenuOptions.printOptions();

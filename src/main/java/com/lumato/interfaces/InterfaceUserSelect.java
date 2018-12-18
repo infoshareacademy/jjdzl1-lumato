@@ -9,6 +9,6 @@ public interface InterfaceUserSelect {
 
     String validateUserInput();
 
-    void selectedOptions(String choice);
+    void selectedOptions(String choice) throws IOException;
 
 }
