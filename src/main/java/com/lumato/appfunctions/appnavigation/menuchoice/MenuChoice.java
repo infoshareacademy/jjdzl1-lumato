@@ -16,26 +16,15 @@ public class MenuChoice {
                 CLS.clearScreen();
                 UserCarsPanel.init();
                 break;
-<<<<<<< HEAD
-            case '2':
-                System.out.println("Opcja druga. Zapis do pliku");
-                WriteReadFile.writeText(UserInput.getUserStringInput(),true,"Test.csv");
-                break;
-            case '3':
-                System.out.println("Opcja trzecia. Odczyty z pliku");
-                WriteReadFile.readCSV(1,"Test.csv");
-=======
             case "2":
                 System.out.println("Opcja druga.");
                 break;
             case "3":
                 System.out.println("Opcja trzecia.");
->>>>>>> e31abb0ee8cc5af799932b1222a28be8d6310c15
                 break;
             case "q":
                 System.out.println("Zakończenie programu lub coś innego.");
                 break;
         }
-
     }
 }

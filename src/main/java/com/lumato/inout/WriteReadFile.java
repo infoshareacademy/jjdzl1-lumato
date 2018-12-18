@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class WriteReadFile {
 
-
     //Zapis danych do txt lub csv (; jako separator kolumn w CSV)
     public static void writeText(String whatToWrite, boolean toAppned, String fileName) {
         try {
