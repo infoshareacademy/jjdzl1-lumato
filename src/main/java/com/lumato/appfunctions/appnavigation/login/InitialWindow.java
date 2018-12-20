@@ -13,7 +13,7 @@ import com.lumato.inout.WriteReadFile;
 
 public class InitialWindow {
 
-    //metoda inicjalizujaca pierwsze okno programu (okno z wyborem rejestracji/logowania)
+    /** initialization of the first app-window with SignIn/SignUp/Exit options */
     public static void init() throws IOException, NoSuchAlgorithmException {
         createFilesIfTheyDoNotExist();
         showHeader();

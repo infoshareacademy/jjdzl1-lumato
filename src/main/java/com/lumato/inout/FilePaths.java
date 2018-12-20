@@ -9,7 +9,7 @@ public class FilePaths {
     private static String csvDataLocation = "src/main/test.csv";
     private static String profilesPath = "src/main/resources/profiles/";
 
-    //żeby uzyskać tą ścieżkę, należy utworzyć obiekt klasy FilePaths
+    //to obtain this path, we need to create instance of FilePaths
     private static String currentUserCarListPath;
 
     public FilePaths(){

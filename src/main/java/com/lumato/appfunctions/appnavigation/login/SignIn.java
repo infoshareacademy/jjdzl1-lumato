@@ -11,7 +11,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
 
-//panel logowania
+/** Sign In panel */
 public class SignIn {
 
     private static boolean loginExists;
@@ -50,16 +50,16 @@ public class SignIn {
         if (CheckQuit.userWantsToQuit(userLogin)){
             CheckQuit.executeQuit(userLogin);
             userLogin = null;
-            return false; //uzytkownik postanowil wyjsc
+            return false; // user decided to quit
         }
         userPassword = UserInput.obtainUserPassword();
         if (CheckQuit.userWantsToQuit(userPassword)){
             CheckQuit.executeQuit(userPassword);
             userLogin = null;
             userPassword = null;
-            return false; //uzytkownik postanowil wyjsc
+            return false; // user decided to quit
         }
-        return true; //udalo sie zalogowac
+        return true; // user didn't decide to quit
     }
 
     private static void validateLogin(String userLogin){
@@ -87,11 +87,11 @@ public class SignIn {
     }
 
     public static void executeSuccessfulLogin(String userLogin) throws IOException {
-        SessionData.saveSessionData(userLogin);
+        SessionData.saveSessionUserName(userLogin);
         String path = new FilePaths(userLogin).getCurrentUserCarListPath();
         if (WriteReadFile.isFileEmptyOrNonExisting(path)) {
             CLS.clearScreen();
-            AddFirstCar.init(); //dodawanie pierwszego auta, przy pierwszym logowaniu na konto
+            AddFirstCar.init(); //user needs to add a car at his first login
         } else {
             CLS.clearScreen();
             ChooseCarAtLogin.init();

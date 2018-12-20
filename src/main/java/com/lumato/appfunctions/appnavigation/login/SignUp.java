@@ -27,7 +27,7 @@ public class SignUp {
 
     public static void init() throws IOException, NoSuchAlgorithmException {
         while (userExists || !passwordIsOk || !loginIsOk) {
-            showInfo(); //wyrzucenie informacji o panelu
+            showInfo(); //show Panel information
             if (!obtainUserData()) break;
             validateData();
             if (!userExists && passwordIsOk && loginIsOk) {
@@ -56,15 +56,15 @@ public class SignUp {
     }
 
     private static void executeSuccessfullSignUp(String login, String password) throws IOException, NoSuchAlgorithmException {
-        //dopisanie użytkownika do listy użytkowników
+        //subscribe new user on user list
         String userDataToAppend = login + ";" + Encoding.encodeMD5(password);
 
-        //utworzenie folderu użytkownika w folderze profiles
+        //create user's directory in resources/profiles
         String userProfilesPath = FilePaths.getProfilesPath() + attemptedLogin;
         new File(userProfilesPath).mkdirs();
 
         WriteReadFile.writeText(userDataToAppend, true, FilePaths.getUserListPath());
-        //przejście do panelu logowania
+        //go to login panel
         CLS.clearScreen();
         System.out.println("Rejestracja przebiegła pomyślnie! Możesz teraz się zalogować na nowo utworzony profil.");
         Shortcuts.runLoginWindow();
@@ -75,16 +75,16 @@ public class SignUp {
         if (CheckQuit.userWantsToQuit(attemptedLogin)) {
             CheckQuit.executeQuit(attemptedLogin);
             attemptedLogin = null;
-            return false; //uzytkownik postanowil wyjsc
+            return false; //user decided to quit
         }
         attemptedPassword = UserInput.obtainUserPassword();
         if (CheckQuit.userWantsToQuit(attemptedPassword)) {
             CheckQuit.executeQuit(attemptedPassword);
             attemptedLogin = null;
             attemptedPassword = null;
-            return false; //uzytkownik postanowil wyjsc
+            return false; //user decided to quit
         }
-        return true; //udalo sie zalogowac
+        return true; //user didn't decide to quit
     }
 
     public static void validateData () {

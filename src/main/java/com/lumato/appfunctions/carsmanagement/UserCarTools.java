@@ -1,10 +1,7 @@
 package com.lumato.appfunctions.carsmanagement;
 
-import static com.lumato.inout.WriteReadFile.writeText;
+import com.lumato.inout.*;
 
-import com.lumato.inout.FilePaths;
-import com.lumato.inout.SessionData;
-import com.lumato.inout.WriteReadFile;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -63,7 +60,7 @@ public class UserCarTools {
 
     //we save car choice as integer (id)
     public static void saveCarChoice(int userChoice) throws IOException {
-        SessionData.setCurrentCar(userChoice);
+        SessionData.saveSessionCarId(userChoice);
     }
 
     //delete car and go to UserCarsPanel or AddFirstCar menu

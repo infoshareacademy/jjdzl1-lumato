@@ -63,7 +63,7 @@ public class DeleteCarMenu {
             CLS.clearScreen();
             if (askIfSure()) {
                 CLS.clearScreen();
-                UserCarTools.deleteCar(Integer.valueOf(id)); //usuwa samochód i przekierowuje w odpowiednie miejsce
+                UserCarTools.deleteCar(Integer.valueOf(id)); //deletes car and goes to the right place in app
                 return true;
             } else {
                 CLS.clearScreen();

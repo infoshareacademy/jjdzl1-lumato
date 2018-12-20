@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class WriteReadFile {
 
-    //Metoda zwracająca n-tą linię pliku.
+    /** get n-th line of file as String */
     public static String readNthLine(String path, int n) {
         String line = "";
         if (n<=0) return "";
@@ -64,7 +64,7 @@ public class WriteReadFile {
         }
     }
 
-    //metoda do szybkiego nadpisania pliku
+    /** fast data save to file (does NOT append! erases current file if exists) */
     public static void saveSimpleText(String text, String path) throws IOException {
         try {
             FileOutputStream out = new FileOutputStream(path);
