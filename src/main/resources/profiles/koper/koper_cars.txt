@@ -1,0 +1,3 @@
+1;Sanie;Mikolaja
+2;drezyna;reczna
+3;aa;bb

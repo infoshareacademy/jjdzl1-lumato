@@ -1,10 +1,9 @@
 package com.lumato.appfunctions.carsmanagement;
 
 import com.lumato.inout.UserInput;
-
 import java.io.IOException;
-
 import com.lumato.tools.AppExit;
+import com.lumato.tools.AppMessages;
 import com.lumato.tools.CLS;
 
 public class AddCar {
@@ -15,7 +14,7 @@ public class AddCar {
         if (getNewCarData(newCar).isNull()){
             //nothing happens
         } else {
-            boolean isUserSure = askIfUserReallyWantsToAddNewCar(newCar);
+            boolean isUserSure = areYouSureMessage(newCar);
             if (isUserSure) {
                 UserCarTools.addNewCar(newCar);
                 CLS.clearScreen();
@@ -29,7 +28,7 @@ public class AddCar {
 
     public static void showInformation(){
         System.out.println("Znajdujesz się w panelu dodawania samochodu. Podaj dane, by dodać nowy samochód");
-        System.out.println("(lub 'p' - poprzednie menu/'q' - wyjście z aplikacji)");
+        System.out.println(AppMessages.EXIT_INFO.getMessage());
     }
 
     public static AbstractCar getNewCarData(AbstractCar newCar) throws IOException {
@@ -48,7 +47,7 @@ public class AddCar {
         return newCar;
     }
 
-    public static boolean askIfUserReallyWantsToAddNewCar(AbstractCar newCar) throws IOException {
+    public static boolean areYouSureMessage(AbstractCar newCar) throws IOException {
         String yesOrNo = "";
         while (!"tak".equals(yesOrNo)&&!"nie".equals(yesOrNo)) {
             System.out.print("Czy na pewno chcesz dodać pojazd: " + newCar.getBrand() + " " + newCar.getModel() + "? ");

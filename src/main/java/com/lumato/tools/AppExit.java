@@ -10,7 +10,7 @@ public class AppExit {
 
     public static void exitApplication() throws IOException {
         CLS.clearScreen();
-        System.out.println("Dziękujemy za skorzystanie z aplikacji. Do zobaczenia!");
+        System.out.println(AppMessages.AFTER_EXIT_INFO.getMessage());
         SessionData.eraseSessionData();
         System.exit(0);
     }

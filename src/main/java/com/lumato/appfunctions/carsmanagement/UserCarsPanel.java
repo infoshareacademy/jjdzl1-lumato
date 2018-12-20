@@ -47,7 +47,7 @@ public class UserCarsPanel {
             }
             case "3": {
                 CLS.clearScreen();
-                System.out.println("usuwanie auta");
+                DeleteCarMenu.init();
                 break;
             }
             case "p": {

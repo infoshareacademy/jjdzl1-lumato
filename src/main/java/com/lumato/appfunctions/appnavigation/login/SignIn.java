@@ -2,15 +2,14 @@ package com.lumato.appfunctions.appnavigation.login;
 
 import com.lumato.appfunctions.carsmanagement.AddFirstCar;
 import com.lumato.appfunctions.carsmanagement.ChooseCarAtLogin;
-import com.lumato.inout.SessionData;
+import com.lumato.inout.*;
+import com.lumato.tools.AppMessages;
 import com.lumato.tools.CLS;
-import com.lumato.inout.UserInput;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import com.lumato.inout.WriteReadFile;
-import com.lumato.inout.FilePaths;
+
 
 //panel logowania
 public class SignIn {
@@ -43,8 +42,7 @@ public class SignIn {
 
     private static void showInformation(){
         System.out.println("LOGOWANIE");
-        System.out.println("Wpisz 'q' i naciśnij 'enter' aby opuścić program");
-        System.out.println("Wpisz 'p' i naciśnij 'enter' aby wrócić do ekranu startowego");
+        System.out.println(AppMessages.EXIT_INFO.getMessage());
     }
 
     private static boolean obtainUserData() throws IOException, NoSuchAlgorithmException {

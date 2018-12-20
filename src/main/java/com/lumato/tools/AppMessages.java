@@ -2,8 +2,12 @@ package com.lumato.tools;
 
 public enum AppMessages {
 
-    APP_EXIT("Wpisz 'q', a nastêpnie naciœnij 'enter' by opuœciæ aplikacjê"),
-    PREV_MENU("Wpisz 'p', a nastêpnie naciœnij 'enter' by wrócić do poprzedniego widoku");
+    EXIT_INFO("('p', 'enter' - poprzednie menu / 'q', 'enter' - wyjście z aplikacji)"),
+    PREVIOUS("p - powrót do poprzedniego menu"),
+    APP_EXIT("q - wyjście z aplikacji"),
+    LOGOUT(">>Tutaj informacja jak się wylogować<<"),
+    AFTER_EXIT_INFO("Dziękujemy za skorzystanie z aplikacji. Do zobaczenia!"),
+    YES_NO_MSG("Wpisz 'tak' lub 'nie' i naciśnij enter: ");
 
     private String message;
 
@@ -11,7 +15,7 @@ public enum AppMessages {
         this.message = message;
     }
 
-    String getMessage() {
+    public String getMessage() {
         return message;
     }
 }

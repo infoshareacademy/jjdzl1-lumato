@@ -66,4 +66,9 @@ public class UserCarTools {
         SessionData.setCurrentCar(userChoice);
     }
 
+    //delete car and go to UserCarsPanel or AddFirstCar menu
+    public static void deleteCar(int id){
+        //Method deleting cars and taking me to the right place of the app then
+        System.out.println("usunąłem!");
+    }
 }

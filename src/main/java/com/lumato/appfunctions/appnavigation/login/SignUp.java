@@ -1,10 +1,9 @@
 package com.lumato.appfunctions.appnavigation.login;
 
 import com.lumato.appfunctions.appnavigation.Shortcuts;
-import com.lumato.inout.FilePaths;
-import com.lumato.inout.WriteReadFile;
+import com.lumato.inout.*;
+import com.lumato.tools.AppMessages;
 import com.lumato.tools.CLS;
-import com.lumato.inout.UserInput;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,8 +40,7 @@ public class SignUp {
 
     private static void showInfo() {
         System.out.println("TWORZENIE NOWEGO PROFILU UŻYTKOWNIKA");
-        System.out.println("Wpisz 'p' a następnie 'enter' by wrócić do ekranu startowego");
-        System.out.println("Wpisz 'q' a następnie 'enter' by opuścić program");
+        System.out.println(AppMessages.EXIT_INFO.getMessage());
     }
 
     private static void printWrongDataMessage(boolean userExists, boolean loginIsOk, boolean passwordIsOk) {

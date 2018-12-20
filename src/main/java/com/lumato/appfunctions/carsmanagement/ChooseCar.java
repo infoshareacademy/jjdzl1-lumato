@@ -1,13 +1,11 @@
 package com.lumato.appfunctions.carsmanagement;
 
-import com.lumato.inout.SessionData;
-
-
+import com.lumato.inout.*;
 import java.io.IOException;
-import com.lumato.inout.UserInput;
 import com.lumato.tools.AppExit;
+import com.lumato.tools.AppMessages;
 import com.lumato.tools.CLS;
-import com.lumato.inout.FilePaths;
+
 
 public class ChooseCar {
 
@@ -80,7 +78,7 @@ public class ChooseCar {
 
     private static String askForChoice() throws IOException {
         System.out.println("\nWpisz ID pojazdu i naciśnij enter by wybrać auto.");
-        System.out.println("(lub 'p' - poprzednie menu/'q' - wyjście z aplikacji)");
+        System.out.println(AppMessages.EXIT_INFO.getMessage());
         return UserInput.getUserStringInput();
     }
 
