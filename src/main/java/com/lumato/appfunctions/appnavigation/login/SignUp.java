@@ -8,7 +8,6 @@ import com.lumato.inout.UserInput;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
 public class SignUp {

@@ -3,7 +3,6 @@ package com.lumato.appfunctions.appnavigation.login;
 import com.lumato.appfunctions.carsmanagement.AddFirstCar;
 import com.lumato.appfunctions.carsmanagement.ChooseCarAtLogin;
 import com.lumato.inout.SessionData;
-import com.lumato.appfunctions.appnavigation.Shortcuts;
 import com.lumato.tools.CLS;
 import com.lumato.inout.UserInput;
 
