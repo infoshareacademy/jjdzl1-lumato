@@ -21,6 +21,15 @@ public class RunMenuChoices {
         ImplManualDataInput dateInput = new ImplManualDataInput();
         dateInput.printHeader();
         dateInput.selectedOptions(dateInput.validateUserInput());
+    }
+
+    public static void fuelMenuOptions() throws IOException {
+        ImplFuelCostMenu fuelCostMenu = new ImplFuelCostMenu();
+        fuelCostMenu.printHeader();
+        fuelCostMenu.printOptions();
+        fuelCostMenu.selectedOptions(fuelCostMenu.validateUserInput());
 
     }
+
+
 }
