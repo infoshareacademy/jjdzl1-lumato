@@ -1,18 +1,17 @@
 package com.lumato.appfunctions.appnavigation.login;
 
 import com.lumato.appfunctions.carsmanagement.AddFirstCar;
-import com.lumato.inout.SessionData;
-import com.lumato.appfunctions.appnavigation.Shortcuts;
+import com.lumato.appfunctions.carsmanagement.ChooseCarAtLogin;
+import com.lumato.inout.*;
+import com.lumato.tools.AppMessages;
 import com.lumato.tools.CLS;
-import com.lumato.inout.UserInput;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import com.lumato.inout.WriteReadFile;
-import com.lumato.inout.FilePaths;
 
-//panel logowania
+
+/** Sign In panel */
 public class SignIn {
 
     private static boolean loginExists;
@@ -27,7 +26,7 @@ public class SignIn {
         this.userPassword = null;
     }
 
-    public static void init() throws Exception {
+    public static void init() throws IOException, NoSuchAlgorithmException {
         while (loginExists == false || passwordMatches == false) {
             showInformation();
             if (!obtainUserData()) break;
@@ -43,25 +42,24 @@ public class SignIn {
 
     private static void showInformation(){
         System.out.println("LOGOWANIE");
-        System.out.println("Wpisz 'q' i naciśnij 'enter' aby opuścić program");
-        System.out.println("Wpisz 'p' i naciśnij 'enter' aby wrócić do ekranu startowego");
+        System.out.println(AppMessages.EXIT_INFO.getMessage());
     }
 
-    private static boolean obtainUserData() throws Exception {
+    private static boolean obtainUserData() throws IOException, NoSuchAlgorithmException {
         userLogin = UserInput.obtainUserLogin();
         if (CheckQuit.userWantsToQuit(userLogin)){
             CheckQuit.executeQuit(userLogin);
             userLogin = null;
-            return false; //uzytkownik postanowil wyjsc
+            return false; // user decided to quit
         }
         userPassword = UserInput.obtainUserPassword();
         if (CheckQuit.userWantsToQuit(userPassword)){
             CheckQuit.executeQuit(userPassword);
             userLogin = null;
             userPassword = null;
-            return false; //uzytkownik postanowil wyjsc
+            return false; // user decided to quit
         }
-        return true; //udalo sie zalogowac
+        return true; // user didn't decide to quit
     }
 
     private static void validateLogin(String userLogin){
@@ -89,14 +87,14 @@ public class SignIn {
     }
 
     public static void executeSuccessfulLogin(String userLogin) throws IOException {
-        SessionData.saveSessionData(userLogin);
+        SessionData.saveSessionUserName(userLogin);
         String path = new FilePaths(userLogin).getCurrentUserCarListPath();
         if (WriteReadFile.isFileEmptyOrNonExisting(path)) {
             CLS.clearScreen();
-            AddFirstCar.init(); //dodawanie pierwszego auta, przy pierwszym logowaniu na konto
+            AddFirstCar.init(); //user needs to add a car at his first login
         } else {
             CLS.clearScreen();
-            Shortcuts.runMainMenu();
+            ChooseCarAtLogin.init();
         }
     }
 }

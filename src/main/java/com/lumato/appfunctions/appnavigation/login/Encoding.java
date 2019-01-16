@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class Encoding {
 
-    //proste szyfrowanie hasła
+    /** simple password encoding */
     public static String encodeMD5(String text) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         byte[] bytesOfMessage = text.getBytes("UTF-8");
         MessageDigest md = MessageDigest.getInstance("MD5");

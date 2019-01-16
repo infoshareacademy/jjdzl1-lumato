@@ -27,7 +27,6 @@ public class UserInput {
         return input;
     }
 
-    //pobieranie loginu od użytkownika
     public static String obtainUserLogin() throws IOException {
         System.out.print("PODAJ LOGIN: ");
         String input = "";
@@ -40,9 +39,6 @@ public class UserInput {
         return input;
     }
 
-    //pobieranie hasła od użytkownika
-    //w tej chwili dwie metody (pobieranie hasła i loginu) są takie same,
-    // jednak w przyszłości możemy chcieć zamaskować hasło stąd oddzielna metoda
     public static String obtainUserPassword() throws IOException {
         System.out.print("PODAJ HASLO: ");
         String input = "";

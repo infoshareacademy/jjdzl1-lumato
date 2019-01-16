@@ -5,8 +5,8 @@ import com.lumato.inout.UserInput;
 import com.lumato.tools.CLS;
 import com.lumato.appfunctions.appnavigation.Shortcuts;
 
-//dodawanie pierwszego auta (przy pierwszym logowaniu na konto nie mamy auta,
-//ta metoda zmusza nas do utworzenia pierwszego auta zanim wyświetli sięnam menu główne
+//add new car at first login
+//this menu appears just after login in user has no cars registered
 public class AddFirstCar {
 
     private static boolean isSure;

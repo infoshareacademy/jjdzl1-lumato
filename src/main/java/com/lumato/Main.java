@@ -3,7 +3,6 @@ package com.lumato;
 import com.lumato.inout.SessionData;
 import com.lumato.appfunctions.appnavigation.Shortcuts;
 
-
 public class Main {
 
     /**
@@ -13,14 +12,12 @@ public class Main {
      */
     public static void main(String[] args) throws Exception{
         runApplication();
-
     }
 
     public static void runApplication() throws Exception {
-
-        //wyczyszczenie danych sesyjnych w razie jakby jeszcze istniały po poprzednim użytkowaniu
+        /** erase session data if it somehow exists... */
         SessionData.eraseSessionData();
-        //inicjalizacja okna startowego
+        /** initialize first window */
         Shortcuts.runInitialWindow();
     }
 }

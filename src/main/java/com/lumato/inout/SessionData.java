@@ -4,15 +4,12 @@ import com.lumato.appfunctions.carsmanagement.Car;
 
 import java.io.IOException;
 
-//klasa pomocnicza, wspierająca klasę SignIn
-//w klasie tej obsługuje plik z danymi sesyjnymi (w tej chwili jest to tylko nazwa uzytkownika)
-
 public class SessionData {
 
     private static final String currentUserPath = FilePaths.getCurrentUserPath();
 
-    //wpisanie nazwy użytkownika do pliku z danymi sesyjnymi
-    public static void saveSessionData(String userLogin) throws IOException {
+    //put userName into current user file
+    public static void saveSessionUserName(String userLogin) throws IOException {
         String sessionText = userLogin + ";1";
         WriteReadFile.saveSimpleText(sessionText, currentUserPath);
     }
@@ -24,9 +21,7 @@ public class SessionData {
 
     //metoda pobiera nazwę zalogowanego użytkownika
     public static String getCurrentUserName(){
-        String line = WriteReadFile.readNthLine(FilePaths.getCurrentUserPath(), 1);
-        String userName = line.split(";")[0];
-        return userName;
+        return WriteReadFile.readNthLine(FilePaths.getCurrentUserPath(), 1).split(";")[0];
     }
 
     public static Car getCurrentUserCar(){
@@ -41,7 +36,7 @@ public class SessionData {
         return car;
     }
 
-    public static void setCurrentCar(int n) throws IOException {
+    public static void saveSessionCarId(int n) throws IOException {
         String line = WriteReadFile.readNthLine(FilePaths.getCurrentUserCarListPath(), n);
         String newSessionData = getCurrentUserName() + ";" + line.split(";")[0];
         WriteReadFile.saveSimpleText(newSessionData, FilePaths.getCurrentUserPath());
