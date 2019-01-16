@@ -62,10 +62,4 @@ public class UserCarTools {
     public static void saveCarChoice(int userChoice) throws IOException {
         SessionData.saveSessionCarId(userChoice);
     }
-
-    //delete car and go to UserCarsPanel or AddFirstCar menu
-    public static void deleteCar(int id){
-        //Method deleting cars and taking me to the right place of the app then
-        System.out.println("usunąłem!");
-    }
 }
