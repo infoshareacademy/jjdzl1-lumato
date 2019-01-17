@@ -57,7 +57,7 @@ public class SignUp {
 
     private static void executeSuccessfullSignUp(String login, String password) throws Exception {
         //dopisanie użytkownika do listy użytkowników
-        String userDataToAppend = login + ";" + Encoding.encodeMD5(password);
+        String userDataToAppend = login + ";" + Encoding.generateStrongPasswordHash(password);
 
         //utworzenie folderu użytkownika w folderze profiles
         String userProfilesPath = FilePaths.getProfilesPath() + attemptedLogin;
