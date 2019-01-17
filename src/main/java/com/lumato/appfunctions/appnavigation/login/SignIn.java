@@ -29,7 +29,7 @@ public class SignIn {
         this.userPassword = null;
     }
 
-    public static void init() throws Exception {
+    public static void init() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
         while (loginExists == false || passwordMatches == false) {
             showInformation();
             if (!obtainUserData()) break;
@@ -49,7 +49,7 @@ public class SignIn {
         System.out.println("Wpisz 'p' i naciśnij 'enter' aby wrócić do ekranu startowego");
     }
 
-    private static boolean obtainUserData() throws Exception {
+    private static boolean obtainUserData() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
         userLogin = UserInput.obtainUserLogin();
         if (CheckQuit.userWantsToQuit(userLogin)){
             CheckQuit.executeQuit(userLogin);
@@ -91,7 +91,7 @@ public class SignIn {
     }
 
     public static void executeSuccessfulLogin(String userLogin) throws IOException {
-        SessionData.saveSessionData(userLogin);
+        SessionData.saveSessionUserName(userLogin);
         String path = new FilePaths(userLogin).getCurrentUserCarListPath();
         if (WriteReadFile.isFileEmptyOrNonExisting(path)) {
             CLS.clearScreen();

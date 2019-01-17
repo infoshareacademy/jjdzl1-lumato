@@ -6,22 +6,23 @@ import com.lumato.appfunctions.appnavigation.menuchoice.*;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 //window initializations gathered in one class
 public class Shortcuts {
 
     //runs starting window with login/create-new-profile/quit choice
-    public static void runInitialWindow() throws IOException, NoSuchAlgorithmException {
+    public static void runInitialWindow() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
         InitialWindow.init();
     }
 
     //runs login window
-    public static void runLoginWindow() throws IOException, NoSuchAlgorithmException {
+    public static void runLoginWindow() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
         SignIn.init();
     }
 
     //runs create-new-profile window
-    public static void runSignInWindow() throws IOException, NoSuchAlgorithmException {
+    public static void runSignInWindow() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
         SignUp.init();
     }
 

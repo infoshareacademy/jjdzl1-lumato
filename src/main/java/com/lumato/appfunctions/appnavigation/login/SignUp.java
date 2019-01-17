@@ -7,6 +7,9 @@ import com.lumato.tools.CLS;
 import com.lumato.inout.UserInput;
 
 import java.io.File;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class SignUp {
 
@@ -24,7 +27,7 @@ public class SignUp {
         this.attemptedLogin = null;
     }
 
-    public static void init() throws Exception {
+    public static void init() throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         while (userExists || !passwordIsOk || !loginIsOk) {
             showInfo(); //wyrzucenie informacji o panelu
             if (!obtainUserData()) break;
@@ -55,7 +58,7 @@ public class SignUp {
         }
     }
 
-    private static void executeSuccessfullSignUp(String login, String password) throws Exception {
+    private static void executeSuccessfullSignUp(String login, String password) throws InvalidKeySpecException, NoSuchAlgorithmException, IOException {
         //dopisanie użytkownika do listy użytkowników
         String userDataToAppend = login + ";" + EncryptPassword.generateStrongPasswordHash(password);
 
@@ -70,7 +73,7 @@ public class SignUp {
         Shortcuts.runLoginWindow();
     }
 
-    private static boolean obtainUserData() throws Exception {
+    private static boolean obtainUserData() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
         attemptedLogin = UserInput.obtainUserLogin();
         if (CheckQuit.userWantsToQuit(attemptedLogin)) {
             CheckQuit.executeQuit(attemptedLogin);
