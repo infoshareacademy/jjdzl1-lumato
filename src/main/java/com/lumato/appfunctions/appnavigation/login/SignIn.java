@@ -9,6 +9,8 @@ import com.lumato.inout.UserInput;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 import com.lumato.inout.WriteReadFile;
 import com.lumato.inout.FilePaths;
 
@@ -72,7 +74,7 @@ public class SignIn {
         }
     }
 
-    private static void validatePassword(String userLogin, String userPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    private static void validatePassword(String userLogin, String userPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeySpecException {
         if (UserDataValidation.checkIfPasswordMatches(userLogin, userPassword)) {
             passwordMatches = true;
         } else {

@@ -4,12 +4,13 @@ import com.lumato.inout.FilePaths;
 
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class UserDataValidation {
 
     private static String userListPath = FilePaths.getUserListPath();
 
-    //SignIn login validation
+    /** SignIn login validation*/
     public static boolean checkIfUserExists(String userLogin){
         String line = "";
         try {
@@ -29,21 +30,18 @@ public class UserDataValidation {
         return false;
     }
 
-    //SignIn password validation
-    public static boolean checkIfPasswordMatches(String userLogin, String userPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        userPassword = Encoding.encodeMD5(userPassword);
+    /** SignIn password validation */
+    public static boolean checkIfPasswordMatches(String userLogin, String attemptedPassword) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeySpecException {
+        String goodPassword = null;
         String line = "";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(userListPath));
             String userInCurrentLine;
-            String goodPassword;
             while ((line = reader.readLine()) != null){
                 userInCurrentLine = line.substring(0, line.indexOf(';'));
                 if (userInCurrentLine.equals(userLogin)){
                     goodPassword = line.substring(line.indexOf(';')+1);
-                    if (goodPassword.equals(userPassword)) {
-                        return true;
-                    }
+                    return Encoding.validatePassword(attemptedPassword, goodPassword);
                 };
             }
         } catch (FileNotFoundException e) {
