@@ -1,13 +1,12 @@
 package com.lumato.appfunctions.appnavigation.login;
 
 import com.lumato.appfunctions.appnavigation.Shortcuts;
-import com.lumato.inout.*;
-import com.lumato.tools.AppMessages;
+import com.lumato.inout.FilePaths;
+import com.lumato.inout.WriteReadFile;
 import com.lumato.tools.CLS;
+import com.lumato.inout.UserInput;
 
 import java.io.File;
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 public class SignUp {
 
@@ -25,9 +24,9 @@ public class SignUp {
         this.attemptedLogin = null;
     }
 
-    public static void init() throws IOException, NoSuchAlgorithmException {
+    public static void init() throws Exception {
         while (userExists || !passwordIsOk || !loginIsOk) {
-            showInfo(); //show Panel information
+            showInfo(); //wyrzucenie informacji o panelu
             if (!obtainUserData()) break;
             validateData();
             if (!userExists && passwordIsOk && loginIsOk) {
@@ -40,7 +39,8 @@ public class SignUp {
 
     private static void showInfo() {
         System.out.println("TWORZENIE NOWEGO PROFILU UŻYTKOWNIKA");
-        System.out.println(AppMessages.EXIT_INFO.getMessage());
+        System.out.println("Wpisz 'p' a następnie 'enter' by wrócić do ekranu startowego");
+        System.out.println("Wpisz 'q' a następnie 'enter' by opuścić program");
     }
 
     private static void printWrongDataMessage(boolean userExists, boolean loginIsOk, boolean passwordIsOk) {
@@ -55,36 +55,36 @@ public class SignUp {
         }
     }
 
-    private static void executeSuccessfullSignUp(String login, String password) throws IOException, NoSuchAlgorithmException {
-        //subscribe new user on user list
-        String userDataToAppend = login + ";" + Encoding.encodeMD5(password);
+    private static void executeSuccessfullSignUp(String login, String password) throws Exception {
+        //dopisanie użytkownika do listy użytkowników
+        String userDataToAppend = login + ";" + EncryptPassword.generateStrongPasswordHash(password);
 
-        //create user's directory in resources/profiles
+        //utworzenie folderu użytkownika w folderze profiles
         String userProfilesPath = FilePaths.getProfilesPath() + attemptedLogin;
         new File(userProfilesPath).mkdirs();
 
         WriteReadFile.writeText(userDataToAppend, true, FilePaths.getUserListPath());
-        //go to login panel
+        //przejście do panelu logowania
         CLS.clearScreen();
         System.out.println("Rejestracja przebiegła pomyślnie! Możesz teraz się zalogować na nowo utworzony profil.");
         Shortcuts.runLoginWindow();
     }
 
-    private static boolean obtainUserData() throws IOException, NoSuchAlgorithmException {
+    private static boolean obtainUserData() throws Exception {
         attemptedLogin = UserInput.obtainUserLogin();
         if (CheckQuit.userWantsToQuit(attemptedLogin)) {
             CheckQuit.executeQuit(attemptedLogin);
             attemptedLogin = null;
-            return false; //user decided to quit
+            return false; //uzytkownik postanowil wyjsc
         }
         attemptedPassword = UserInput.obtainUserPassword();
         if (CheckQuit.userWantsToQuit(attemptedPassword)) {
             CheckQuit.executeQuit(attemptedPassword);
             attemptedLogin = null;
             attemptedPassword = null;
-            return false; //user decided to quit
+            return false; //uzytkownik postanowil wyjsc
         }
-        return true; //user didn't decide to quit
+        return true; //udalo sie zalogowac
     }
 
     public static void validateData () {
