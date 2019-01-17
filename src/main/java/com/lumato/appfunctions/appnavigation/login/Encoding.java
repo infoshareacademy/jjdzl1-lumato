@@ -8,12 +8,30 @@ import java.util.Arrays;
 public class Encoding {
 
     //proste szyfrowanie hasła
-    public static String encodeMD5(String text) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        byte[] bytesOfMessage = text.getBytes("UTF-8");
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        byte[] thedigest = md.digest(bytesOfMessage);
-        text = Arrays.toString(thedigest);
-        text = text.replaceAll("[, \\]\\[]", "");
-        return text; //returns encoded text
+    public static String encodeMD5(String text) {
+        String passwordToHash = text;
+        String generatedPassword = null;
+        try {
+            // Create MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //Add password bytes to digest
+            md.update(passwordToHash.getBytes());
+            //Get the hash's bytes
+            byte[] bytes = md.digest();
+            //This bytes[] has bytes in decimal format;
+            //Convert it to hexadecimal format
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            //Get complete hashed password in hex format
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return generatedPassword;
     }
 }

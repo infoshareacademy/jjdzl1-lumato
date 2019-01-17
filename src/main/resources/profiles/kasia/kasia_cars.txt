@@ -1,2 +1,0 @@
-1;Lokomotywa;Parowa
-2;aaa;bbb
