@@ -2,7 +2,9 @@ package com.lumato.database;
 
 import lombok.Getter;
 import lombok.Setter;
+
 import java.util.Calendar;
+
 
 @Getter @Setter public class User {
 
@@ -12,6 +14,10 @@ import java.util.Calendar;
     private String userEmail;
     private Calendar userLastLogin;
     private boolean userBlocked;
+
+    public User(){
+
+    }
 
     public User(int userId, String userName, String userPassword, String userEmail, Calendar userLastLogin, boolean userBlocked) {
         this.userId = userId;
@@ -24,7 +30,7 @@ import java.util.Calendar;
 
     @Override
     public String toString() {
-        return String.format("%-4d %-12s %-20s %-30s %-20tF %b",
+        return String.format("\n%-4d %-12s %-20s %-30s %-20tF %b",
                 userId,
                 userLogin,
                 userPassword,
