@@ -7,7 +7,7 @@ import java.util.Calendar;
 @Getter @Setter public class User {
 
     private int userId;
-    private String userName;
+    private String userLogin;
     private String userPassword;
     private String userEmail;
     private Calendar userLastLogin;
@@ -15,7 +15,7 @@ import java.util.Calendar;
 
     public User(int userId, String userName, String userPassword, String userEmail, Calendar userLastLogin, boolean userBlocked) {
         this.userId = userId;
-        this.userName = userName;
+        this.userLogin = userName;
         this.userPassword = userPassword;
         this.userEmail = userEmail;
         this.userLastLogin = userLastLogin;
@@ -24,9 +24,9 @@ import java.util.Calendar;
 
     @Override
     public String toString() {
-        return String.format("%d %-12s %-20s %-30s %-20tF %b",
+        return String.format("%-4d %-12s %-20s %-30s %-20tF %b",
                 userId,
-                userName,
+                userLogin,
                 userPassword,
                 userEmail,
                 userLastLogin,

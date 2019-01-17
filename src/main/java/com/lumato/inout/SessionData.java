@@ -8,7 +8,7 @@ public class SessionData {
 
     private static final String currentUserPath = FilePaths.getCurrentUserPath();
 
-    //put userName into current user file
+    //put userLogin into current user file
     public static void saveSessionUserName(String userLogin) throws IOException {
         String sessionText = userLogin + ";1";
         WriteReadFile.saveSimpleText(sessionText, currentUserPath);
