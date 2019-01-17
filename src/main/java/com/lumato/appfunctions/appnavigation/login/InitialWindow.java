@@ -5,16 +5,14 @@ import com.lumato.tools.AppExit;
 import com.lumato.tools.CLS;
 import com.lumato.inout.UserInput;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-
 import com.lumato.inout.FilePaths;
 import com.lumato.inout.WriteReadFile;
 
 
 public class InitialWindow {
 
-    /** initialization of the first app-window with SignIn/SignUp/Exit options */
-    public static void init() throws IOException, NoSuchAlgorithmException {
+    //metoda inicjalizujaca pierwsze okno programu (okno z wyborem rejestracji/logowania)
+    public static void init() throws Exception {
         createFilesIfTheyDoNotExist();
         showHeader();
         showOptions();
@@ -50,7 +48,7 @@ public class InitialWindow {
         return UserInput.getUserStringInput();
     }
 
-    private void executeUserChoice(String userChoice) throws IOException, NoSuchAlgorithmException {
+    private void executeUserChoice(String userChoice) throws Exception{
         switch(userChoice){
             case "1": {
                 CLS.clearScreen();
