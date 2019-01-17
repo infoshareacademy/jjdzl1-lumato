@@ -41,7 +41,7 @@ public class UserDataValidation {
                 userInCurrentLine = line.substring(0, line.indexOf(';'));
                 if (userInCurrentLine.equals(userLogin)){
                     goodPassword = line.substring(line.indexOf(';')+1);
-                    return Encoding.validatePassword(attemptedPassword, goodPassword);
+                    return EncryptPassword.validatePassword(attemptedPassword, goodPassword);
                 };
             }
         } catch (FileNotFoundException e) {
