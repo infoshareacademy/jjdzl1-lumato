@@ -1,57 +1,57 @@
 package inout;
 
-import java.util.Scanner;
-//brakuje odbrego zapisu i odczytu z csv/xlsx
-/*po uruchomieniu
-Witaj w kalkulatorze paliwowym!
-Podaj przebieg swojego auta:
-12334,55
-Podaj w litrach ile paliwa zatankowałeś/aś:
-86,55
-Podaj cene 1 litra paliwa:
-5,30
-Witaj dzisiaj zatankowałeś 86.55 litrów paliwa za łączną kwotę: 458.7150,70
-Twoje średnie spalanie na 100 km to: java.io.PrintStream@2f0e140b0,04
-Średni koszt przejechania 1 km to: java.io.PrintStream@2f0e140b zł
-Process finished with exit code 0
- */
-public class DataIn {
-    public void DataIn() {
-        System.out.println("Witaj w kalkulatorze paliwowym!");
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Arrays;
 
-        System.out.println("Podaj przebieg swojego auta: ");
-
-        double course; //w nim zapisujemy przebieg
+public class DataIN {
+    public static void(String[] args) {
+        int[][][][] dataIn;
+        double[] sumKm = new double[];
+        double[] sumFuel = new double[];
+        double[] sumPrice = new double[];
+        double sumaKm = 0;
+        double sumaFuel = 0;
+        double sumaPrice = 0;
 
 
-        Scanner courseCar = new Scanner(System.in); //obiekt do odebrania danych od użytkownika
+        for (int i = 0; i < dataIn.length; i++) {
+            {
+                sumaKm += sumKm[i];
+            }
+            for (int j = 0; j < dataIn.length; j++) {
+                {
+                    sumaFuel += sumFuel[j];
+                }
+                for (int k = 0; k < dataIn.length; k++) {
+                    {
+                        sumaPrice += sumPrice[k];
+                    }
+                    for (int l = 0; l < dataIn.length; l++) {
+                    }
+                }
+            }
+        }
 
-        course = courseCar.nextDouble();
+        double avgConsumption = sumaFuel / sumaKm;
+        double avgPrice = sumaPrice / sumPrice.length;
+        double avgPriceByKm = (avgConsumption * avgPrice) * 100;
 
-        System.out.println("Podaj w litrach ile paliwa zatankowałeś/aś:");
-        double fuel; //ilość paliwa
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+        for (Number n : Arrays.asList(avgConsumption, avgPrice, avgPriceByKm)) {
 
-        Scanner refuel = new Scanner(System.in);
-
-        fuel = refuel.nextDouble();
-
-        System.out.println("Podaj cene 1 litra paliwa:");
-
-        double price; //cena za litr
-
-        Scanner priceByOne = new Scanner(System.in);
-
-        price = priceByOne.nextDouble();
-        // File FuelData = new PrintWriter("FuelData.xlsx");
-        // Scanner in = new Scanner(Double.valueOf(course));
-        Double avrPriceByKm = price * (fuel / (course / 100) / 100);
-        Double avrCombustion = fuel / (course / 100);
-
-
-        System.out.printf("Witaj dzisiaj zatankowałeś " + fuel + " litrów paliwa za łączną kwotę: " + fuel * price);//koncowe podsymowanie może być wyświetlane pod koniec programu
-        System.out.printf("Twoje średnie spalanie na 100 km to: " + System.out.format("%.2f%n", avrCombustion));
-        System.out.printf("Średni koszt przejechania 1 km to: " + System.out.format("%.2f%n", avrPriceByKm) + " zł");
-
-
+            System.out.println("Witaj");
+            System.out.println("W wybranym okresie porzjechałeś w sumie: " + df.format(sumaKm) + "km.");
+            System.out.println("Twoje średnie spalanie na 100 km wynosi: " + df.format(avgConsumption) + " l.");
+            System.out.println("Średnia cena przejechania 100 km wynosi: " + df.format(avgPriceByKm)+" zł.");
+            if (avgPriceByKm * 100 > 15) {
+                System.out.println("Twoje spalanie jest powyżej normy spróbuj jeźcić ekonomiczniej.");
+            } else {
+                System.out.println("Twoje spalanie jest naprawdę eko. Tak trzymaj!");
+            }
+        }
     }
-}
+
+//niewiem czy to zaokrąglanie działa
+
