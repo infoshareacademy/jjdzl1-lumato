@@ -27,7 +27,7 @@ public class Shortcuts {
     //runs com.lumato.Main Menu
     public static void runMainMenu() throws IOException {
         ShowMenu.showMenu();
-        String c = MenuSelect.validateInput(("[1-3]"),"q", "quit");
+        String c = MenuSelect.validateInput(("[1-4]"),"q", "quit");
         MenuChoice.menuChoice(c);
     }
 

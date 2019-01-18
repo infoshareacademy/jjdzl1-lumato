@@ -3,6 +3,8 @@ package com.lumato.interfaces;
 import com.lumato.appfunctions.appnavigation.menuchoice.MenuSelect;
 import com.lumato.tools.CLS;
 
+import java.io.IOException;
+
 public class ImplMainOptions implements InterfaceUserSelect {
     @Override
     public void printHeader() {
@@ -30,7 +32,7 @@ public class ImplMainOptions implements InterfaceUserSelect {
     }
 
     @Override
-    public void selectedOptions(String choice) {
+    public void selectedOptions(String choice) throws IOException {
 
             switch (choice) {
                 case "1":

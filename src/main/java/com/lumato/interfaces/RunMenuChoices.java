@@ -10,7 +10,7 @@ public class RunMenuChoices {
         mainMenuOptions.selectedOptions(mainMenuOptions.validateUserInput());
     }
 
-    public static void dateMenuOptions(){
+    public static void dateMenuOptions() throws IOException {
         ImplDateMenu dateMenuOptions = new ImplDateMenu();
         dateMenuOptions.printHeader();
         dateMenuOptions.printOptions();

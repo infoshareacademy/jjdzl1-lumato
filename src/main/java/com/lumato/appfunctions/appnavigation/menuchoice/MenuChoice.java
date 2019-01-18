@@ -25,6 +25,10 @@ public class MenuChoice {
             case "3":
                 System.out.println("Koszty napraw itd.");
                 break;
+            case "4":
+                System.out.println("Wprowadzenie daty.");
+                RunMenuChoices.dateMenuOptions();
+                break;
             case "q":
                 System.out.println("Zakończenie programu lub coś innego.");
                 break;

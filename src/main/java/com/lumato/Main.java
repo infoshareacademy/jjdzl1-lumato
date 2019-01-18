@@ -17,7 +17,7 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
         runApplication();
-        RunMenuChoices.mainOptions();
+        //RunMenuChoices.mainOptions();
         //WriteReadFile.writeText(UserInput.getUserStringInput(),true,"Paliwko");
 
 
