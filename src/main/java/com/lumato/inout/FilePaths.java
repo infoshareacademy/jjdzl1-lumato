@@ -6,7 +6,7 @@ public class FilePaths {
     private static String currentUserPath = "src/main/resources/currentUser.txt";
     private static String userListPath = "src/main/resources/userList.txt";
     private static String txtDataLocation = "src/main/test.txt";
-    private static String csvDataLocation = "src/main/test.csv";
+    private static String userDir = "src/main/resources/profiles/" + user + "/";
     private static String profilesPath = "src/main/resources/profiles/";
 
     //to obtain this path, we need to create instance of FilePaths
@@ -22,10 +22,10 @@ public class FilePaths {
         currentUserCarListPath = "src/main/resources/profiles/" + user + "/" + user + "_cars.txt";
     }
 
-    public static String getCsvDataLocation() {
-        return csvDataLocation;
+    public static String getUserDir() {
+        return userDir;
     }
-    
+
     public static String getTxtDataLocation() {
         return txtDataLocation;
     }
