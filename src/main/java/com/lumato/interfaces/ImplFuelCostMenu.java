@@ -10,43 +10,39 @@ import java.io.IOException;
 public class ImplFuelCostMenu implements InterfaceUserSelect {
     @Override
     public void printHeader() {
-        System.out.println("Wybierz jedną z dostępnych opcji:");
+        System.out.println("-- Fuel cost section. Select one of available options:");
     }
 
     @Override
     public void printOptions() {
-        System.out.println("Dostepne opcje:"
-                + "\n1: Wprowadz date: "
-                + "\n2: Wprowadz dane: "
-                + "\np: Powrót do ekranu startowego");
+        System.out.println("\n1: Enter the date: " + "\n2: Enter costs: " + "\nR: Return to previous menu: ");
 
     }
 
     @Override
     public String validateUserInput() {
-        String specialChar = "p";
-        String actionWord = "powrócić do menu głównego.";
+        String specialChar = "r";
+        String actionWord = "to return to previous menu.";
 
-        System.out.printf("Wybierz opcję lub wpisz %s aby %s: ", specialChar, actionWord);
-
-        return MenuSelect.validateInput(("[1-2]"), specialChar, actionWord);
+        System.out.printf("Select available option or enter %s to %s: ", specialChar, actionWord);
+        String infoWhenWrong = "\nIncorrect input. Try again or press " + specialChar + " to " + actionWord;
+        return MenuSelect.validateInput(("[1-2]"), specialChar.toLowerCase(), infoWhenWrong);
     }
+
 
     @Override
     public void selectedOptions(String choice) throws IOException {
         switch (choice) {
             case "1":
-                System.out.println("Wprowadzenie daty.");
                 CLS.clearScreen();
                 RunMenuChoices.dateMenuOptions();
                 break;
             case "2":
                 System.out.println("\n\n---------------- Pusta Metoda Macka ------------------\n\n");
                 CLS.clearScreen();
-                Shortcuts.runMainMenu();
+                RunMenuChoices.fuelMenuOptions();
                 break;
-            case "p":
-                System.out.println("Powrót do menu głównego:");
+            case "r":
                 CLS.clearScreen();
                 Shortcuts.runMainMenu();
                 break;

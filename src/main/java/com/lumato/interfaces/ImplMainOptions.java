@@ -25,8 +25,7 @@ public class ImplMainOptions implements InterfaceUserSelect {
     public String validateUserInput() {
         String specialChar = "q";
         String actionWord = "zakończyć";
-        if(specialChar.length() != 0) System.out.printf("Wybierz opcję lub wpisz %s aby %s: ", specialChar, actionWord);
-        else System.out.println("Wybierz jedną z dostępnych opcji.");
+        System.out.printf("Wybierz opcję lub wpisz %s aby %s: ", specialChar, actionWord);
 
         return MenuSelect.validateInput(("[1-3]"), specialChar, actionWord);
     }
