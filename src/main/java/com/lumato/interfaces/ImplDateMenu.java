@@ -36,13 +36,14 @@ public class ImplDateMenu implements InterfaceUserSelect {
             case "1":
                 System.out.println("Data wprowadzona automatycznie");
                 System.out.println(DataReader.dateReader());
-                Shortcuts.runMainMenu();
+                CLS.clearScreen();
+                RunMenuChoices.fuelMenuOptions();
                 break;
             case "2":
                 System.out.println("\n\nNo to pisz te date.");
                 RunMenuChoices.dataManualInput();
                 CLS.clearScreen();
-                Shortcuts.runMainMenu();
+                RunMenuChoices.fuelMenuOptions();
                 break;
             case "p":
                 System.out.println("Powrót do menu głównego:");
