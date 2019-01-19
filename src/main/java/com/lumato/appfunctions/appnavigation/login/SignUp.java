@@ -36,6 +36,7 @@ public class SignUp {
                 executeSuccessfullSignUp(attemptedLogin, attemptedPassword); //utworzenie nowego profilu i przejście do logowania
             } else {
                 executeNonSuccessfulSignUp();
+                break;
             }
         }
     }

@@ -37,8 +37,10 @@ public class SignIn {
             validatePassword(userLogin, userPassword);
             if (loginExists && passwordMatches) {
                 executeSuccessfulLogin(userLogin);
+                break;
             } else {
                 executeNonSuccessfulLogin();
+                break;
             }
         }
     }
