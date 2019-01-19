@@ -30,7 +30,7 @@ import java.util.Calendar;
 
     @Override
     public String toString() {
-        return String.format("\n%-4d %-12s %-20s %-30s %-20tF %b",
+        return String.format("\n%-4d %-16s %-20s %-30s %-20tF %b",
                 userId,
                 userLogin,
                 userPassword,

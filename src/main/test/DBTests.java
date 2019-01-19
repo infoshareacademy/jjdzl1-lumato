@@ -3,6 +3,7 @@ import com.lumato.database.UserDAO;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.Properties;
@@ -20,8 +21,23 @@ public class DBTests {
 
         System.out.println("\n=================\n");
 
+        /** add new user */
+        User newUser = new User();
+        newUser.setUserLogin("lubieplacki");
+        newUser.setUserPassword("jacek");
+        newUser.setUserEmail(null);
+        newUser.setUserLastLogin(null);
+        test4addNewUser(newUser);
+
+        System.out.println("\n=================\n");
+
         /** get all users list from db */
         test3getAllUsersList();
+    }
+
+    private static void test4addNewUser(User newUser){
+        UserDAO userDAO = new UserDAO();
+        userDAO.addNewUser(newUser);
     }
 
     private static void test3getAllUsersList() {
@@ -54,5 +70,4 @@ public class DBTests {
 
         System.out.println(user.toString());
     }
-
 }

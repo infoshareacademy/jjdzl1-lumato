@@ -26,6 +26,32 @@ public class UserDAO extends DAO {
         return allUsersList;
     }
 
+    public void addNewUser(User newUser) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO users VALUES(NULL, ?, ?, ?, ?, FALSE)");
+            statement.setString(1, newUser.getUserLogin());
+            statement.setString(2, newUser.getUserPassword());
+            if (newUser.getUserEmail() != null) {
+                statement.setString(3, newUser.getUserEmail());
+            } else {
+                statement.setNull(3, Types.VARCHAR);
+            }
+            if (newUser.getUserLastLogin() != null) {
+                java.util.Date date = newUser.getUserLastLogin().getTime();
+                java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+                statement.setDate(4, sqlDate);
+            } else {
+                statement.setNull(4, java.sql.Types.DATE);
+
+            }
+            statement.executeUpdate();
+            statement.close();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void fillUserProperties(ResultSet resultSet, User tempUser) {
         try {
             tempUser.setUserId(resultSet.getInt("user_id"));
