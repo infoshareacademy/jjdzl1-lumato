@@ -66,6 +66,7 @@ public class SignUp {
         String userProfilesPath = FilePaths.getProfilesPath() + attemptedLogin;
         new File(userProfilesPath).mkdirs();
 
+
         WriteReadFile.writeText(userDataToAppend, true, FilePaths.getUserListPath());
         //przejście do panelu logowania
         CLS.clearScreen();

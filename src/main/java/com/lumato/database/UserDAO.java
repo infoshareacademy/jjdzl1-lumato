@@ -33,10 +33,14 @@ public class UserDAO extends DAO {
             tempUser.setUserPassword(resultSet.getString("user_password"));
             if (resultSet.getString("user_email") != null) {
                 tempUser.setUserEmail(resultSet.getString("user_email"));
+            } else {
+                tempUser.setUserEmail("no-email");
             }
             Calendar lastLogin = Calendar.getInstance();
             if (resultSet.getDate("user_last_login") != null) {
                 lastLogin.setTime(resultSet.getDate("user_last_login"));
+            } else {
+                lastLogin.set(9999,8,9);
             }
             tempUser.setUserLastLogin(lastLogin);
             tempUser.setUserBlocked(resultSet.getBoolean("user_blocked"));
