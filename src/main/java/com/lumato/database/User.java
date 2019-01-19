@@ -8,6 +8,9 @@ import java.util.Calendar;
 
 @Getter @Setter public class User {
 
+    public static final String USER_EMAIL_NONE = null;
+    public static final Calendar USER_LAST_LOGIN_NONE = null;
+
     private int userId;
     private String userLogin;
     private String userPassword;

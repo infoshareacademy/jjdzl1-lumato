@@ -9,6 +9,21 @@ public class UserDAO extends DAO {
         connection = DataBaseConnector.connectToDB();
     }
 
+    public int countRecords(){
+        int recordCount = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT count(*) as RECORDCOUNT FROM users");
+            if (resultSet.next()) {
+                recordCount = resultSet.getInt("RECORDCOUNT");
+            }
+        } catch (SQLException e) {
+            System.out.println("Problem whith DB connection");
+            e.printStackTrace();
+        }
+        return recordCount;
+    }
+
     public LinkedList<User> getAllUsers(){
         LinkedList<User> allUsersList = new LinkedList<>();
         try {
@@ -32,11 +47,7 @@ public class UserDAO extends DAO {
                     "INSERT INTO users VALUES(NULL, ?, ?, ?, ?, FALSE)");
             statement.setString(1, newUser.getUserLogin());
             statement.setString(2, newUser.getUserPassword());
-            if (newUser.getUserEmail() != null) {
-                statement.setString(3, newUser.getUserEmail());
-            } else {
-                statement.setNull(3, Types.VARCHAR);
-            }
+            statement.setNull(3, Types.VARCHAR);
             if (newUser.getUserLastLogin() != null) {
                 java.util.Date date = newUser.getUserLastLogin().getTime();
                 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
