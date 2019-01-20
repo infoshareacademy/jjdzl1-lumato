@@ -7,12 +7,10 @@ import java.sql.SQLException;
 public abstract class DAO {
     protected Connection connection;
 
-    /** check if DAO is connected to Database */
     public boolean isConnected() {
         return (connection != null) ? true : false;
     }
 
-    /** connect DAO to database if not connected */
     public void connectToDB(){
         if (connection!=null) {
             System.out.println("You are already connected to DB!");
@@ -21,7 +19,6 @@ public abstract class DAO {
         }
     }
 
-    /** close connection for DAO object */
     public void closeConnection(){
         try {
             this.connection.close();
@@ -30,16 +27,12 @@ public abstract class DAO {
         }
     }
 
-    /** get basic DB data */
-    public String getMetaData(){
-        String metaData = "";
+    public DatabaseMetaData getMetaData(){
+        DatabaseMetaData metaData = null;
         try {
-            DatabaseMetaData dbmd = connection.getMetaData();
-            metaData += "DB product: " + dbmd.getDatabaseProductName();
-            metaData += "\nDB version: " + dbmd.getDatabaseProductVersion();
-            metaData += "\nDriver: " + dbmd.getDriverName();
-            metaData += "\nDriver version: " + dbmd.getDriverVersion();
+            metaData = connection.getMetaData();
         } catch (SQLException e) {
+            System.out.println("Counldn't obtain DatabaseMetaData object");
             e.printStackTrace();
         }
         return metaData;

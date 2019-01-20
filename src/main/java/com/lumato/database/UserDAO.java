@@ -9,7 +9,7 @@ public class UserDAO extends DAO {
         connection = DataBaseConnector.connectToDB();
     }
 
-    public int countRecords(){
+    public int countUsers(){
         int recordCount = 0;
         try {
             Statement statement = connection.createStatement();
@@ -41,13 +41,17 @@ public class UserDAO extends DAO {
         return allUsersList;
     }
 
-    public void addNewUser(User newUser) {
+    public void addNewUserToDB(User newUser) {
         try {
             PreparedStatement statement = connection.prepareStatement(
                     "INSERT INTO users VALUES(NULL, ?, ?, ?, ?, FALSE)");
             statement.setString(1, newUser.getUserLogin());
             statement.setString(2, newUser.getUserPassword());
-            statement.setNull(3, Types.VARCHAR);
+            if (newUser.getUserEmail() != null) {
+                statement.setString(3, newUser.getUserEmail());
+            } else {
+                statement.setNull(3, Types.VARCHAR);
+            }
             if (newUser.getUserLastLogin() != null) {
                 java.util.Date date = newUser.getUserLastLogin().getTime();
                 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
@@ -71,13 +75,13 @@ public class UserDAO extends DAO {
             if (resultSet.getString("user_email") != null) {
                 tempUser.setUserEmail(resultSet.getString("user_email"));
             } else {
-                tempUser.setUserEmail("no-email");
+                tempUser.setUserEmail(User.USER_EMAIL_NONE);
             }
             Calendar lastLogin = Calendar.getInstance();
             if (resultSet.getDate("user_last_login") != null) {
                 lastLogin.setTime(resultSet.getDate("user_last_login"));
             } else {
-                lastLogin.set(9999,8,9);
+                lastLogin = User.USER_LAST_LOGIN_NONE;
             }
             tempUser.setUserLastLogin(lastLogin);
             tempUser.setUserBlocked(resultSet.getBoolean("user_blocked"));
@@ -85,4 +89,5 @@ public class UserDAO extends DAO {
             e.printStackTrace();
         }
     }
+
 }
